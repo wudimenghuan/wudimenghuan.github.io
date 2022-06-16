@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.stx8.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="最近快播的段子都快传疯了。很多网友也在那里分析快播有没有罪，辩护有没有问题之类的。其实结果对我来说一点都不重要。快播有没有罪，这个留给法庭审判。我今天要说的是庭审所暴露出来的一些问题，一些我日常中经常看到的问题。 我们先看两个段子（其实基本是庭审里的事实）：  审判长问：文件加了密，你为什么不解密呢？ 张克东：如果达不到一定的码率，快播软件就会启动缓存服务器开始加速，达到了码率，就会自动断开。法官">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于程序员和产品经理两大世界体系的对话——论快播庭审">
+<meta property="og:url" content="http://www.stx8.com/2018/11/10/programmer-kuaibo/index.html">
+<meta property="og:site_name" content="时空主站">
+<meta property="og:description" content="最近快播的段子都快传疯了。很多网友也在那里分析快播有没有罪，辩护有没有问题之类的。其实结果对我来说一点都不重要。快播有没有罪，这个留给法庭审判。我今天要说的是庭审所暴露出来的一些问题，一些我日常中经常看到的问题。 我们先看两个段子（其实基本是庭审里的事实）：  审判长问：文件加了密，你为什么不解密呢？ 张克东：如果达不到一定的码率，快播软件就会启动缓存服务器开始加速，达到了码率，就会自动断开。法官">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-11-10T02:23:21.000Z">
+<meta property="article:modified_time" content="2018-11-10T02:23:21.000Z">
+<meta property="article:author" content="时空">
+<meta property="article:tag" content="互联网">
+<meta property="article:tag" content="思考">
+<meta property="article:tag" content="程序员">
+<meta property="article:tag" content="产品经理">
+<meta property="article:tag" content="快播">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.stx8.com/2018/11/10/programmer-kuaibo/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://www.stx8.com/2018/11/10/programmer-kuaibo/","path":"2018/11/10/programmer-kuaibo/","title":"关于程序员和产品经理两大世界体系的对话——论快播庭审"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>关于程序员和产品经理两大世界体系的对话——论快播庭审 | 时空主站</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90761248-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-90761248-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">时空主站</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">嗨，我是时空，一名来自中国的开发者。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-我的软件"><a href="/tags/%E6%88%91%E7%9A%84%E8%BD%AF%E4%BB%B6/" rel="section"><i class="fa fa-desktop fa-fw"></i>我的软件</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-开源博客"><a href="https://my.oschina.net/wudimenghuan" rel="noopener" target="_blank"><i class="fa fa-code fa-fw"></i>开源博客</a></li><li class="menu-item menu-item-pgp"><a href="/pgp/" rel="section"><i class="fa fa-key fa-fw"></i>PGP</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">时空</p>
+  <div class="site-description" itemprop="description">时空主站</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">87</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.stx8.com/2018/11/10/programmer-kuaibo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="时空">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时空主站">
+      <meta itemprop="description" content="时空主站">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="关于程序员和产品经理两大世界体系的对话——论快播庭审 | 时空主站">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关于程序员和产品经理两大世界体系的对话——论快播庭审
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-11-10 10:23:21" itemprop="dateCreated datePublished" datetime="2018-11-10T10:23:21+08:00">2018-11-10</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/11/10/programmer-kuaibo/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/10/programmer-kuaibo/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>最近快播的段子都快传疯了。很多网友也在那里分析快播有没有罪，辩护有没有问题之类的。其实结果对我来说一点都不重要。快播有没有罪，这个留给法庭审判。我今天要说的是庭审所暴露出来的一些问题，一些我日常中经常看到的问题。</p>
+<p>我们先看两个段子（其实基本是庭审里的事实）：</p>
+<blockquote>
+<p>审判长问：文件加了密，你为什么不解密呢？</p>
+<p>张克东：如果达不到一定的码率，快播软件就会启动缓存服务器开始加速，达到了码率，就会自动断开。<br>法官：软件它为什么会知道？它是机器人么？</p>
+</blockquote>
+<p>也许有些人看到段子1，会喷国家审查啊什么的。其实这不是审查，而是无知。审查一定是懂行的，无知才会要人解密。至于段子2，也有类似的问题——码率的衡量问题在大多数程序员，甚至包括懂一点技术的用户那里都不是秘密。问“软件为什么知道”，实际上非常无知。</p>
+<p>甚至同样的问题，也存在于某些网友的评论中。例如<a target="_blank" rel="noopener" href="http://www.leiphone.com/news/201601/101BbjfiTqPv2N6d.html">这篇</a>。我引用这个评论段落：</p>
+<blockquote>
+<p>我看到不少网友以此取笑法官如何外行。其实法官非常聪明，不管张克东如何回复，都回避不开“软件如何知道”，也就是系统如何识别片源问题,只要这个回答了,你快播就摆脱不了你”清楚”播放哪些视频的问题。</p>
+</blockquote>
+<p>如果懂一点技术的话，应该明白一点。对软件而言，码率一定是知道的。而内容，则未必。或者换个对不了解技术的同学们更友好一点说法。对浏览器而言，网页上的图片的大小，格式，都是知道的对吧？浏览器也可以用来浏览黄色网站对吧？那问题也一样，软件它为什么会知道？</p>
+<p>红衣主教，是不是该轮到你出庭聊一聊了？</p>
+<p>同样，所有聚焦点在“软件应当可以监管浏览内容”的人，同时也面临这么个问题，浏览器是否可以监管黄色网页？作为处理数据流的软件，肯定是了解被处理数据的格式，大小，码率等参数的。那么处理软件是否应当对被处理的数据的内容合法性负责呢？如果是的话，那毫无疑问，所有黄色信息都必然经过了Intel和AMD两家生产的CPU，而且绝大多数也经过了Windows。</p>
+<p>实际上，整个庭审中通篇都是法官和公诉人各种技术外行。例如用IP地址标识服务器，硬盘大小标识硬盘等等。如果在国外正常庭审，这证据其实就算废掉了。因为被告可以当场演示给你看改IP地址，你连服务器是不是他的都无法证明，还怎么构成证据链呢？当然，在中国来说，最后是否取信还是合议庭说了算的。</p>
+<p>对于程序员来说，这个故事是不是很熟悉？是不是觉得和产品经理打交道很像？一样是对技术一无所知，却对一无所知不以为耻。我碰到过一个产品经理，自以为提了一个很犀利的需求——为什么我们不通过软件自动算出地址，还要客户自己填？</p>
+<p>我听到这个问题的时候，估计表情和听到“为什么不解密”时的表情是一样的。心里一万头草泥马奔腾而过——合着不是你实现啊。尼马我怎么算？IP地址只能知道大致地区，还不一定准。GPS当时还不是每个浏览器都支持，就算支持也只能算出坐标，算不出地址。</p>
+<p>很多时候，产品上的一点小小的改变，往往是技术上的翻天覆地。不信你考虑一个论坛系统，如果做到像腾讯那么大流量的时候会是什么样一个样子？再考虑一个交易系统，在同样一个量下是什么样子？前者应该还能做，后者应该已经没法弄了吧。为什么同样是个网站，同样的量，一个没事，一个挂了？</p>
+<p>因为论坛系统是典型的无事务低写高读系统，因此可以使用分库分表，多层缓存的方法来增强性能。而交易系统是典型的事务，没法用这个手段。所以交易系统在海量压力下的技术难度，和论坛系统在海量压力下的技术难度，其水平和重点根本不是一类的。从这个意义上说，淘宝双11，很不容易。</p>
+<p>而这种技术难度，产品经理是不知道的。所以他搞不好会给一个超大流量论坛提出一个很实在的需求——咱们弄一个内部交易系统吧，应该会变成不错的盈利点。呵呵。这个系统要么做出来会有各种各样的事务问题，要不然这个系统大量使用的时候，整个系统（做的好的话应该不会波及论坛）就会慢到无法接受。</p>
+<p>当然，现实中一般是没有这么大论坛的。京东实打实在事务性能上吃过亏没错，但是那时候京东已经多大体量了？一个论坛，要引流过去那么大体量，自身得多大？但是这个例子本身说明技术难题的非直观性和在下判断时的必要性。如果你不了解这个技术本身会引发什么问题，你就无法得到合理的结论。</p>
+<p>作为产品经理，或者要和技术打交道的一切人士。不懂技术并不可耻，可耻的是不懂技术又无视技术。既不去学，也不去问。装作技术不会对他产生影响，装作不懂技术并不影响他决策的权威性。</p>
+<p>与此形成对比的，是微软垄断诉讼案中法官的表现。那个案子里，微软律师强调的是IE内核和windows系统的严密整合，导致两者几乎无法拆分。从软件架构角度来说，这没错。但是法官很明白里面的门槛——保留IE内核不代表保留IE。鼠标一点，IE直接从系统中干掉。虽然内核还在系统上，但是不额外安装IE的话，无法使用浏览器。如果没有后来的一些事的话，估计微软就难逃一劫了。</p>
+<p>话题拉回到快播庭审的事情上来。快播有没有问题？排除色情非罪化（我支持内容分级审查和色情非罪化），我觉得是有的。就好像我们说**的时候，一般都会想到约炮。（由于某些因素，我不能写出这两个字来。但是如果你这两个字和我想的不一样，那你的问题就大了）如果快播没有放任色情传播的话，是很难做到这么大的，更不可能做到我们一说找XX内容就想到快播。这不能说因为检方派了几个猪队友，所以快播干净了。</p>
+<p>但是这个问题是不是罪？这不好说。定罪这个事情是个专业性很强的活，我的法律知识不足以下这个判断。但是个人意见，我觉得应该无罪，至少不能拿缓存服务器上的色情信息来定罪。如果缓存服务器上有色情内容就可以定罪的话，那铁通小区宽带就可以直接去转型了。因为他们为了减少对电信的依赖，降低流量结算费。在小区里都是装了缓存服务器的，而且是强制透明缓存，想不做都不行。小区里有没有人看色情网站？他们为什么不人工看？</p>
+<p>看，这又是一个不懂技术就不知道我在说什么的问题。对用户来说，可能铁通的感觉就是“不好用”。技术人员才知道，电信和铁通的流量结算价格问题，还有铁通（以及各种小ISP）的透明代理的存在。知道这个透明代理和快播的缓存是不是在技术上是等效的。</p>
+<p>还有解密，可行不可行？对于快播来说，要解密应该是可以的。但是对于百度网盘来说，连解密都不行。我把我的一堆生活照在百度网盘上备了个份。为求安全，我用GPG做了加密，然后再用SHA256。我自己倒是问心无愧，但是对百度来说，里面到底是不是色情内容？我觉得百度要是还能解开，不妨把技术卖给CIA。</p>
+<blockquote>
+<p>转自<a target="_blank" rel="noopener" href="http://blog.shell909090.org/blog/archives/2816/">Shell Xu</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy Me A Coffee / 请喝一杯咖啡吧</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="时空 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="时空 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%92%E8%81%94%E7%BD%91/" rel="tag"># 互联网</a>
+              <a href="/tags/%E6%80%9D%E8%80%83/" rel="tag"># 思考</a>
+              <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" rel="tag"># 程序员</a>
+              <a href="/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/" rel="tag"># 产品经理</a>
+              <a href="/tags/%E5%BF%AB%E6%92%AD/" rel="tag"># 快播</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/10/02/internet-aaron-swartz/" rel="prev" title="互联网之子 – AARON SWARTZ">
+                  <i class="fa fa-chevron-left"></i> 互联网之子 – AARON SWARTZ
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/01/31/navicat-mysql-8-0-password/" rel="next" title="Navicat连接Mysql 8.0时密码错误的问题">
+                  Navicat连接Mysql 8.0时密码错误的问题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2012 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">时空</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"stx8","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

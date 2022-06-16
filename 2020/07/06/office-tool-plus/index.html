@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.stx8.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="为了下载 Office，我们往往最先想到的就是利用搜索引擎查找。但搜索结果往往五花八门、鱼龙混杂，很难找到一个安全、正规的网站可以下载 Office。下载好之后，Office 的安装过程也并不那么友好。还有许多人最关心的激活问题。 因此，接下来要介绍的是一款与 Office 有关的小工具——Office Tool Plus，简称 OTP。麻雀虽小，五脏俱全。OTP 能够对 Office 实现一站式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Office 下载、安装、激活，有它就够了！">
+<meta property="og:url" content="http://www.stx8.com/2020/07/06/office-tool-plus/index.html">
+<meta property="og:site_name" content="时空主站">
+<meta property="og:description" content="为了下载 Office，我们往往最先想到的就是利用搜索引擎查找。但搜索结果往往五花八门、鱼龙混杂，很难找到一个安全、正规的网站可以下载 Office。下载好之后，Office 的安装过程也并不那么友好。还有许多人最关心的激活问题。 因此，接下来要介绍的是一款与 Office 有关的小工具——Office Tool Plus，简称 OTP。麻雀虽小，五脏俱全。OTP 能够对 Office 实现一站式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.stx8.com/images/office-tool-plus/clip_image001.png">
+<meta property="og:image" content="http://www.stx8.com/images/office-tool-plus/clip_image002.png">
+<meta property="og:image" content="http://www.stx8.com/images/office-tool-plus/clip_image003.png">
+<meta property="og:image" content="http://www.stx8.com/images/office-tool-plus/clip_image004.png">
+<meta property="og:image" content="http://www.stx8.com/images/office-tool-plus/clip_image005.png">
+<meta property="og:image" content="http://www.stx8.com/images/office-tool-plus/clip_image006.png">
+<meta property="og:image" content="http://www.stx8.com/images/office-tool-plus/clip_image007.png">
+<meta property="og:image" content="http://www.stx8.com/images/office-tool-plus/clip_image008.png">
+<meta property="og:image" content="http://www.stx8.com/images/office-tool-plus/clip_image009.png">
+<meta property="og:image" content="http://www.stx8.com/images/office-tool-plus/clip_image010.png">
+<meta property="og:image" content="http://www.stx8.com/images/office-tool-plus/clip_image011.png">
+<meta property="og:image" content="http://www.stx8.com/images/office-tool-plus/clip_image012.png">
+<meta property="og:image" content="http://www.stx8.com/images/office-tool-plus/clip_image013.png">
+<meta property="og:image" content="http://www.stx8.com/images/office-tool-plus/clip_image014.png">
+<meta property="og:image" content="http://www.stx8.com/images/office-tool-plus/clip_image015.png">
+<meta property="article:published_time" content="2020-07-06T08:47:21.000Z">
+<meta property="article:modified_time" content="2020-07-06T08:47:21.000Z">
+<meta property="article:author" content="时空">
+<meta property="article:tag" content="Office">
+<meta property="article:tag" content="Microsoft">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.stx8.com/images/office-tool-plus/clip_image001.png">
+
+
+<link rel="canonical" href="http://www.stx8.com/2020/07/06/office-tool-plus/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://www.stx8.com/2020/07/06/office-tool-plus/","path":"2020/07/06/office-tool-plus/","title":"Office 下载、安装、激活，有它就够了！"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Office 下载、安装、激活，有它就够了！ | 时空主站</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90761248-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-90761248-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">时空主站</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">嗨，我是时空，一名来自中国的开发者。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-我的软件"><a href="/tags/%E6%88%91%E7%9A%84%E8%BD%AF%E4%BB%B6/" rel="section"><i class="fa fa-desktop fa-fw"></i>我的软件</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-开源博客"><a href="https://my.oschina.net/wudimenghuan" rel="noopener" target="_blank"><i class="fa fa-code fa-fw"></i>开源博客</a></li><li class="menu-item menu-item-pgp"><a href="/pgp/" rel="section"><i class="fa fa-key fa-fw"></i>PGP</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD-OTP-%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">下载 OTP 工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Office"><span class="nav-number">2.</span> <span class="nav-text">安装 Office</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">在线安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85"><span class="nav-number">2.2.</span> <span class="nav-text">离线安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD"><span class="nav-number">2.2.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.2.2.</span> <span class="nav-text">安装</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BF%80%E6%B4%BB-Office"><span class="nav-number">3.</span> <span class="nav-text">激活 Office</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E5%AE%83%E5%8A%9F%E8%83%BD"><span class="nav-number">4.</span> <span class="nav-text">其它功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%A4%96%E8%AF%9D"><span class="nav-number">5.</span> <span class="nav-text">题外话</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">时空</p>
+  <div class="site-description" itemprop="description">时空主站</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">87</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.stx8.com/2020/07/06/office-tool-plus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="时空">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时空主站">
+      <meta itemprop="description" content="时空主站">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Office 下载、安装、激活，有它就够了！ | 时空主站">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Office 下载、安装、激活，有它就够了！
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-07-06 16:47:21" itemprop="dateCreated datePublished" datetime="2020-07-06T16:47:21+08:00">2020-07-06</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/07/06/office-tool-plus/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/07/06/office-tool-plus/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>为了下载 Office，我们往往最先想到的就是利用搜索引擎查找。但搜索结果往往五花八门、鱼龙混杂，很难找到一个安全、正规的网站可以下载 Office。下载好之后，Office 的安装过程也并不那么友好。还有许多人最关心的激活问题。</p>
+<p>因此，接下来要介绍的是一款与 Office 有关的小工具——Office Tool Plus，简称 OTP。麻雀虽小，五脏俱全。OTP 能够对 Office 实现一站式管理、安装、激活、卸载等，支持 Office 365、Office 2019 和 Office 2016 等。此外，其还内置了一些十分实用的小工具。</p>
+<h2 id="下载-OTP-工具"><a href="#下载-OTP-工具" class="headerlink" title="下载 OTP 工具"></a>下载 OTP 工具</h2><p>首先，到 <a target="_blank" rel="noopener" href="https://otp.landian.vip/zh-cn/">Office Tool Plus 网站</a>下载 OTP。将其放到全英文路径中，然后打开运行。</p>
+<p>主界面如下：</p>
+<p><img src="/images/office-tool-plus/clip_image001.png" alt="img"></p>
+<p>OTP 主界面</p>
+<p>随着软件的持续更新，界面可能会有明显的变化，但核心操作的流程应当是一样的。</p>
+<p>需要注意的是，如果电脑上已经安装了其他版本的 Office 和相关插件等，需要先卸载，卸载完毕后需要重启电脑。卸载可以在 OTP 中进行：</p>
+<p><img src="/images/office-tool-plus/clip_image002.png" alt="img"></p>
+<p>在 OTP 中卸载 Office</p>
+<h2 id="安装-Office"><a href="#安装-Office" class="headerlink" title="安装 Office"></a>安装 Office</h2><p>如果网速比较好的话，可以选择直接在线安装，否则选择离线安装。</p>
+<h3 id="在线安装"><a href="#在线安装" class="headerlink" title="在线安装"></a>在线安装</h3><p>直接切换到「安装」选项卡，无需先行手动下载。</p>
+<p>在安装时，需要根据将要安装的 Office 的不同版本，对「Office 套件」项进行选择：</p>
+<p><img src="/images/office-tool-plus/clip_image003.png" alt="img"></p>
+<p>选择「Office 套件」</p>
+<p>这里需要说明的是，由于 Visio 和 Project 是从 Office 中独立出来的，因此需要单独选择。</p>
+<p>如下是一些常见的示例：</p>
+<p>Office 版本 Office 套件 ID </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Office 2019  专业增强版（零售）</td>
+<td>ProPlus2019Retail</td>
+</tr>
+<tr>
+<td>Office 2019  专业增强版（批量）</td>
+<td>ProPlus2019Volume</td>
+</tr>
+<tr>
+<td>Office 2019 家庭和学生版</td>
+<td>HomeStudent2019Retail</td>
+</tr>
+<tr>
+<td>Office 2016  专业增强版（零售）</td>
+<td>ProPlusRetail</td>
+</tr>
+<tr>
+<td>Office 2016  专业增强版（批量）</td>
+<td>ProPlusVolume</td>
+</tr>
+<tr>
+<td>Office 2016 家庭和学生版</td>
+<td>HomeStudentRetail</td>
+</tr>
+<tr>
+<td>Office 365 个人版、家庭版</td>
+<td>O365HomePremRetail</td>
+</tr>
+<tr>
+<td>Office 365 教育版、E3  等</td>
+<td>O365ProPlusRetail</td>
+</tr>
+</tbody></table>
+<p>Visio 版本 Visio ID </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Visio 2019 专业版（零售）</td>
+<td>VisioPro2019Retail</td>
+</tr>
+<tr>
+<td>Visio 2019 专业版（批量）</td>
+<td>VisioPro2019Volume</td>
+</tr>
+<tr>
+<td>Visio 2016 专业版（零售）</td>
+<td>VisioProRetail</td>
+</tr>
+<tr>
+<td>Visio 2016 专业版（批量）</td>
+<td>VisioProVolume</td>
+</tr>
+<tr>
+<td>Visio 2019 标准版（零售）</td>
+<td>VisioStd2019Retail</td>
+</tr>
+<tr>
+<td>Visio 2019 标准版（批量）</td>
+<td>VisioStd2019Volume</td>
+</tr>
+<tr>
+<td>Visio 2016 标准版（零售）</td>
+<td>VisioStdRetail</td>
+</tr>
+<tr>
+<td>Visio 2016 标准版（批量）</td>
+<td>VisioStdVolume</td>
+</tr>
+</tbody></table>
+<p>Project 版本 Project ID </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Project 2019  专业版（零售）</td>
+<td>ProjectPro2019Retail</td>
+</tr>
+<tr>
+<td>Project 2019  专业版（批量）</td>
+<td>ProjectPro2019Volume</td>
+</tr>
+<tr>
+<td>Project 2016  专业版（零售）</td>
+<td>ProjectProRetail</td>
+</tr>
+<tr>
+<td>Project 2016  专业版（批量）</td>
+<td>ProjectProVolume</td>
+</tr>
+<tr>
+<td>Project 2019  标准版（零售）</td>
+<td>ProjectStd2019Retail</td>
+</tr>
+<tr>
+<td>Project 2019  标准版（批量）</td>
+<td>ProjectStd2019Volume</td>
+</tr>
+<tr>
+<td>Project 2016  标准版（零售）</td>
+<td>ProjectStdRetail</td>
+</tr>
+<tr>
+<td>Project 2016  标准版（批量）</td>
+<td>ProjectStdVolume</td>
+</tr>
+</tbody></table>
+<p>之后，根据自己的需要，在「应用程序」区选择将要安装的 Office 组件：</p>
+<p><img src="/images/office-tool-plus/clip_image004.png" alt="img"></p>
+<p>选择 Office 组件</p>
+<p>「体系结构」部分，64 位（x64）Windows 可以安装 64 位和 32 位的 Office，32 位（x86）Windows 只能安装 32 位的 Office。至于如何选择，可以参考<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://support.office.com/zh-cn/article/%E9%80%89%E6%8B%A9-64-%E4%BD%8D%E6%88%96-32-%E4%BD%8D%E7%89%88%E6%9C%AC%E7%9A%84-office-2dee7807-8f95-4d0c-b5fe-6c6f49b8d261%2332or64Bit=%E8%BE%83%E6%96%B0%E7%89%88%E6%9C%AC">这篇文章</a>。</p>
+<p><img src="/images/office-tool-plus/clip_image005.png" alt="img"></p>
+<p>选择安装 64 位 Office</p>
+<p>「通道」保持默认即可。有需要的可以自行修改。</p>
+<p>在全部选择完成后，点击「开始安装」，便会开始安装过程：</p>
+<p><img src="/images/office-tool-plus/clip_image006.png" alt="img"></p>
+<p>Office 在线安装</p>
+<h3 id="离线安装"><a href="#离线安装" class="headerlink" title="离线安装"></a>离线安装</h3><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a><em>下载</em></h4><p>切换到「下载」选项卡，先下载离线包，再安装。</p>
+<p>「通道」保持默认的「每月通道」即可。有需要的可以自行修改。</p>
+<p>「体系结构」部分，64 位（x64）Windows 可以安装 64 位和 32 位的 Office，32 位（x86）Windows 只能安装 32 位的 Office。至于如何选择，可以参考<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://support.office.com/zh-cn/article/%E9%80%89%E6%8B%A9-64-%E4%BD%8D%E6%88%96-32-%E4%BD%8D%E7%89%88%E6%9C%AC%E7%9A%84-office-2dee7807-8f95-4d0c-b5fe-6c6f49b8d261%2332or64Bit=%E8%BE%83%E6%96%B0%E7%89%88%E6%9C%AC">这篇文章</a>。两者都下载的，选择「All」：</p>
+<p><img src="/images/office-tool-plus/clip_image007.png" alt="img"></p>
+<p>选择下载 32 位和 64 位的 Office</p>
+<p>然后点击「开始」即可下载。下载完成后，OTP 会识别到已下载的离线包，显示其版本号、体系结构等：</p>
+<p><img src="/images/office-tool-plus/clip_image008.png" alt="img"></p>
+<p>离线包已下载</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a><em>安装</em></h4><p>之后切换到「安装」选项卡，开始安装。安装过程跟在线安装基本一致。</p>
+<p>在安装时，需要根据将要安装的 Office 的不同版本，对「Office 套件」项进行选择：</p>
+<p><img src="/images/office-tool-plus/clip_image009.png" alt="img"></p>
+<p>选择「Office 套件」</p>
+<p>这里需要说明的是，由于 Visio 和 Project 是从 Office 中独立出来的，因此需要单独选择。</p>
+<p>如下是一些常见的示例：</p>
+<p>Office 版本 Office 套件 ID </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Office 2019  专业增强版（零售）</td>
+<td>ProPlus2019Retail</td>
+</tr>
+<tr>
+<td>Office 2019  专业增强版（批量）</td>
+<td>ProPlus2019Volume</td>
+</tr>
+<tr>
+<td>Office 2019 家庭和学生版</td>
+<td>HomeStudent2019Retail</td>
+</tr>
+<tr>
+<td>Office 2016  专业增强版（零售）</td>
+<td>ProPlusRetail</td>
+</tr>
+<tr>
+<td>Office 2016  专业增强版（批量）</td>
+<td>ProPlusVolume</td>
+</tr>
+<tr>
+<td>Office 2016 家庭和学生版</td>
+<td>HomeStudentRetail</td>
+</tr>
+<tr>
+<td>Office 365 个人版、家庭版</td>
+<td>O365HomePremRetail</td>
+</tr>
+<tr>
+<td>Office 365 教育版、E3  等</td>
+<td>O365ProPlusRetail</td>
+</tr>
+</tbody></table>
+<p>Visio 版本 Visio ID </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Visio 2019 专业版（零售）</td>
+<td>VisioPro2019Retail</td>
+</tr>
+<tr>
+<td>Visio 2019 专业版（批量）</td>
+<td>VisioPro2019Volume</td>
+</tr>
+<tr>
+<td>Visio 2016 专业版（零售）</td>
+<td>VisioProRetail</td>
+</tr>
+<tr>
+<td>Visio 2016 专业版（批量）</td>
+<td>VisioProVolume</td>
+</tr>
+<tr>
+<td>Visio 2019 标准版（零售）</td>
+<td>VisioStd2019Retail</td>
+</tr>
+<tr>
+<td>Visio 2019 标准版（批量）</td>
+<td>VisioStd2019Volume</td>
+</tr>
+<tr>
+<td>Visio 2016 标准版（零售）</td>
+<td>VisioStdRetail</td>
+</tr>
+<tr>
+<td>Visio 2016 标准版（批量）</td>
+<td>VisioStdVolume</td>
+</tr>
+</tbody></table>
+<p>Project 版本 Project ID </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Project 2019  专业版（零售）</td>
+<td>ProjectPro2019Retail</td>
+</tr>
+<tr>
+<td>Project 2019  专业版（批量）</td>
+<td>ProjectPro2019Volume</td>
+</tr>
+<tr>
+<td>Project 2016  专业版（零售）</td>
+<td>ProjectProRetail</td>
+</tr>
+<tr>
+<td>Project 2016  专业版（批量）</td>
+<td>ProjectProVolume</td>
+</tr>
+<tr>
+<td>Project 2019  标准版（零售）</td>
+<td>ProjectStd2019Retail</td>
+</tr>
+<tr>
+<td>Project 2019  标准版（批量）</td>
+<td>ProjectStd2019Volume</td>
+</tr>
+<tr>
+<td>Project 2016  标准版（零售）</td>
+<td>ProjectStdRetail</td>
+</tr>
+<tr>
+<td>Project 2016  标准版（批量）</td>
+<td>ProjectStdVolume</td>
+</tr>
+</tbody></table>
+<p>之后，根据自己的需要，在「应用程序」区选择将要安装的 Office 组件：</p>
+<p><img src="/images/office-tool-plus/clip_image010.png" alt="img"></p>
+<p>选择 Office 组件</p>
+<p>「体系结构」部分，64 位（x64）Windows 可以安装 64 位和 32 位的 Office，32 位（x86）Windows 只能安装 32 位的 Office。至于如何选择，可以参考<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://support.office.com/zh-cn/article/%E9%80%89%E6%8B%A9-64-%E4%BD%8D%E6%88%96-32-%E4%BD%8D%E7%89%88%E6%9C%AC%E7%9A%84-office-2dee7807-8f95-4d0c-b5fe-6c6f49b8d261%2332or64Bit=%E8%BE%83%E6%96%B0%E7%89%88%E6%9C%AC">这篇文章</a>。</p>
+<p><img src="/images/office-tool-plus/clip_image011.png" alt="img"></p>
+<p>选择安装 64 位 Office</p>
+<p>「通道」保持默认的「每月通道」即可。有需要的可以自行修改。</p>
+<p>在全部选择完成后，点击「开始安装」，便会开始安装过程：</p>
+<p><img src="/images/office-tool-plus/clip_image012.png" alt="img"></p>
+<p>Office 离线安装</p>
+<h2 id="激活-Office"><a href="#激活-Office" class="headerlink" title="激活 Office"></a>激活 Office</h2><p>有条件请支持正版！正版 Office 不仅可以享受 Office 的全部权益，还能获得专业的售后支持服务。加上 Office 365 的价格一再降低，人们已经能够以较低的价格购买到正版的 Office。</p>
+<p>可到<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://www.microsoftstore.com.cn/c/office">微软中国商城</a>购买 Office。可至 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://products.office.com/zh-cn/compare-all-microsoft-office-products">Office 产品比较</a>页面查看 Office 各版本的区别，以决定购买哪种。</p>
+<p>购买完成后，使用密钥激活 Office；或者将密钥绑定到微软账户，然后使用该微软账户登录 Office 即可。</p>
+<p>暂时没有经济能力的，可以继续往下看。</p>
+<p>为了使用 KMS 方式激活 Office，需要将先前安装的零售版 Office 转换为批量版，方法就是安装许可证书。根据已安装的版本，选择对应的批量版许可证书，然后点击「安装许可证」：</p>
+<p><img src="/images/office-tool-plus/clip_image013.png" alt="img"></p>
+<p>选择许可证</p>
+<p>由于在安装许可证时会一并安装默认的 GVLK 密钥，因此这里不需要额外安装密钥。</p>
+<p>之后，输入 KMS 服务器的地址，再点击「设定服务器地址」：</p>
+<p><img src="/images/office-tool-plus/clip_image014.png" alt="img"></p>
+<p>设定 KMS 服务器</p>
+<p>最后，点击「激活」，等待激活完成。</p>
+<p>以下是一些可用的 KMS 服务器：</p>
+<p> kms.loli.beer<br> kms.loli.cab<br> kms.90zm.xyz<br> kms.cangshui.net<br> kms.03k.org<br> kms.myftp.org<br> zh.us.to<br> kms.chinancce.com<br> kms.digiboy.ir<br> kms.luody.info<br> kms.mrxn.net<br> kms8.MSGuides.com<br> xykz.f3322.org<br> kms.bige0.com<br> kms.shuax.com<br> kms9.MSGuides.com<br> kms.lotro.cc<br> <a target="_blank" rel="noopener" href="http://www.ddddg.cn/">www.ddddg.cn</a><br> cy2617.jios.org<br> enter.picp.net</p>
+<p>关于激活 Office 的详细说明，请查看 OTP 内置的说明：</p>
+<p><img src="/images/office-tool-plus/clip_image015.png" alt="img"></p>
+<p>OTP 关于激活的说明</p>
+<h2 id="其它功能"><a href="#其它功能" class="headerlink" title="其它功能"></a>其它功能</h2><p>目前的 OTP 还包含了一些其它的小功能，比如批量转换 Office 文档：</p>
+<p>文档批量转换</p>
+<p>以及工具箱，用于修复 Office 可能存在的一些异常问题：</p>
+<p>OTP 工具箱</p>
+<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>关于 OTP 的详细使用说明，其内部有许多地方都内置了说明：</p>
+<p>OTP 内置的说明</p>
+<p>并且在软件主界面还有经常更新的公告，讲解一些使用技巧。综上来看，OTP 实在是一款非常实用的小工具。</p>
+<blockquote>
+<p>转自<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/739348a13a09">简书</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy Me A Coffee / 请喝一杯咖啡吧</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="时空 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="时空 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Office/" rel="tag"># Office</a>
+              <a href="/tags/Microsoft/" rel="tag"># Microsoft</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/02/10/%E5%93%88%E5%BC%97h2-15-16%E6%AC%BEh2%E5%A4%A7%E5%8D%A1%E6%9C%BA%E5%A4%B4%E5%88%B743-08/" rel="prev" title="哈弗H2 15 16款H2大卡机头刷43.08">
+                  <i class="fa fa-chevron-left"></i> 哈弗H2 15 16款H2大卡机头刷43.08
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/07/20/vlan/" rel="next" title="图文并茂VLAN详解，让你看一遍就理解VLAN">
+                  图文并茂VLAN详解，让你看一遍就理解VLAN <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2012 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">时空</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"stx8","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

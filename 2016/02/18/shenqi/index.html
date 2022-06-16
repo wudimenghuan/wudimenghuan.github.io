@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.stx8.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="开源本软件已开源，请自行修改及完善功能。QQ群：198889192本项目由于网站改版以及个人时间原因停止继续开发，不过大家有兴趣可以发pull request，共同继续完善功能。 项目地址：https:&#x2F;&#x2F;github.com&#x2F;wudimenghuan&#x2F;HeidaStudy 说明从2012年10月开始，黑龙江大学网络课学习管家（网络课学习助手）已经发布6个版本了，希望大家多多支持STX8.COM！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑龙江大学网络课学习管家 (Heida Online Study Helper)">
+<meta property="og:url" content="http://www.stx8.com/2016/02/18/shenqi/index.html">
+<meta property="og:site_name" content="时空主站">
+<meta property="og:description" content="开源本软件已开源，请自行修改及完善功能。QQ群：198889192本项目由于网站改版以及个人时间原因停止继续开发，不过大家有兴趣可以发pull request，共同继续完善功能。 项目地址：https:&#x2F;&#x2F;github.com&#x2F;wudimenghuan&#x2F;HeidaStudy 说明从2012年10月开始，黑龙江大学网络课学习管家（网络课学习助手）已经发布6个版本了，希望大家多多支持STX8.COM！">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-02-18T13:55:49.000Z">
+<meta property="article:modified_time" content="2016-02-18T13:55:49.000Z">
+<meta property="article:author" content="时空">
+<meta property="article:tag" content="我的软件">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.stx8.com/2016/02/18/shenqi/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://www.stx8.com/2016/02/18/shenqi/","path":"2016/02/18/shenqi/","title":"黑龙江大学网络课学习管家 (Heida Online Study Helper)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>黑龙江大学网络课学习管家 (Heida Online Study Helper) | 时空主站</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90761248-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-90761248-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">时空主站</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">嗨，我是时空，一名来自中国的开发者。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-我的软件"><a href="/tags/%E6%88%91%E7%9A%84%E8%BD%AF%E4%BB%B6/" rel="section"><i class="fa fa-desktop fa-fw"></i>我的软件</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-开源博客"><a href="https://my.oschina.net/wudimenghuan" rel="noopener" target="_blank"><i class="fa fa-code fa-fw"></i>开源博客</a></li><li class="menu-item menu-item-pgp"><a href="/pgp/" rel="section"><i class="fa fa-key fa-fw"></i>PGP</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">开源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E"><span class="nav-number">2.</span> <span class="nav-text">说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">2.1.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%A0%A1%E9%AA%8C%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.</span> <span class="nav-text">文件校验信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80"><span class="nav-number">3.</span> <span class="nav-text">下载地址</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97"><span class="nav-number">3.1.</span> <span class="nav-text">更新日志</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#V3-8-4"><span class="nav-number">3.1.1.</span> <span class="nav-text">V3.8.4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V3-8-2"><span class="nav-number">3.1.2.</span> <span class="nav-text">V3.8.2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V3-7-1"><span class="nav-number">3.1.3.</span> <span class="nav-text">V3.7.1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V3-7-0"><span class="nav-number">3.1.4.</span> <span class="nav-text">V3.7.0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V3-6-3"><span class="nav-number">3.1.5.</span> <span class="nav-text">V3.6.3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V3-6-2"><span class="nav-number">3.1.6.</span> <span class="nav-text">V3.6.2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V3-6-1"><span class="nav-number">3.1.7.</span> <span class="nav-text">V3.6.1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V3-6"><span class="nav-number">3.1.8.</span> <span class="nav-text">V3.6</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V3-5"><span class="nav-number">3.1.9.</span> <span class="nav-text">V3.5</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V3-4"><span class="nav-number">3.1.10.</span> <span class="nav-text">V3.4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V3-3"><span class="nav-number">3.1.11.</span> <span class="nav-text">V3.3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V3-2"><span class="nav-number">3.1.12.</span> <span class="nav-text">V3.2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V3-1"><span class="nav-number">3.1.13.</span> <span class="nav-text">V3.1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V3-0-Beta-%E5%85%AC%E6%B5%8B%E7%89%88"><span class="nav-number">3.1.14.</span> <span class="nav-text">V3.0 Beta 公测版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V2-9-%E6%AD%A3%E5%BC%8F%E7%89%88"><span class="nav-number">3.1.15.</span> <span class="nav-text">V2.9 正式版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V2-9-%E5%86%85%E6%B5%8B%E7%89%88"><span class="nav-number">3.1.16.</span> <span class="nav-text">V2.9 内测版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V2-5-%E6%AD%A3%E5%BC%8F%E7%89%88"><span class="nav-number">3.1.17.</span> <span class="nav-text">V2.5 正式版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V2-4-%E6%AD%A3%E5%BC%8F%E7%89%88"><span class="nav-number">3.1.18.</span> <span class="nav-text">V2.4 正式版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V2-3-%E6%AD%A3%E5%BC%8F%E7%89%88"><span class="nav-number">3.1.19.</span> <span class="nav-text">V2.3 正式版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V2-2-%E6%AD%A3%E5%BC%8F%E7%89%88"><span class="nav-number">3.1.20.</span> <span class="nav-text">V2.2 正式版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V2-1-%E5%86%85%E6%B5%8B%E7%89%88"><span class="nav-number">3.1.21.</span> <span class="nav-text">V2.1 内测版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V2-0-%E5%86%85%E6%B5%8B%E7%89%88"><span class="nav-number">3.1.22.</span> <span class="nav-text">V2.0 内测版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V1-9-%E9%A2%84%E8%A7%88%E7%89%88"><span class="nav-number">3.1.23.</span> <span class="nav-text">V1.9 预览版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V1-8-%E9%A2%84%E8%A7%88%E7%89%88"><span class="nav-number">3.1.24.</span> <span class="nav-text">V1.8 预览版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V1-7-%E5%86%85%E6%B5%8B%E7%89%88"><span class="nav-number">3.1.25.</span> <span class="nav-text">V1.7 内测版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V1-6-%E5%86%85%E6%B5%8B%E7%89%88"><span class="nav-number">3.1.26.</span> <span class="nav-text">V1.6 内测版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V1-5"><span class="nav-number">3.1.27.</span> <span class="nav-text">V1.5</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V1-4-%E5%86%85%E6%B5%8B%E7%89%88"><span class="nav-number">3.1.28.</span> <span class="nav-text">V1.4 内测版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V1-3-%E6%AD%A3%E5%BC%8F%E7%89%88"><span class="nav-number">3.1.29.</span> <span class="nav-text">V1.3 正式版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V1-2-%E6%AD%A3%E5%BC%8F%E7%89%88"><span class="nav-number">3.1.30.</span> <span class="nav-text">V1.2 正式版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#V1-1-%E4%BD%93%E9%AA%8C%E7%89%88"><span class="nav-number">3.1.31.</span> <span class="nav-text">V1.1 体验版</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">时空</p>
+  <div class="site-description" itemprop="description">时空主站</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">87</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.stx8.com/2016/02/18/shenqi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="时空">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时空主站">
+      <meta itemprop="description" content="时空主站">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="黑龙江大学网络课学习管家 (Heida Online Study Helper) | 时空主站">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          黑龙江大学网络课学习管家 (Heida Online Study Helper)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-02-18 21:55:49" itemprop="dateCreated datePublished" datetime="2016-02-18T21:55:49+08:00">2016-02-18</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2016/02/18/shenqi/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/02/18/shenqi/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="开源"><a href="#开源" class="headerlink" title="开源"></a>开源</h2><p>本软件已开源，请自行修改及完善功能。QQ群：198889192<br>本项目由于网站改版以及个人时间原因停止继续开发，不过大家有兴趣可以发pull request，共同继续完善功能。</p>
+<p><strong>项目地址</strong>：<a target="_blank" rel="noopener" href="https://github.com/wudimenghuan/HeidaStudy">https://github.com/wudimenghuan/HeidaStudy</a></p>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>从2012年10月开始，黑龙江大学网络课学习管家（网络课学习助手）已经发布6个版本了，希望大家多多支持STX8.COM！</p>
+<p>如果有课程需要添加，或有什么建议或意见，请加QQ群：198889192</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>如果出现一直显示时间更新出错的问题，需要先登录一下平台，再退出平台，然后再用软件</p>
+<p><strong>使用过程中不要登录平台</strong></p>
+<h3 id="文件校验信息"><a href="#文件校验信息" class="headerlink" title="文件校验信息"></a>文件校验信息</h3><p>SHA1、SHA256等文件校验信息在Readme.txt中，可使用PGP检查签名。</p>
+<p><a href="">我的PGP公钥 (PGP Public Key)</a></p>
+<h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p>请到github上获取院代码，自行编译</p>
+<h3 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h3><h4 id="V3-8-4"><a href="#V3-8-4" class="headerlink" title="V3.8.4"></a>V3.8.4</h4><ul>
+<li>支持大学体育</li>
+</ul>
+<h4 id="V3-8-2"><a href="#V3-8-2" class="headerlink" title="V3.8.2"></a>V3.8.2</h4><ul>
+<li>支持2015秋季课程</li>
+</ul>
+<h4 id="V3-7-1"><a href="#V3-7-1" class="headerlink" title="V3.7.1"></a>V3.7.1</h4><ul>
+<li>合并3个版本</li>
+</ul>
+<h4 id="V3-7-0"><a href="#V3-7-0" class="headerlink" title="V3.7.0"></a>V3.7.0</h4><ul>
+<li>重写界面，优化流程</li>
+</ul>
+<h4 id="V3-6-3"><a href="#V3-6-3" class="headerlink" title="V3.6.3"></a>V3.6.3</h4><ul>
+<li>添加几个未添加的安全教育老师</li>
+</ul>
+<h4 id="V3-6-2"><a href="#V3-6-2" class="headerlink" title="V3.6.2"></a>V3.6.2</h4><ul>
+<li>加入2014秋安全教育课程支持</li>
+</ul>
+<h4 id="V3-6-1"><a href="#V3-6-1" class="headerlink" title="V3.6.1"></a>V3.6.1</h4><ul>
+<li>修复绿屏BUG</li>
+</ul>
+<h4 id="V3-6"><a href="#V3-6" class="headerlink" title="V3.6"></a>V3.6</h4><ul>
+<li>修复2014秋形势任务教师未标记问题</li>
+</ul>
+<h4 id="V3-5"><a href="#V3-5" class="headerlink" title="V3.5"></a>V3.5</h4><ul>
+<li>2014秋季学期</li>
+</ul>
+<h4 id="V3-4"><a href="#V3-4" class="headerlink" title="V3.4"></a>V3.4</h4><ul>
+<li>2014春季学期</li>
+</ul>
+<h4 id="V3-3"><a href="#V3-3" class="headerlink" title="V3.3"></a>V3.3</h4><ul>
+<li>修复打不开的问题</li>
+<li>使得程序支持Windows所有系统</li>
+</ul>
+<h4 id="V3-2"><a href="#V3-2" class="headerlink" title="V3.2"></a>V3.2</h4><ul>
+<li>修复界面无法显示的bug</li>
+</ul>
+<h4 id="V3-1"><a href="#V3-1" class="headerlink" title="V3.1"></a>V3.1</h4><ul>
+<li>2014春季学期支持</li>
+</ul>
+<h4 id="V3-0-Beta-公测版"><a href="#V3-0-Beta-公测版" class="headerlink" title="V3.0 Beta 公测版"></a>V3.0 Beta 公测版</h4><ul>
+<li>加入总进度条</li>
+<li>加入用户密码验证功能</li>
+</ul>
+<h4 id="V2-9-正式版"><a href="#V2-9-正式版" class="headerlink" title="V2.9 正式版"></a>V2.9 正式版</h4><ul>
+<li>修复bug</li>
+</ul>
+<h4 id="V2-9-内测版"><a href="#V2-9-内测版" class="headerlink" title="V2.9 内测版"></a>V2.9 内测版</h4><ul>
+<li>加入2013年春季学期课程</li>
+</ul>
+<h4 id="V2-5-正式版"><a href="#V2-5-正式版" class="headerlink" title="V2.5 正式版"></a>V2.5 正式版</h4><ul>
+<li>增加总时间功能</li>
+</ul>
+<h4 id="V2-4-正式版"><a href="#V2-4-正式版" class="headerlink" title="V2.4 正式版"></a>V2.4 正式版</h4><ul>
+<li>更改时间显示一直占用内存导致内存不停增长的问题</li>
+</ul>
+<h4 id="V2-3-正式版"><a href="#V2-3-正式版" class="headerlink" title="V2.3 正式版"></a>V2.3 正式版</h4><ul>
+<li>加入更多网络课，网络课已经完全加入</li>
+</ul>
+<h4 id="V2-2-正式版"><a href="#V2-2-正式版" class="headerlink" title="V2.2 正式版"></a>V2.2 正式版</h4><ul>
+<li>修复S3加速功能为稳定加速</li>
+</ul>
+<h4 id="V2-1-内测版"><a href="#V2-1-内测版" class="headerlink" title="V2.1 内测版"></a>V2.1 内测版</h4><ul>
+<li>时间显示加入进度条</li>
+</ul>
+<h4 id="V2-0-内测版"><a href="#V2-0-内测版" class="headerlink" title="V2.0 内测版"></a>V2.0 内测版</h4><ul>
+<li>增加更多网络课支持</li>
+</ul>
+<h4 id="V1-9-预览版"><a href="#V1-9-预览版" class="headerlink" title="V1.9 预览版"></a>V1.9 预览版</h4><ul>
+<li>更改界面布局</li>
+<li>增加提示</li>
+</ul>
+<h4 id="V1-8-预览版"><a href="#V1-8-预览版" class="headerlink" title="V1.8 预览版"></a>V1.8 预览版</h4><ul>
+<li>使提示更清晰、明确</li>
+<li>修复关闭不完全导致弹出的关闭程序窗口</li>
+</ul>
+<h4 id="V1-7-内测版"><a href="#V1-7-内测版" class="headerlink" title="V1.7 内测版"></a>V1.7 内测版</h4><ul>
+<li>加入网络课支持</li>
+</ul>
+<h4 id="V1-6-内测版"><a href="#V1-6-内测版" class="headerlink" title="V1.6 内测版"></a>V1.6 内测版</h4><ul>
+<li>修复2倍时只有1倍的问题</li>
+<li>修复窗口拖动bug</li>
+</ul>
+<h4 id="V1-5"><a href="#V1-5" class="headerlink" title="V1.5"></a>V1.5</h4><ul>
+<li>时间显示功能</li>
+<li>合并上下两个版本</li>
+<li>S3超级加速功能（不稳定）</li>
+</ul>
+<h4 id="V1-4-内测版"><a href="#V1-4-内测版" class="headerlink" title="V1.4 内测版"></a>V1.4 内测版</h4><ul>
+<li>速度提升，超越4倍</li>
+</ul>
+<h4 id="V1-3-正式版"><a href="#V1-3-正式版" class="headerlink" title="V1.3 正式版"></a>V1.3 正式版</h4><ul>
+<li>去掉课程号，改为选择老师</li>
+<li>课程选择功能实现</li>
+<li>修复速度调整bug</li>
+</ul>
+<h4 id="V1-2-正式版"><a href="#V1-2-正式版" class="headerlink" title="V1.2 正式版"></a>V1.2 正式版</h4><ul>
+<li>速度调整功能完成</li>
+</ul>
+<h4 id="V1-1-体验版"><a href="#V1-1-体验版" class="headerlink" title="V1.1 体验版"></a>V1.1 体验版</h4><ul>
+<li>完成基本功能，可实现无人值守自动挂机</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy Me A Coffee / 请喝一杯咖啡吧</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="时空 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="时空 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%88%91%E7%9A%84%E8%BD%AF%E4%BB%B6/" rel="tag"># 我的软件</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/02/16/linux-learning/" rel="prev" title="Linux笔记 (Linux Notes)">
+                  <i class="fa fa-chevron-left"></i> Linux笔记 (Linux Notes)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/02/19/os-x-10-11/" rel="next" title="MAC OS X El 10.11.3 15D21 [2016.1]">
+                  MAC OS X El 10.11.3 15D21 [2016.1] <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2012 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">时空</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"stx8","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

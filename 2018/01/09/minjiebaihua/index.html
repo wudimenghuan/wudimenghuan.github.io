@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.stx8.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="敏捷的意思就是反应迅速，为什么要反应迅速？ 看看那么多996公司就知道了， 市场变化越来越快，客户要求越来越高，为了满足用户的需求，  人家一个星期发一个版本， 我们仨月才能憋出一个来 ，那还不被打的满地找牙？ 问题是如何才能反应迅速？  先来看一个场景： 1、残酷的现实 软件开发有一大难题就是客户脑子中的需求难于描述出来， 我们通常的应对方法是这样： 先花上几个月整理需求， 天天和客户座谈， 画">
+<meta property="og:type" content="article">
+<meta property="og:title" content="敏捷开发白话篇">
+<meta property="og:url" content="http://www.stx8.com/2018/01/09/minjiebaihua/index.html">
+<meta property="og:site_name" content="时空主站">
+<meta property="og:description" content="敏捷的意思就是反应迅速，为什么要反应迅速？ 看看那么多996公司就知道了， 市场变化越来越快，客户要求越来越高，为了满足用户的需求，  人家一个星期发一个版本， 我们仨月才能憋出一个来 ，那还不被打的满地找牙？ 问题是如何才能反应迅速？  先来看一个场景： 1、残酷的现实 软件开发有一大难题就是客户脑子中的需求难于描述出来， 我们通常的应对方法是这样： 先花上几个月整理需求， 天天和客户座谈， 画">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.stx8.com/images/minjiebaihua/manong-minjie-1.jpg">
+<meta property="og:image" content="http://www.stx8.com/images/minjiebaihua/manong-minjie-2.jpg">
+<meta property="og:image" content="http://www.jizhuomi.com/upload/manongfanshen.jpg">
+<meta property="article:published_time" content="2018-01-09T02:05:14.000Z">
+<meta property="article:modified_time" content="2018-01-09T02:05:14.000Z">
+<meta property="article:author" content="时空">
+<meta property="article:tag" content="程序员">
+<meta property="article:tag" content="开发">
+<meta property="article:tag" content="敏捷开发">
+<meta property="article:tag" content="流程方法">
+<meta property="article:tag" content="研发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.stx8.com/images/minjiebaihua/manong-minjie-1.jpg">
+
+
+<link rel="canonical" href="http://www.stx8.com/2018/01/09/minjiebaihua/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://www.stx8.com/2018/01/09/minjiebaihua/","path":"2018/01/09/minjiebaihua/","title":"敏捷开发白话篇"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>敏捷开发白话篇 | 时空主站</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90761248-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-90761248-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">时空主站</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">嗨，我是时空，一名来自中国的开发者。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-我的软件"><a href="/tags/%E6%88%91%E7%9A%84%E8%BD%AF%E4%BB%B6/" rel="section"><i class="fa fa-desktop fa-fw"></i>我的软件</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-开源博客"><a href="https://my.oschina.net/wudimenghuan" rel="noopener" target="_blank"><i class="fa fa-code fa-fw"></i>开源博客</a></li><li class="menu-item menu-item-pgp"><a href="/pgp/" rel="section"><i class="fa fa-key fa-fw"></i>PGP</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">时空</p>
+  <div class="site-description" itemprop="description">时空主站</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">87</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.stx8.com/2018/01/09/minjiebaihua/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="时空">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时空主站">
+      <meta itemprop="description" content="时空主站">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="敏捷开发白话篇 | 时空主站">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          敏捷开发白话篇
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-01-09 10:05:14" itemprop="dateCreated datePublished" datetime="2018-01-09T10:05:14+08:00">2018-01-09</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/01/09/minjiebaihua/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/09/minjiebaihua/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>敏捷的意思就是反应迅速，为什么要反应迅速？ 看看那么多996公司就知道了，</p>
+<p>市场变化越来越快，客户要求越来越高，为了满足用户的需求，  人家一个星期发一个版本， 我们仨月才能憋出一个来 ，那还不被打的满地找牙？</p>
+<p>问题是如何才能反应迅速？  先来看一个场景：</p>
+<p><strong>1、残酷的现实</strong></p>
+<p>软件开发有一大难题就是<strong>客户脑子中的需求难于描述出来</strong>， 我们通常的应对方法是这样：</p>
+<p>先花上几个月整理需求， 天天和客户座谈， 画出几百页的流程图， 写出上千页的文档， 最后把客户都快搞晕了。</p>
+<p><img src="/images/minjiebaihua/manong-minjie-1.jpg" alt="img"></p>
+<p>然后是详细设计， 开发， 测试，  我们强悍的技术团队开始发动， 一切都严格按照计划进行， 一切看起来都很完美， 看来项目马上成功结束了！</p>
+<p>但是客户的验收测试给了我们当头一棒： 这个界面怎么少了一个选项 ？   那个界面怎么不能跳转 ， 那个功能需要给领导一个后门， 还有， 我的业务规则怎么不能改？  什么？ 在代码中写死了？  唉，你们做的系统啊， 根本就不能用 ！</p>
+<p>每个人都很郁闷， 几个月的辛苦开发看来要付诸东流了。</p>
+<p>从这个场景中能看出的是， <strong>我们从客户那里得到的需求描述和需求文档， 其实离客户真正想要的软件还差的很远。</strong></p>
+<p>在瀑布式的开发模式下，验收测试发现的问题，要想改正代价是非常高昂的。</p>
+<p><strong>2、改进</strong></p>
+<p>一个想法自然而然就浮现出来： <strong>为了避免到最后习惯性崩盘，能不能让客户经常性的做验收测试？</strong></p>
+<p>让他们经常性的去使用一个可以工作的软件， 从而告诉我们那些地方还有欠缺 ？ 那些地方做错了？  这样我们可以迅速的修改， 这样我们就会轻松多了 ！</p>
+<p>我们可以把软件开发划分成一个个小的开发周期， 例如每个周期就两三周时间， 在这两周之内我们完成一个或几个功能， 然后就让用户去试用， 有问题立刻反馈，在下一个开发周期马上改掉。 这样就可以逐步逼近客户的最终目标。</p>
+<p>这还带来了一个额外的好处， 不用花费巨长的时间来分析，整理冗长的需求文档了。</p>
+<p>听起来很美是不是？  但是仔细想想这里边的问题很多。</p>
+<p><strong>1.  抛弃了冗长的需求文档， 但还是得描述需求啊</strong></p>
+<p>需要发明一个简单的、主要用来促进客户和开发团队沟通的描述形式，  这个新的形式叫做用户故事， 这里有个用户故事的例子：</p>
+<p><img src="/images/minjiebaihua/manong-minjie-2.jpg" alt="img"></p>
+<p>这是一个卡片， 背面还会记录下针对需求的讨论和验收标准。</p>
+<p>用户故事主要彰显的是： 谁做了什么事， 带来什么商业价值。</p>
+<p><strong>2.  怎么决定每个小开发周期（我们称之为迭代吧）要开发的东西？</strong></p>
+<p>用户故事得有估算， 得有大小， 太大了一个迭代开发不完 ， 还得拆分一下。</p>
+<p>我们需要对需求按照优先级进行排序， 按照优先级从高到低的原则来开发。</p>
+<p><strong>3. 不要架构设计了吗？</strong></p>
+<p>一上来就按优先级选择需求， 直接进入迭代开发， 把架构师撂在一边，合适吗？</p>
+<p>架构工作肯定还是需要的，在正式的迭代周期开始之前需要架构设计， 但是和设计出面面俱到的架构设计不同， 我们更需要演进式的架构， 随着迭代的推进而进化。</p>
+<p><strong>4. 那详细设计怎么办？</strong></p>
+<p>在每个迭代开始的时候，团队在一起把这些用户故事给拆分成一个个小的任务， 这个拆分的过程就相当于详细设计了。  对于一些特别复杂的，例如算法， 当然可以写文档，帮助大家理解。</p>
+<p><strong>5. 由于是迭代式开发， 这个迭代周期修改上一个迭代周期的代码在所难免， 怎么保证不破坏原有的功能？ 总不能每次都手工重测一遍吧？</strong></p>
+<p>这个绝对是一大难点， 答案就是自动化的回归测试， 包括单元测试和功能测试。</p>
+<p>开发人员写代码的同时，也要写下自动化的单元测试，  测试人员需要开发自动化的功能测试， 这样一旦有了代码的修改，就可以运行它们， 检查现有功能有没有被破坏。</p>
+<p>像持续集成这样的基础设施是必不可少的，  每天，每小时，甚至每次代码提交都会触发编译，打包、部署、测试这样的过程。</p>
+<p><strong>6.  这么短的开发周期， 测试人员怎么测试啊？</strong></p>
+<p>开发和测试需要同步进行， 当开发在澄清需求的时候， 测试需要参与， 当开发在编码的时候， 测试人员在编写测试用例，等到一个用户故事开发完，马上就可以投入测试。</p>
+<p><strong>7. 看来开发、测试之间需要紧密的协作， 它们之间怎么沟通？</strong></p>
+<p>肯定是面对面的沟通， 有问题就跑到对方的座位那里去问，大家的座位最好在一起， 扭头就可以讨论，  尽可能减少效率不高的电话、QQ&#x2F;微信等工具的使用。</p>
+<p>开发团队每天都开一个15分钟左右的站会， 展示自己的进展和计划， 让进度保持透明，  及时暴露问题，解决问题。</p>
+<p><strong>8. 客户什么时候可以做验收测试？</strong></p>
+<p>随时欢迎， 但是我们更倾向于迭代结束以后， 这时候功能会稳定下来， 我们会给客户做一个演示， 告诉他这个迭代完成的工作， 邀请他也测试一下软件， 给我们反馈。</p>
+<p>当然客户可能会发现问题， 甚至提出新的需求， 我们表示欢迎， 我们要和客户合作，而不是对抗。</p>
+<p>除了给客户演示之外，我们自己还会反思一下，看看有那些地方做的好，要继续保持；  那些地方做的不好， 要持续改进。</p>
+<p>估计你也明白了，这种看起来很美的迭代化开发方法实施起来挺不容易的， 如果我们给它起个名字的话， 可以叫做：敏捷软件开发。</p>
+<blockquote>
+<p>原作者：码农翻身</p>
+<p>原文链接：<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s/tJzEQ87eaUdx7F2nR23oyw">http://mp.weixin.qq.com/s/tJzEQ87eaUdx7F2nR23oyw</a></p>
+<p>码农翻身公众号由工作15年的前IBM架构师创建，分享编程和职场的经验教训。</p>
+<p>码农翻身二维码：</p>
+<p><img src="http://www.jizhuomi.com/upload/manongfanshen.jpg" alt="img"></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy Me A Coffee / 请喝一杯咖啡吧</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="时空 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="时空 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" rel="tag"># 程序员</a>
+              <a href="/tags/%E5%BC%80%E5%8F%91/" rel="tag"># 开发</a>
+              <a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/" rel="tag"># 敏捷开发</a>
+              <a href="/tags/%E6%B5%81%E7%A8%8B%E6%96%B9%E6%B3%95/" rel="tag"># 流程方法</a>
+              <a href="/tags/%E7%A0%94%E5%8F%91/" rel="tag"># 研发</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/01/07/super-powers-and-programmers/" rel="prev" title="超能力与程序员">
+                  <i class="fa fa-chevron-left"></i> 超能力与程序员
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/02/07/git-gpg/" rel="next" title="Git添加PGP签名">
+                  Git添加PGP签名 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2012 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">时空</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"stx8","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
