@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.stx8.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"vs2015","dark":"vs2015"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="算法面试可能是微软搞出来的面试方法，现在很多公司都在效仿，而且我们的程序员也乐于解算法题，我个人以为，这是应试教育的毒瘤！我在《再谈“我是怎么招程序员”》中比较保守地说过，“问难的算法题并没有错，错的很多面试官只是在肤浅甚至错误地理解着面试算法题的目的。”，今天，我想加强一下这个观点——我反对纯算法题面试！（注意，我说的是纯算法题） 我再次引用我以前的一个观点—— 能解算法题并不意味着这个人就有能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么我反对纯算法面试题">
+<meta property="og:url" content="http://www.stx8.com/2017/01/12/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E5%8F%8D%E5%AF%B9%E7%BA%AF%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="时空主站">
+<meta property="og:description" content="算法面试可能是微软搞出来的面试方法，现在很多公司都在效仿，而且我们的程序员也乐于解算法题，我个人以为，这是应试教育的毒瘤！我在《再谈“我是怎么招程序员”》中比较保守地说过，“问难的算法题并没有错，错的很多面试官只是在肤浅甚至错误地理解着面试算法题的目的。”，今天，我想加强一下这个观点——我反对纯算法题面试！（注意，我说的是纯算法题） 我再次引用我以前的一个观点—— 能解算法题并不意味着这个人就有能">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-01-12T12:11:36.000Z">
+<meta property="article:modified_time" content="2017-01-12T12:11:36.000Z">
+<meta property="article:author" content="时空">
+<meta property="article:tag" content="程序员">
+<meta property="article:tag" content="Programmer">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="职场生涯">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.stx8.com/2017/01/12/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E5%8F%8D%E5%AF%B9%E7%BA%AF%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://www.stx8.com/2017/01/12/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E5%8F%8D%E5%AF%B9%E7%BA%AF%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98/","path":"2017/01/12/为什么我反对纯算法面试题/","title":"为什么我反对纯算法面试题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>为什么我反对纯算法面试题 | 时空主站</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90761248-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-90761248-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">时空主站</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">嗨，我是时空，一名来自中国的开发者。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-我的软件"><a href="/tags/%E6%88%91%E7%9A%84%E8%BD%AF%E4%BB%B6/" rel="section"><i class="fa fa-desktop fa-fw"></i>我的软件</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-开源博客"><a href="https://my.oschina.net/wudimenghuan" rel="section" target="_blank"><i class="fa fa-code fa-fw"></i>开源博客</a></li><li class="menu-item menu-item-pgp"><a href="/pgp/" rel="section"><i class="fa fa-key fa-fw"></i>PGP</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E6%80%A7%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">功能性需求分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E5%8A%9F%E8%83%BD%E6%80%A7%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">非功能性需求分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E7%A8%8B%E5%BC%8F%E7%9A%84%E8%A7%A3%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">工程式的解法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%89%E8%AE%BA"><span class="nav-number">4.</span> <span class="nav-text">争论</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">时空</p>
+  <div class="site-description" itemprop="description">时空主站</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">87</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.stx8.com/2017/01/12/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E5%8F%8D%E5%AF%B9%E7%BA%AF%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="时空">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时空主站">
+      <meta itemprop="description" content="时空主站">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="为什么我反对纯算法面试题 | 时空主站">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          为什么我反对纯算法面试题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-01-12 20:11:36" itemprop="dateCreated datePublished" datetime="2017-01-12T20:11:36+08:00">2017-01-12</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2017/01/12/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E5%8F%8D%E5%AF%B9%E7%BA%AF%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/12/为什么我反对纯算法面试题/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>算法面试可能是微软搞出来的面试方法，现在很多公司都在效仿，而且我们的程序员也乐于解算法题，我个人以为，这是应试教育的毒瘤！我在《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/4506.html">再谈“我是怎么招程序员”</a>》中比较保守地说过，“<strong>问难的算法题并没有错，错的很多面试官只是在肤浅甚至错误地理解着面试算法题的目的</strong>。”，今天，我想加强一下这个观点——<strong>我反对纯算法题面试</strong>！（注意，我说的是纯算法题）</p>
+<p>我再次引用我以前的一个观点——</p>
+<p>能解算法题并不意味着这个人就有能力就能在工作中解决问题，你可以想想，小学奥数题可能比这些题更难，但并不意味着那些奥数能手就能解决实际问题。</p>
+<p>好了，让我们来看一个示例（这个示例是昨天在<a target="_blank" rel="noopener" href="http://weibo.com/1401880315/yy9pvgNi2">微博上的一个讨论</a>），这个题是——“<strong>找出无序数组中第2大的数</strong>”，几乎所有的人都用了O(n)的算法，我相信对于我们这些应试教育出来的人来说，不用排序用O(n)算法是很正常的事，连我都不由自主地认为O(n)算法是这个题的标准答案。<strong>我们太习惯于标准答案了，这是我国教育最悲哀的地方</strong>。（广义的洗脑就是让你的意识依赖于某个标准答案，然后通过给你标准答案让你不会思考而控制你）</p>
+<h4 id="功能性需求分析"><a href="#功能性需求分析" class="headerlink" title="功能性需求分析"></a>功能性需求分析</h4><p>试想，如果我们在实际工作中得到这样一个题 我们会怎么做？我一定会分析这个需求，因为我害怕需求未来会改变，今天你叫我找一个第2大的数，明天你找我找一个第4大的数，后天叫我找一个第100大的数，我不搞死了。需求变化是很正常的事。分析完这个需求后，我会很自然地去写找第K大数的算法——难度一下子就增大了。</p>
+<p>很多人会以为找第K大的需求是一种“过早扩展”的思路，不是这样的，我相信我们在实际编码中写过太多这样的程序了，你一定不会设计出这样的函数接口—— Find2ndMaxNum(int* array, int len)，就好像你不会设计出 DestroyBaghdad(); 这样的接口，而是设计一个DestoryCity( City&amp; ); 的接口，而把Baghdad当成参数传进去！所以，你应该是声明一个叫FindKthMaxNum(int* array, int len, int kth)，把2当成参数传进去。<strong>这是最基本的编程方法，用数学的话来说，叫代数</strong>！最简单的需求分析方法就是把需求翻译成函数名，然后看看是这个接口不是很二？！</p>
+<p>（注：不要纠结于FindMaxNum()或FindMinNum()，因为这两个函数名的业务意义很清楚了，不像Find2ndMaxNum()那么二）</p>
+<h4 id="非功能性需求分析"><a href="#非功能性需求分析" class="headerlink" title="非功能性需求分析"></a>非功能性需求分析</h4><p>性能之类的东西从来都是非功能性需求，对于算法题，我们太喜欢研究算法题的空间和时间复杂度了。我们希望做到空间和时间双丰收，这是算法学术界的风格。所以，<strong>习惯于标准答案的我们已经失去思考的能力，只会机械地思考算法之内的性能，而忽略了算法之外的性能</strong>。</p>
+<p>如果题目是——“从无序数组中找到第K个最大的数”，那么，我们一定会去思考用O(n)的线性算法找出第K个数。事实上，也有线性算法——STL中可以用nth_element求得类似的第n大的数，其利用快速排序的思想，从数组S中随机找出一个元素X，把数组分为两部分Sa和Sb。Sa中的元素大于等于X，Sb中元素小于X。这时有两种情况：1）Sa中元素的个数小于k，则Sb中的第k-|Sa|个元素即为第k大数；2） Sa中元素的个数大于等于k，则返回Sa中的第k大数。时间复杂度近似为O(n)。</p>
+<p>搞学术的nuts们到了这一步一定会欢呼胜利！但是他们哪里能想得到性能的需求分析也是来源自业务的！</p>
+<p><strong>我们一说性能，基本上是个人都会问，请求量有多大？如果我们的FindKthMaxNum()的请求量是m次，那么你的这个每次都要O(n)复杂度的算法得到的效果就是O(n*m)，这一点，是书呆子式的学院派人永远想不到的。</strong>因为应试教育让我们不会从实际思考了。</p>
+<h4 id="工程式的解法"><a href="#工程式的解法" class="headerlink" title="工程式的解法"></a>工程式的解法</h4><p>根据上面的需求分析，有软件工程经验的人的解法通常会这样：</p>
+<p>1）把数组排序，从大到小。</p>
+<p>2）于是你要第k大的数，就直接访问 array[k]。</p>
+<p>排序只需要一次，O(n*log(n))，然后，接下来的m次对FindKthMaxNum()的调用全是O(1)的，整体复杂度反而成了线性的。</p>
+<p>其实，上述的还不是工程式的最好的解法，因为，在业务中，那数组中的数据可能会是会变化的，所以，如果是用数组排序的话，有数据的改动会让我重新排序，这个太耗性能了，如果实际情况中会有很多的插入或删除操作，那么可以考虑使用B+树。</p>
+<p>工程式的解法有以下特点：</p>
+<p>1）很方便扩展，因为数据排好序了，你还可以方便地支持各种需求，如从第k1大到k2大的数据（那些学院派写出来的代码在拿到这个需求时又开始挠头苦想了）</p>
+<p>2）规整的数据会简化整体的算法复杂度，从而整体性能会更好。（公欲善其事，必先利其器）</p>
+<p>3）代码变得清晰，易懂，易维护！（学院派的和STL一样的近似O(n)复杂度的算法没人敢动）</p>
+<h4 id="争论"><a href="#争论" class="headerlink" title="争论"></a>争论</h4><p>你可能会和我有以下争论，</p>
+<ul>
+<li><p><strong>如果程序员做这个算法题用排序的方式，他一定不会像你想那么多</strong>。是的，你说得对。但是我想说，很多时候，我们直觉地思考，恰恰是正确的路。因为“排序”这个思路符合人类大脑处理问题的方式，而使用学院派的方式是反大脑直觉的。反大脑直觉的，通常意味着晦涩难懂，维护成本上升。</p>
+</li>
+<li><p><strong>就是一道面试题，我就是想测试一下你的算法技能，这也扯太多了</strong>。没问题，不过，我们要清楚我们是在招什么人？是一个只会写算法的人，还是一个会做软件的人？这个只有你自己最清楚。</p>
+</li>
+<li><p><strong>这个算法题太容易诱导到学院派的思路了</strong>。是的这道“找出第K大的数”，其实可以变换为更为业务一点的题目——“<strong>我要和别的商户竞价，我想排在所有竞争对手报价的第K名，请写一个程序，我输入K，和一个商品名，系统告诉我应该订多少价？</strong>（商家的所有商品的报价在一数组中）”——业务分析，整体性能，算法，数据结构，增加需求让应聘者重构，这一个问题就全考了。</p>
+</li>
+<li><p><strong>你是不是在说算法不重要，不用学？</strong>千万别这样理解我，搞得好像如果面试不面，我就可以不学。<strong>算法很重要，算法题能锻炼我们的思维，而且也有很多实际用处</strong>。我这篇文章不是让大家不要去学算法，这是完全错误的，我是让大家带着业务问题去使用算法。问你业务问题，一样会问到算法题上来。</p>
+</li>
+</ul>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>看过这上面的分析，我相信你明白我为什么反对纯算法面试题了。原因就是<strong>纯算法的面试题根本不能反应一个程序的综合素质</strong>！</p>
+<p>那么，在面试中，我们应该要考量程序员的那些综合素质呢？我以为有下面这些东西：</p>
+<ol>
+<li>会不会做需求分析？怎么理解问题的？</li>
+<li>解决问题的思路是什么？想法如何？</li>
+<li>会不会对基础的算法和数据结构灵活运用？</li>
+</ol>
+<p>另外，我们知道，对于软件开发来说，在工程上，难是的下面是这些挑战：</p>
+<ul>
+<li>软件的维护成本远远大于软件的开发成本。</li>
+<li>软件的质量变得越来越重要，所以，测试工作也变得越来越重要。</li>
+<li>软件的需求总是在变的，软件的需求总是一点一点往上加的。</li>
+<li>程序中大量的代码都是在处理一些错误的或是不正常的流程。</li>
+</ul>
+<p>所以，对于编程能力上，我们应该主要考量程序员的如下能力：</p>
+<ol>
+<li>设计是否满足对需求的理解，并可以应对可能出现的需求变化。</li>
+<li>程序是否易读，易维护？</li>
+<li>重构代码的能力如何？</li>
+<li>会不会测试自己写好的程序？</li>
+</ol>
+<p>所以，这段时间，我越来越倾向于问应聘者一些有业务意义的题，而且应增加或更改需求来看程序员的重构代码的能力，写完程序后，让应聘者设计测试案例。</p>
+<p>比如：解析加减乘除表达式，字符串转数字，洗牌程序，口令生成器，通过ip地址找地点，英汉词典双向检索……</p>
+<p><strong>总之，我反对纯算法面试题！</strong></p>
+<p>（全文完）</p>
+<blockquote>
+<p>来源：<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/8138.html">酷壳</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="时空 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="时空 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" rel="tag"># 程序员</a>
+              <a href="/tags/Programmer/" rel="tag"># Programmer</a>
+              <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+              <a href="/tags/%E8%81%8C%E5%9C%BA%E7%94%9F%E6%B6%AF/" rel="tag"># 职场生涯</a>
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/01/12/%E6%8A%80%E6%9C%AF%E4%BA%BA%E5%91%98%E7%9A%84%E5%8F%91%E5%B1%95%E4%B9%8B%E8%B7%AF/" rel="prev" title="技术人员的发展之路">
+                  <i class="fa fa-angle-left"></i> 技术人员的发展之路
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/01/12/%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84linux%E6%8A%80%E5%B7%A7/" rel="next" title="应该知道的LINUX技巧">
+                  应该知道的LINUX技巧 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2012 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">时空</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"stx8","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js" defer></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
