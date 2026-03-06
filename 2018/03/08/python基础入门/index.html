@@ -70,6 +70,9 @@
 
 
 
+<!-- Crisp -->
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="40c25842-b687-4733-ba07-02203d88e2f0";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+<!-- Crisp -->
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -272,14 +275,14 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if age &gt;= 18:</span><br><span class="line">print(&#x27;adult&#x27;)</span><br><span class="line">else:</span><br><span class="line">print(&#x27;teenager&#x27;)</span><br></pre></td></tr></table></figure>
 
 <h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>所谓常量就是不能变的变量，比如常用的数学常数π就是一个常量。在Python中，通常用全部大写的变量名表示常量：</p>
-<p>PI = 3.14159265359</p>
-<p>最后解释一下整数的除法为什么也是精确的。在Python中，有两种除法，一种除法是/：</p>
+<p>PI &#x3D; 3.14159265359</p>
+<p>最后解释一下整数的除法为什么也是精确的。在Python中，有两种除法，一种除法是&#x2F;：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; 10 / 3</span><br><span class="line">3.3333333333333335</span><br></pre></td></tr></table></figure>
 
 <p>除法计算结果是浮点数，即使是两个整数恰好整除，结果也是浮点数：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; 9 / 3</span><br><span class="line">3.0</span><br></pre></td></tr></table></figure>
 
-<p>还有一种除法是//，称为地板除，两个整数的除法仍然是整数：</p>
+<p>还有一种除法是&#x2F;&#x2F;，称为地板除，两个整数的除法仍然是整数：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; 10 // 3</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
 
 <h2 id="Python的字符串"><a href="#Python的字符串" class="headerlink" title="Python的字符串"></a>Python的字符串</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(&#x27;包含中文的str&#x27;)</span><br><span class="line">包含中文的str</span><br></pre></td></tr></table></figure>
@@ -433,8 +436,8 @@
 <p>对于这个修改后的power(x, n)函数，可以计算任意n次方：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; power(5, 2)</span><br><span class="line">25</span><br><span class="line">&gt;&gt;&gt; power(5, 3)</span><br><span class="line">125</span><br></pre></td></tr></table></figure>
 
-<h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p>举个例子，我们来计算阶乘n! = 1 x 2 x 3 x … x n，用函数fact(n)表示，可以看出：</p>
-<p>fact(n) = n! = 1 x 2 x 3 x … x (n-1) x n = (n-1)! x n = fact(n-1) x n</p>
+<h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p>举个例子，我们来计算阶乘n! &#x3D; 1 x 2 x 3 x … x n，用函数fact(n)表示，可以看出：</p>
+<p>fact(n) &#x3D; n! &#x3D; 1 x 2 x 3 x … x (n-1) x n &#x3D; (n-1)! x n &#x3D; fact(n-1) x n</p>
 <p>于是，fact(n)用递归的方式写出来就是：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def fact(n):</span><br><span class="line">if n==1:</span><br><span class="line">return 1</span><br><span class="line">return n * fact(n - 1)</span><br></pre></td></tr></table></figure>
 

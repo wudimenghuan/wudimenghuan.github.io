@@ -65,6 +65,9 @@
 
 
 
+<!-- Crisp -->
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="40c25842-b687-4733-ba07-02203d88e2f0";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+<!-- Crisp -->
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -229,7 +232,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>这篇文章来源于Quroa的一个问答《<a target="_blank" rel="noopener" href="http://www.quora.com/Linux/What-are-some-time-saving-tips-that-every-Linux-user-should-know#">What are some time-saving tips that every Linux user should know?</a>》—— Linux用户有哪些应该知道的提高效率的技巧。我觉得挺好的，总结得比较好，把其转过来，并加了一些自己的理解。 首先，我想告诉大家，<strong>在Unix/Linux下，最有效率技巧的不是操作图形界面，而是命令行操作，因为命令行意味着自动化</strong>。如果你看过《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/8619.html">你可能不知道的Shell</a>》以及《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/7829.html">28个Unix/Linux的命令行神器</a>》你就会知道Linux有多强大，这个强大完全来自于命令行，于是，就算你不知道怎么去<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/7186.html">做一个环保主义的程序员</a>，至少他们可以让你少熬点夜，从而有利于你的身体健康和性生活。下面是一个有点长的列表，正如作者所说，你并不需要知道所有的这些东西，但是如果你还在很沉重地在使用Linux的话，这些东西都值得你看一看。 （注：如果你想知道下面涉及到的命令的更多的用法，你一定要man一点。对于一些命令，你可以需要先yum或apt-get来安装一下，如果有什么问题，别忘了Google。如果你要Baidu的话，我仅代表这个地球上所有的生物包括微生物甚至细菌病毒和小强BS你到宇宙毁灭）</p>
+          <p>这篇文章来源于Quroa的一个问答《<a target="_blank" rel="noopener" href="http://www.quora.com/Linux/What-are-some-time-saving-tips-that-every-Linux-user-should-know#">What are some time-saving tips that every Linux user should know?</a>》—— Linux用户有哪些应该知道的提高效率的技巧。我觉得挺好的，总结得比较好，把其转过来，并加了一些自己的理解。 首先，我想告诉大家，<strong>在Unix&#x2F;Linux下，最有效率技巧的不是操作图形界面，而是命令行操作，因为命令行意味着自动化</strong>。如果你看过《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/8619.html">你可能不知道的Shell</a>》以及《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/7829.html">28个Unix&#x2F;Linux的命令行神器</a>》你就会知道Linux有多强大，这个强大完全来自于命令行，于是，就算你不知道怎么去<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/7186.html">做一个环保主义的程序员</a>，至少他们可以让你少熬点夜，从而有利于你的身体健康和性生活。下面是一个有点长的列表，正如作者所说，你并不需要知道所有的这些东西，但是如果你还在很沉重地在使用Linux的话，这些东西都值得你看一看。 （注：如果你想知道下面涉及到的命令的更多的用法，你一定要man一点。对于一些命令，你可以需要先yum或apt-get来安装一下，如果有什么问题，别忘了Google。如果你要Baidu的话，我仅代表这个地球上所有的生物包括微生物甚至细菌病毒和小强BS你到宇宙毁灭）</p>
 <h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><ul>
 <li><p><strong>学习 <a target="_blank" rel="noopener" href="http://www.quora.com/Bash-shell">Bash</a></strong> 。你可以man bash来看看bash的东西，并不复杂也并不长。你用别的shell也行，但是bash是很强大的并且也是系统默认的。（学习zsh或tsch只会让你在很多情况下受到限制）</p>
 </li>
@@ -243,7 +246,7 @@
 </li>
 <li><p><strong>基础的网络管理</strong>： ip 或 ifconfig, dig。当然，原作者还忘了如netstat, ping, traceroute, 等</p>
 </li>
-<li><p><strong>理解正则表达式</strong>，还有grep/egrep的各种选项。比如： -o, -A, 和 -B 这些选项是很值得了解的。</p>
+<li><p><strong>理解正则表达式</strong>，还有grep&#x2F;egrep的各种选项。比如： -o, -A, 和 -B 这些选项是很值得了解的。</p>
 </li>
 <li><p><strong>学习使用 apt-get 和 yum 来查找和安装软件</strong>（前者的经典分发包是Ubuntu，后者的经典分发包是Redhat），我还建议你试着从源码编译安装软件。</p>
 </li>
@@ -260,8 +263,7 @@
 </li>
 </ul>
 <blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find . -name *.py | xargs grep some_function</span><br><span class="line"></span><br><span class="line">cat hosts | xargs -I&#123;&#125; ssh root@&#123;&#125; hostname</span><br></pre></td></tr></table></figure>
-</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find . -name *.py | xargs grep some_function</span><br><span class="line"></span><br><span class="line">cat hosts | xargs -I&#123;&#125; ssh root@&#123;&#125; hostname</span><br></pre></td></tr></table></figure></blockquote>
 <ul>
 <li><p>pstree -p 可以帮你显示进程树。（读过我的那篇《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/7965.html">一个fork的面试题</a>》的人应该都不陌生）</p>
 </li>
@@ -279,20 +281,19 @@
 </li>
 </ul>
 <blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># do something in current dir</span><br><span class="line">(cd /some/other/dir; other-command)</span><br><span class="line"># continue in original dir</span><br></pre></td></tr></table></figure>
-</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># do something in current dir</span><br><span class="line">(cd /some/other/dir; other-command)</span><br><span class="line"># continue in original dir</span><br></pre></td></tr></table></figure></blockquote>
 <ul>
-<li><p>在 bash 中，注意那里有很多的变量展开。如：检查一个变量是否存在: ${name:?error message}。如果一个bash的脚本需要一个参数，也许就是这样一个表达式 input_file=${1:?usage: $0 input_file}。一个计算表达式： i=$(( (i + 1) % 5 ))。一个序列： {1..10}。 截断一个字符串： ${var%suffix} 和 ${var#prefix}。 示例： if var=foo.pdf, then echo ${var%.pdf}.txt prints “foo.txt”.</p>
+<li><p>在 bash 中，注意那里有很多的变量展开。如：检查一个变量是否存在: ${name:?error message}。如果一个bash的脚本需要一个参数，也许就是这样一个表达式 input_file&#x3D;${1:?usage: $0 input_file}。一个计算表达式： i&#x3D;$(( (i + 1) % 5 ))。一个序列： {1..10}。 截断一个字符串： ${var%suffix} 和 ${var#prefix}。 示例： if var&#x3D;foo.pdf, then echo ${var%.pdf}.txt prints “foo.txt”.</p>
 </li>
-<li><p>通过 &lt;(some command) 可以把某命令当成一个文件。示例：比较一个本地文件和远程文件 /etc/hosts： diff /etc/hosts &lt;(ssh somehost cat /etc/hosts)</p>
+<li><p>通过 &lt;(some command) 可以把某命令当成一个文件。示例：比较一个本地文件和远程文件 &#x2F;etc&#x2F;hosts： diff &#x2F;etc&#x2F;hosts &lt;(ssh somehost cat &#x2F;etc&#x2F;hosts)</p>
 </li>
 <li><p>了解什么叫 “<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/Here%E6%96%87%E6%A1%A3">here documents</a>” ，就是诸如 cat &lt;&lt;EOF 这样的东西。</p>
 </li>
-<li><p>在 bash中，使用重定向到标准输出和标准错误。如： some-command &gt;logfile 2&gt;&amp;1。另外，要确认某命令没有把某个打开了的文件句柄重定向给标准输入，最佳实践是加上 “&lt;/dev/null”，把/dev/null重定向到标准输入。</p>
+<li><p>在 bash中，使用重定向到标准输出和标准错误。如： some-command &gt;logfile 2&gt;&amp;1。另外，要确认某命令没有把某个打开了的文件句柄重定向给标准输入，最佳实践是加上 “&lt;&#x2F;dev&#x2F;null”，把&#x2F;dev&#x2F;null重定向到标准输入。</p>
 </li>
 <li><p>使用 man ascii 来查看 ASCII 表。</p>
 </li>
-<li><p>在远端的 ssh 会话里，使用 screen 或 dtach 来保存你的会话。（参看《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/7829.html">28个Unix/Linux的命令行神器</a>》）</p>
+<li><p>在远端的 ssh 会话里，使用 screen 或 dtach 来保存你的会话。（参看《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/7829.html">28个Unix&#x2F;Linux的命令行神器</a>》）</p>
 </li>
 <li><p>要来debug Web，试试curl 和 curl -I 或是 wget 。我觉得debug Web的利器是firebug，curl和wget是用来抓网页的，呵呵。</p>
 </li>
@@ -304,12 +305,11 @@
 </li>
 <li><p>在 ssh中，知道怎么来使用ssh隧道。通过 -L or -D (还有-R) ，翻墙神器。</p>
 </li>
-<li><p>你还可以对你的ssh 做点优化。比如，.ssh/config 包含着一些配置：避免链接被丢弃，链接新的host时不需要确认，转发认证，以前使用压缩（如果你要使用scp传文件）：</p>
+<li><p>你还可以对你的ssh 做点优化。比如，.ssh&#x2F;config 包含着一些配置：避免链接被丢弃，链接新的host时不需要确认，转发认证，以前使用压缩（如果你要使用scp传文件）：</p>
 </li>
 </ul>
 <blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TCPKeepAlive=yes</span><br><span class="line">ServerAliveInterval=15</span><br><span class="line">ServerAliveCountMax=6</span><br><span class="line">StrictHostKeyChecking=no</span><br><span class="line">Compression=yes</span><br><span class="line">ForwardAgent=yes</span><br></pre></td></tr></table></figure>
-</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TCPKeepAlive=yes</span><br><span class="line">ServerAliveInterval=15</span><br><span class="line">ServerAliveCountMax=6</span><br><span class="line">StrictHostKeyChecking=no</span><br><span class="line">Compression=yes</span><br><span class="line">ForwardAgent=yes</span><br></pre></td></tr></table></figure></blockquote>
 <ul>
 <li>如果你有输了个命令行，但是你改变注意了，但你又不想删除它，因为你要在历史命令中找到它，但你也不想执行它。那么，你可以按下 Alt-# ，于是这个命令关就被加了一个#字符，于是就被注释掉了。</li>
 </ul>
@@ -319,16 +319,15 @@
 </li>
 <li><p>了解用 cut, paste, 和 join 命令来操作文本文件。很多人忘了在cut前使用join。</p>
 </li>
-<li><p>如果你知道怎么用sort/uniq来做集合交集、并集、差集能很大地促进你的工作效率。假设有两个文本文件a和b已解被 uniq了，那么，用sort/uniq会是最快的方式，无论这两个文件有多大（sort不会被内存所限，你甚至可以使用-T选项，如果你的/tmp目录很小）</p>
+<li><p>如果你知道怎么用sort&#x2F;uniq来做集合交集、并集、差集能很大地促进你的工作效率。假设有两个文本文件a和b已解被 uniq了，那么，用sort&#x2F;uniq会是最快的方式，无论这两个文件有多大（sort不会被内存所限，你甚至可以使用-T选项，如果你的&#x2F;tmp目录很小）</p>
 </li>
 </ul>
 <blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat a b | sort | uniq &gt; c   # c is a union b 并集</span><br><span class="line"></span><br><span class="line">cat a b | sort | uniq -d &gt; c   # c is a intersect b 交集</span><br><span class="line"></span><br><span class="line">cat a b b | sort | uniq -u &gt; c   # c is set difference a - b 差集</span><br></pre></td></tr></table></figure>
-</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat a b | sort | uniq &gt; c   # c is a union b 并集</span><br><span class="line"></span><br><span class="line">cat a b | sort | uniq -d &gt; c   # c is a intersect b 交集</span><br><span class="line"></span><br><span class="line">cat a b b | sort | uniq -u &gt; c   # c is set difference a - b 差集</span><br></pre></td></tr></table></figure></blockquote>
 <ul>
-<li><p>了解和字符集相关的命令行工具，包括排序和性能。很多的Linux安装程序都会设置LANG 或是其它和字符集相关的环境变量。这些东西可能会让一些命令（如：sort）的执行性能慢N多倍（注：就算是你用UTF-8编码文本文件，你也可以很安全地使用ASCII来对其排序）。如果你想Disable那个i18n 并使用传统的基于byte的排序方法，那就设置export LC_ALL=C （实际上，你可以把其放在 .bashrc）。如果这设置这个变量，你的sort命令很有可能会是错的。</p>
+<li><p>了解和字符集相关的命令行工具，包括排序和性能。很多的Linux安装程序都会设置LANG 或是其它和字符集相关的环境变量。这些东西可能会让一些命令（如：sort）的执行性能慢N多倍（注：就算是你用UTF-8编码文本文件，你也可以很安全地使用ASCII来对其排序）。如果你想Disable那个i18n 并使用传统的基于byte的排序方法，那就设置export LC_ALL&#x3D;C （实际上，你可以把其放在 .bashrc）。如果这设置这个变量，你的sort命令很有可能会是错的。</p>
 </li>
-<li><p>了解 awk 和 sed，并用他们来做一些简单的数据修改操作。例如：求第三列的数字之和： awk ‘{ x += $3 } END { print x }’。这可能会比Python快3倍，并比Python的代码少三倍。</p>
+<li><p>了解 awk 和 sed，并用他们来做一些简单的数据修改操作。例如：求第三列的数字之和： awk ‘{ x +&#x3D; $3 } END { print x }’。这可能会比Python快3倍，并比Python的代码少三倍。</p>
 </li>
 <li><p>使用 shuf 来打乱一个文件中的行或是选择文件中一个随机的行。</p>
 </li>
@@ -349,11 +348,11 @@
 </ul>
 <p><strong>系统调试</strong></p>
 <ul>
-<li><p>如果你想知道磁盘、CPU、或网络状态，你可以使用 iostat, netstat, top (或更好的 htop), 还有 dstat 命令。你可以很快地知道你的系统发生了什么事。关于这方面的命令，还有iftop, iotop等（参看《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/7829.html">28个Unix/Linux的命令行神器</a>》）</p>
+<li><p>如果你想知道磁盘、CPU、或网络状态，你可以使用 iostat, netstat, top (或更好的 htop), 还有 dstat 命令。你可以很快地知道你的系统发生了什么事。关于这方面的命令，还有iftop, iotop等（参看《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/7829.html">28个Unix&#x2F;Linux的命令行神器</a>》）</p>
 </li>
 <li><p>要了解内存的状态，你可以使用free和vmstat命令。具体来说，你需要注意 “cached” 的值，这个值是Linux内核占用的内存。还有free的值。</p>
 </li>
-<li><p>Java 系统监控有一个小的技巧是，你可以使用kill -3 <pid> 发一个SIGQUIT的信号给JVM，可以把堆栈信息（包括垃圾回收的信息）dump到stderr/logs。</p>
+<li><p>Java 系统监控有一个小的技巧是，你可以使用kill -3 <pid> 发一个SIGQUIT的信号给JVM，可以把堆栈信息（包括垃圾回收的信息）dump到stderr&#x2F;logs。</p>
 </li>
 <li><p>使用 mtr 会比使用 traceroute 要更容易定位一个网络问题。</p>
 </li>
@@ -369,7 +368,7 @@
 </li>
 <li><p>使用gdb来调试一个正在运行的进程或分析core dump文件。参看我写的《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/3643.html">GDB中应该知道的几个调试方法</a>》</p>
 </li>
-<li><p>学会到 /proc 目录中查看信息。这是一个Linux内核运行时记录的整个操作系统的运行统计和信息，比如： /proc/cpuinfo, /proc/xxx/cwd, /proc/xxx/exe, /proc/xxx/fd/, /proc/xxx/smaps.</p>
+<li><p>学会到 &#x2F;proc 目录中查看信息。这是一个Linux内核运行时记录的整个操作系统的运行统计和信息，比如： &#x2F;proc&#x2F;cpuinfo, &#x2F;proc&#x2F;xxx&#x2F;cwd, &#x2F;proc&#x2F;xxx&#x2F;exe, &#x2F;proc&#x2F;xxx&#x2F;fd&#x2F;, &#x2F;proc&#x2F;xxx&#x2F;smaps.</p>
 </li>
 <li><p>如果你调试某个东西为什么出错时，sar命令会有用。它可以让你看看 CPU, 内存, 网络, 等的统计信息。</p>
 </li>
@@ -472,7 +471,7 @@
 <h4 id="非功能性需求分析"><a href="#非功能性需求分析" class="headerlink" title="非功能性需求分析"></a>非功能性需求分析</h4><p>性能之类的东西从来都是非功能性需求，对于算法题，我们太喜欢研究算法题的空间和时间复杂度了。我们希望做到空间和时间双丰收，这是算法学术界的风格。所以，<strong>习惯于标准答案的我们已经失去思考的能力，只会机械地思考算法之内的性能，而忽略了算法之外的性能</strong>。</p>
 <p>如果题目是——“从无序数组中找到第K个最大的数”，那么，我们一定会去思考用O(n)的线性算法找出第K个数。事实上，也有线性算法——STL中可以用nth_element求得类似的第n大的数，其利用快速排序的思想，从数组S中随机找出一个元素X，把数组分为两部分Sa和Sb。Sa中的元素大于等于X，Sb中元素小于X。这时有两种情况：1）Sa中元素的个数小于k，则Sb中的第k-|Sa|个元素即为第k大数；2） Sa中元素的个数大于等于k，则返回Sa中的第k大数。时间复杂度近似为O(n)。</p>
 <p>搞学术的nuts们到了这一步一定会欢呼胜利！但是他们哪里能想得到性能的需求分析也是来源自业务的！</p>
-<p><strong>我们一说性能，基本上是个人都会问，请求量有多大？如果我们的FindKthMaxNum()的请求量是m次，那么你的这个每次都要O(n)复杂度的算法得到的效果就是O(n*m)，这一点，是书呆子式的学院派人永远想不到的。</strong>因为应试教育让我们不会从实际思考了。</p>
+<p>**我们一说性能，基本上是个人都会问，请求量有多大？如果我们的FindKthMaxNum()的请求量是m次，那么你的这个每次都要O(n)复杂度的算法得到的效果就是O(n*m)，这一点，是书呆子式的学院派人永远想不到的。**因为应试教育让我们不会从实际思考了。</p>
 <h4 id="工程式的解法"><a href="#工程式的解法" class="headerlink" title="工程式的解法"></a>工程式的解法</h4><p>根据上面的需求分析，有软件工程经验的人的解法通常会这样：</p>
 <p>1）把数组排序，从大到小。</p>
 <p>2）于是你要第k大的数，就直接访问 array[k]。</p>
@@ -490,7 +489,7 @@
 </li>
 <li><p><strong>这个算法题太容易诱导到学院派的思路了</strong>。是的这道“找出第K大的数”，其实可以变换为更为业务一点的题目——“<strong>我要和别的商户竞价，我想排在所有竞争对手报价的第K名，请写一个程序，我输入K，和一个商品名，系统告诉我应该订多少价？</strong>（商家的所有商品的报价在一数组中）”——业务分析，整体性能，算法，数据结构，增加需求让应聘者重构，这一个问题就全考了。</p>
 </li>
-<li><p><strong>你是不是在说算法不重要，不用学？</strong>千万别这样理解我，搞得好像如果面试不面，我就可以不学。<strong>算法很重要，算法题能锻炼我们的思维，而且也有很多实际用处</strong>。我这篇文章不是让大家不要去学算法，这是完全错误的，我是让大家带着业务问题去使用算法。问你业务问题，一样会问到算法题上来。</p>
+<li><p>**你是不是在说算法不重要，不用学？**千万别这样理解我，搞得好像如果面试不面，我就可以不学。<strong>算法很重要，算法题能锻炼我们的思维，而且也有很多实际用处</strong>。我这篇文章不是让大家不要去学算法，这是完全错误的，我是让大家带着业务问题去使用算法。问你业务问题，一样会问到算法题上来。</p>
 </li>
 </ul>
 <h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>看过这上面的分析，我相信你明白我为什么反对纯算法面试题了。原因就是<strong>纯算法的面试题根本不能反应一个程序的综合素质</strong>！</p>
@@ -607,7 +606,7 @@
 <p>同时，也是因为在GIAC的大会被问到，程序员老了怎么办？而在年底这段时间，也和几个朋友在交流中不断地重复谈到个人发展的这个话题。我的人生过半，活到“不惑”的年纪，自然经常性的对什么事都会回头看看总结归纳，所以，在交谈过程中和交谈过后，自己也有一些思考想记录下来。因为我本人也是在这条路上的人，所以，谈不上给他人指导，我同样也是在瞎乱折腾同样每天在思考自己要去哪儿的“一尘世间迷途老生”。况且，我的经历和眼界非常有限，因此，下面的这些关于个人发展的文字和思考必然是受我的眼界和经历所局限的。也欢迎大家补充和指正。</p>
 <p>这些东西不一定对，也不一定就是全部，期许可以让你在年底的时候有所思考，在明年的时候有所计划。</p>
 <h4 id="一个重要阶段和标志"><a href="#一个重要阶段和标志" class="headerlink" title="一个重要阶段和标志"></a>一个重要阶段和标志</h4><p>在讲个人发展之前，我需要先说一下人生中的一个非常重要的阶段——<strong>20到30岁！</strong></p>
-<p><strong>这个阶段的首要任务，就是提升自己学习能力和解决难题的能力。****这是一个非常非常关键的时间段！这个时间段几乎决定着你的未来。</strong></p>
+<p>**这个阶段的首要任务，就是提升自己学习能力和解决难题的能力。**<strong>这是一个非常非常关键的时间段！这个时间段几乎决定着你的未来。</strong></p>
 <p>30岁以前，这个时间段，应该是人学习和积累的时间段，这个时间段，就是努力学习的时间段。这个时间段，你一定要把时间花在解决问题的技能上。就是说，你一定要练就成的技能是——你能解决大多数人不能解决的问题。使蛮力埋头加班苦干，当一个搬砖老黄牛的是肯定没有前途的。如果你不幸呆在了一个搬砖的地方，天天被业务压得喘不过气来，我建议你宁可让你的项目延期被老板骂，也要把时间挤出来努力学习基础知识，多掌握一些技术（很多技术在思路上是相通的），然后才能有机会改变自己目前的状况。因为，比起你的个人未来，项目延期被老板骂、绩效不好拿不到奖金，都不是什么事儿。</p>
 <p>总结一下，你在30岁前，工作5-7年，你需要拥有：</p>
 <ul>
@@ -636,7 +635,7 @@
 </li>
 <li><p>一般说来，有这样的潜质的人，在学校中就应该要出现。如果你在大学中还没有出现这样的潜质，那么，你在工作当中要加倍努力了（注：所谓的加倍努力，不是让你使蛮力加班，而是让你多学习成长，使蛮力拼命是弥补不了能力、思维、眼界上的缺陷的）。</p>
 </li>
-<li><p>Leadership也有范围的，比如，身边的朋友，工作中的团队/部分，圈内，整个行业。Leadership的范围越大，你的个人发展的选择性就越高。反之则越小。</p>
+<li><p>Leadership也有范围的，比如，身边的朋友，工作中的团队&#x2F;部分，圈内，整个行业。Leadership的范围越大，你的个人发展的选择性就越高。反之则越小。</p>
 </li>
 <li><p>如果已到了30岁左右，还是没有出现这样的特征。那么，可能未来你也很难有这样的Leadership了。而你的个人发展的可能性可能也就不多了（sigh…）</p>
 </li>
@@ -651,7 +650,7 @@
 <p>我们经常可以看到很多所谓的“职业规划”，但是大多数职业规划只不过人力资源搞出来的东西，和实际其实是有很大出入的。我的人生经历中，有18年左右是在公司中度过的，在过银行，小公司，大公司，民营公司，外国公司，传统IT公司，互联网公司，不同的公司完全有不同的玩法和文化，我的经历还算丰富，但也不算特别成功，这里只分享一些我在职场中的心得（不一定对，仅供参考）。</p>
 <h5 id="1、去顶尖公司"><a href="#1、去顶尖公司" class="headerlink" title="1、去顶尖公司"></a>1、去顶尖公司</h5><p><strong>去顶尖公司的一个目的就是让你的Leadership的范围的可能性扩大</strong>。</p>
 <p>因为公司和公司的差距也不小，所以，就算你在低端公司里是骨干份子，但在高端公司里可能只是一个普通员工（就像中国足球队的主力到了英超可能都无法入选）。所以，在职场中，如果你要让你的个人价值最大化的话，你一定要去顶尖的公司。因为顶尖公司里有非常不错的工作方法和场景，这并不是能看书或是交流得来的，这是必需要去亲身体验的。所以说，在顶尖公司掌握的技能，开阔的眼界，通常来说都会比低端公司的要多得多。</p>
-<p>另外，每个公司的工作级别都是有相互对标的，比如：阿里的P几对应于百度的T几。国内的一线公司职位还相当，但是如果和国外一线公司的比，那就有差距了，而且差距还很大。比如，Google或Facebook的某个高级工程师，可能就对应于阿里的P8/P9甚至更高。</p>
+<p>另外，每个公司的工作级别都是有相互对标的，比如：阿里的P几对应于百度的T几。国内的一线公司职位还相当，但是如果和国外一线公司的比，那就有差距了，而且差距还很大。比如，Google或Facebook的某个高级工程师，可能就对应于阿里的P8&#x2F;P9甚至更高。</p>
 <p>是的，对于职场来说，如果你在顶尖公司是骨干，那么，你去低端公司，则有很大机会会成为他们高管和核心。就好像你在Facebook里干三五年成为他们的技术骨干，那么你到BAT去成成为高管概率是非常大的。反过来，如果你毕业主去了BAT成为了一个螺丝钉，在天天加班中度过你的青春，你干个十年能成为BAT的高管的概率可能会非常的低。</p>
 <h5 id="2、去真正的创业公司"><a href="#2、去真正的创业公司" class="headerlink" title="2、去真正的创业公司"></a>2、去真正的创业公司</h5><p>去顶尖公司和去创业公司在某些时候并不冲突。不过，这里我想讲的是，一个技术能力强的人在大公司可能会被埋没掉。因为大公司业务成功后，</p>
 <ul>
@@ -711,7 +710,7 @@
 <p>但一说起自由，绝大多数人都想到的是“财富自由”或是“财务自由”，其实，并不完全是这样的，在自由的通路上，我个人的经历告诉我，其实，你会有很多的不同类型的自由。下面，是我对几个层次的“自由”的理解。</p>
 <p><strong>第一层自由——工作自由</strong>。人的第一层自由的境界是——“工作自由”，我到不是说你在工作单位上可以很自由，虽然有特例，但并不普遍。我想说的“工作自由”是——你不会有失业危机感了。也就是说，你成了各个公司的抢手货，你不但不愁找不到工作，而且你是完全不愁找不到好工作。试想一下，如果是工作来找你，一方面，你就有真正意义上的工作选择权了，另一方面，你都不愁工作了，你完全就可以随时离职去干你想干的事了。此时，你就达到了“工作自由”。</p>
 <p><strong>第二层自由——技能自由</strong>。工作自由已是不错，不过前提是你还是需要依赖于别人提供的工作机会。而技能自由则是你可以用自己的技能养活自己，而不需要去公司里工作。也就是所谓的自由职业者了，社会上，这样的人也不少，比如，一些健身体育教练、设计师、翻译者、作者……这些都可以算是自由职业者，程序员这个职业中只要不是搬砖的，有想法的，就有可以成为自由积业者的潜质，想一想，你拥有的编程能力，其实是一种创造的能力，也就是创造力，只要你Make Something People Want（YC创业公司的slogan），你是完全可以通过自己的技能来养活自己的。如果你通过某些自动化的东西，或是你在App上做了一个软件个体户，让自己的收入不断，甚至你做了一个开源软件，社区每个月都给你捐款捐到比你打工挣的还多，那么你就真正的有了技能自由了。</p>
-<p><strong>第三层自由——物质自由。</strong>我把财务自由换了一种说法。我个人觉得，除了有个好爸爸之外这种特例的情况，如果你想有物质自由的话，本质上来说，你一定要学会投资，投资不一定是你的钱，时间也是一种财富，年轻更是，你怎么投资你的时间还有你的青春？你要把你的投资投到什么样的事，什么样的人？对于投资这个事，风险也比较大。但是，人生不敢冒险可能才是最大的冒险。这个世界有很多技术不是你能看书学来的，而要只能在实战中学会的，比如：游泳。投资可能也是一种。只有真正懂投资的人，或是运气非常好的人，才可能实现物质自由。</p>
+<p>**第三层自由——物质自由。**我把财务自由换了一种说法。我个人觉得，除了有个好爸爸之外这种特例的情况，如果你想有物质自由的话，本质上来说，你一定要学会投资，投资不一定是你的钱，时间也是一种财富，年轻更是，你怎么投资你的时间还有你的青春？你要把你的投资投到什么样的事，什么样的人？对于投资这个事，风险也比较大。但是，人生不敢冒险可能才是最大的冒险。这个世界有很多技术不是你能看书学来的，而要只能在实战中学会的，比如：游泳。投资可能也是一种。只有真正懂投资的人，或是运气非常好的人，才可能实现物质自由。</p>
 <p>追求自由的生活，其实也是个人发展道路上的一个不错的选择。通常来说，自由的人，能力都不差，钱也不会少。因为，他们懂得投资。</p>
 <p>也就是说，拥有追求自由能力的的人，</p>
 <ul>
@@ -868,7 +867,7 @@
 <h4 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h4><p>但是我们知道，对于大部分的问题，贪婪法通常都不能找出最优解，因为他们一般没有测试所有可能的解。<strong>因为贪婪算法是一种短视的行为，只会跟据当前的形式做判断，也就是过早做决定</strong>，因而没法达到最佳解。</p>
 <p>动态规划和贪婪算法的最大不同是，贪婪算法做出选择，不能在过程优化。动态规划则会保存以前的运算结果，并根据以前的结果对当前进行选择，会动态优化功能。</p>
 <p>动态规划算法至少告诉我们两个事：</p>
-<p>1）<strong>承前启后非常重要，</strong>当你准备去做遍历的时候，你的上次的经历不但能开启你以后的经历，而且还能为后面的经历所用。你的每一步都没有浪费。</p>
+<p>1）**承前启后非常重要，**当你准备去做遍历的时候，你的上次的经历不但能开启你以后的经历，而且还能为后面的经历所用。你的每一步都没有浪费。</p>
 <p>2）<strong>是否可以回退也很重要</strong>。这意思是——如果你面前有两个选择，一个是A公司一个是B公司，如果今天你选了A公司，并不是你完全放弃了B公司。而是，你知道从A公司退出来去B公司，会比从B公司退出来去A公司要容易一些。</p>
 <p>比如说：你有两个offer，一个是Yahoo，一个是Baidu，上述的第一点会让我们思考，我以前的特长和能力更符合Yahoo还是Baidu？而Yahoo和Baidu谁能给我开启更大的平台？上述的第二点告诉我们，是进入Yahoo后如果没有选好，是否还能再选择Baidu公司？还是进入Baidu公司后能容易回退到Yahoo公司？</p>
 <h4 id="Dijkstra最短路径"><a href="#Dijkstra最短路径" class="headerlink" title="Dijkstra最短路径"></a><strong>Dijkstra</strong>最短路径</h4><p>最短路径是一个Greedy + DP的算法。相当经典。这个算法的大意如下：</p>
@@ -878,9 +877,9 @@
 <p>4）再贪婪与原点最短的结点，如此反复。</p>
 <p>这个算法给我们带来了一些这样的启示：</p>
 <ul>
-<li><p>有朋友和我说过他想成为一个架构师，或是某技术领域的专家，并会踏踏实实的向这个目标前进，永不放弃。我还是鼓励了他，但我也告诉他了这个著名的算法，我说，这个算法告诉你，架构师或某领域的专家对你来说目前的距离是无穷大，他们放在心中，先看看你能够得着的东西。<strong>所谓踏实，并不是踏踏实实追求你的目标，而是踏踏实实把你够得着看得见的就在身边的东西干好。</strong>我还记得我刚参加工作，从老家出来的时候，从来没有想过要成为一个技术牛人，也从来没有想过我的博客会那么的有影响力，在做自己力所能及，看得见摸得着的事情，我就看见什么技术就学什么，学着学着就知道怎么学更轻松，怎么学更扎实，这也许就是我的最短路径。</p>
+<li><p>有朋友和我说过他想成为一个架构师，或是某技术领域的专家，并会踏踏实实的向这个目标前进，永不放弃。我还是鼓励了他，但我也告诉他了这个著名的算法，我说，这个算法告诉你，架构师或某领域的专家对你来说目前的距离是无穷大，他们放在心中，先看看你能够得着的东西。**所谓踏实，并不是踏踏实实追求你的目标，而是踏踏实实把你够得着看得见的就在身边的东西干好。**我还记得我刚参加工作，从老家出来的时候，从来没有想过要成为一个技术牛人，也从来没有想过我的博客会那么的有影响力，在做自己力所能及，看得见摸得着的事情，我就看见什么技术就学什么，学着学着就知道怎么学更轻松，怎么学更扎实，这也许就是我的最短路径。</p>
 </li>
-<li><p>有很多朋友问我要不要学C++，或是问我学Python还是学Ruby，是不是不用学前端，等等。这些朋友告诉我，他们不可能学习多个语言，学了不用也就忘了，而且术业有专攻。这并没有什么不对的，只是我个人觉得，学习一个东西没有必要只有两种状态，一种是不学，另一种是精通。了解一个技术其实花不了多少时间，我学C++的目的其实是为了更懂Java，学TCP/IP协议其实是为了更懂Socket编程，很多东西都是连通和相辅相成的，学好了C/C++/Unix/TCP等这些基础技术后，我发现到达别的技术路径一下缩短了（这就是为什么<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/8489.html">我用两天时间就可以了解Go语言的原因</a>）。<strong>这就好像这个算法一样，算法效率不高，也许达到你的目标，你在一开始花了很长时间，遍历了很多地方，但是，这也许这就是你的最短路径（</strong>比起你达不到要好得多<strong>）</strong>。</p>
+<li><p>有很多朋友问我要不要学C++，或是问我学Python还是学Ruby，是不是不用学前端，等等。这些朋友告诉我，他们不可能学习多个语言，学了不用也就忘了，而且术业有专攻。这并没有什么不对的，只是我个人觉得，学习一个东西没有必要只有两种状态，一种是不学，另一种是精通。了解一个技术其实花不了多少时间，我学C++的目的其实是为了更懂Java，学TCP&#x2F;IP协议其实是为了更懂Socket编程，很多东西都是连通和相辅相成的，学好了C&#x2F;C++&#x2F;Unix&#x2F;TCP等这些基础技术后，我发现到达别的技术路径一下缩短了（这就是为什么<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/8489.html">我用两天时间就可以了解Go语言的原因</a>）。<strong>这就好像这个算法一样，算法效率不高，也许达到你的目标，你在一开始花了很长时间，遍历了很多地方，但是，这也许这就是你的最短路径（<strong>比起你达不到要好得多</strong>）</strong>。</p>
 </li>
 </ul>
 <h4 id="算法就是Trade-Off"><a href="#算法就是Trade-Off" class="headerlink" title="算法就是Trade-Off"></a>算法就是Trade-Off</h4><p>你根本没有办法能得到所有你想得到的东西，<strong>任何的选择都意味着放弃</strong>——<strong>当你要去获得一个东西的时候，你总是需要放弃一些东西</strong>。<strong>人生本来就是一个跷跷板，一头上，另一头必然下</strong>。这和我们做软件设计或算法设计一样，用时间换空间，用空间换时间，还有CAP理论，总是有很多的Trade-Off，正如这个短语的原意一样——<strong>你总是要用某种东西去交易某种东西</strong>。</p>
@@ -1041,7 +1040,7 @@
 <p>在上篇中，我们说到了一些认识人的方法（操作，知识，经验，能力），还有一些面试的方法（算法题，实际生产活动中的挑战），下面我们来说说，面试的风格，还有一些点评。</p>
 <h2 id="把应聘者当成你的同事"><a href="#把应聘者当成你的同事" class="headerlink" title="把应聘者当成你的同事"></a>把应聘者当成你的同事</h2><p>有些公司的面试官，在面试过程中问你一个算法题，然后等着你解答了，如果你给出一个答案，然后就会问你有没有更好的答案，如果你给出了正确的答案，他们就会问你一个更难的问题，如此循环下去。他们基本上很少给你提示，甚至不停地质问你，挑战你，搞得应聘者很紧张。</p>
 <p>另外，有很多问题是没有标准答案的，或者说是，同一个答案的描述方法有多种，很多面试官会觉得你没有回答到他想要的答案，因此表现得有对你不屑，并表现出你不行的样子，并觉得你的能力有问题。真是可笑了。比如我一个朋友在回答什么是异步的问题时，举例说明了异步调用就是不能处理完就返回，并且需要传递一个回调函数给调用方以便完成后回调通知结果。这样的回答并没有错，但是这并不符合面试官心里想要的答案，面试官对此并不满意，进而认为我这个朋友还需要去多读读书。</p>
-<p>我相信大多数面试官都会这样干的。我想问问这样的面试官，<strong>你们有没有用面试的方式对过你的同事？在你的工作场景中，你会不会用面试的风格和你的同事进行交流和说话？</strong>不妨让我们来问我们自己下面几个问题：</p>
+<p>我相信大多数面试官都会这样干的。我想问问这样的面试官，**你们有没有用面试的方式对过你的同事？在你的工作场景中，你会不会用面试的风格和你的同事进行交流和说话？**不妨让我们来问我们自己下面几个问题：</p>
 <ul>
 <li>你在工作当中遇到难题时你是怎么解决的？你会和人讨论吗？你只用15分钟就能得出最优解吗？</li>
 <li>你在工作当中解决难题时是否会有一个人在旁边质问你并给你压力吗？</li>
@@ -1226,10 +1225,10 @@
 </ol>
 <p>我以前经历过很多的面试，当技术人员来和我做面试的时候，我发现，“技术人员的思维”对于某些人来说根本分不清面试和考试，<strong>在潜意识里，他们在很多时候不是在面试这个人，而是在刁难这个人并以此展示自己的技能</strong>。我个人认为我是一个好的程序员，但我可以告诉你我无法通过那样的面试，因为那样的面试是为他们自己准备的，而不是为应聘者准备的。</p>
 <p>那么，我又是怎样去面试的呢？</p>
-<p><strong>一、确认简历。</strong>首先，阅读一下别人的简历是需要的，从简历上，工作经历，项目经历，技术技能这三个事情是你需要了解的。一般来说，你可以先通过电话确定一下他的工作经历，项目经历和技术技能，然后，如果他和你需要的人条件相符的话，可以叫到公司做面对面的面试。千万不要把别人叫来，你又说你的经历和我们的工作有差距之类的话。（我有过一次面试经历，公司我不说了，反正是那个号称需要有良好沟通的公司，面试了我9次左右，从一般的程序员，PM，经理，到总经理，而最后一次直接告诉我，我以前的经历和他们的要求差距很大。我不禁要问了，前面若干次的面试他们都在干什么呢？）</p>
-<p><strong>二、面试开场。</strong>其次，把人邀请来公司面试，应聘者到了公司来面试，有一点很重要，那就是你一定要让整个面试过程变得很随意，很放松，就像普通的聊天和一般朋友间的交流一样。这样应聘者才会放松并拿出真实的样子来和你谈话和聊天，你才能在很短的时间内了解得更多。让应聘者放下心理负担，让其表现得自然一些，这是招聘方的责任。千万不要说，别人太紧张发挥的不好，有时候，招聘方得想想自己的问题。</p>
-<p>面试开场的时候，千万不要让应聘者介绍自己，因为，应聘者早就给你发过简历了，而你也给其打过电话了。另外，应聘者对这个面试惯例通常都会准备得非常不错的，另一方面，这会让整个面试过程太正式太严肃了。所以，不妨问问应聘者是怎么过来的？最近怎么样？还可以和应聘者谈一个大众话题，比如喜欢什么体育，音乐，电影，社会热点什么的，自己也别板着个脸，说说笑笑，试图让大家都放松下来。另外，通过这些闲聊，你可以知道他/她的与人交往能力和一些性格。另外，不要让桌子放在你和应聘者之间，把环境搞得随意一些。</p>
-<p><strong>三、多让应聘者说说他的经历</strong>。接下来，如果你要觉得这个应聘者是否是一个可以解决问题，是一个可以把事情搞定的人，不用问他/她会做什么，直接问问其做过什么？干过什么事？对于一个好的程序员来说，很难想像其没有相关的实践，就算你是在大学里，你也应该做过什么。如果你有解决问题的能力，那么，很显然，今天你应该解决了很多问题，也搞定了很多事情，听听应聘者说一说他的那些事。（不要使用一问一答这种方式，应该让应聘者多说，而多听，多想）</p>
+<p>**一、确认简历。**首先，阅读一下别人的简历是需要的，从简历上，工作经历，项目经历，技术技能这三个事情是你需要了解的。一般来说，你可以先通过电话确定一下他的工作经历，项目经历和技术技能，然后，如果他和你需要的人条件相符的话，可以叫到公司做面对面的面试。千万不要把别人叫来，你又说你的经历和我们的工作有差距之类的话。（我有过一次面试经历，公司我不说了，反正是那个号称需要有良好沟通的公司，面试了我9次左右，从一般的程序员，PM，经理，到总经理，而最后一次直接告诉我，我以前的经历和他们的要求差距很大。我不禁要问了，前面若干次的面试他们都在干什么呢？）</p>
+<p>**二、面试开场。**其次，把人邀请来公司面试，应聘者到了公司来面试，有一点很重要，那就是你一定要让整个面试过程变得很随意，很放松，就像普通的聊天和一般朋友间的交流一样。这样应聘者才会放松并拿出真实的样子来和你谈话和聊天，你才能在很短的时间内了解得更多。让应聘者放下心理负担，让其表现得自然一些，这是招聘方的责任。千万不要说，别人太紧张发挥的不好，有时候，招聘方得想想自己的问题。</p>
+<p>面试开场的时候，千万不要让应聘者介绍自己，因为，应聘者早就给你发过简历了，而你也给其打过电话了。另外，应聘者对这个面试惯例通常都会准备得非常不错的，另一方面，这会让整个面试过程太正式太严肃了。所以，不妨问问应聘者是怎么过来的？最近怎么样？还可以和应聘者谈一个大众话题，比如喜欢什么体育，音乐，电影，社会热点什么的，自己也别板着个脸，说说笑笑，试图让大家都放松下来。另外，通过这些闲聊，你可以知道他&#x2F;她的与人交往能力和一些性格。另外，不要让桌子放在你和应聘者之间，把环境搞得随意一些。</p>
+<p><strong>三、多让应聘者说说他的经历</strong>。接下来，如果你要觉得这个应聘者是否是一个可以解决问题，是一个可以把事情搞定的人，不用问他&#x2F;她会做什么，直接问问其做过什么？干过什么事？对于一个好的程序员来说，很难想像其没有相关的实践，就算你是在大学里，你也应该做过什么。如果你有解决问题的能力，那么，很显然，今天你应该解决了很多问题，也搞定了很多事情，听听应聘者说一说他的那些事。（不要使用一问一答这种方式，应该让应聘者多说，而多听，多想）</p>
 <p>在他讲他的项目的时候，通常来说你要注意下面几点：</p>
 <ul>
 <li><strong>沟通表达能力</strong>。应聘者能不能把一个事情讲清楚。如果这个人聪明的话，他就可以用最简单的语言把一个复杂的事情讲清楚。而且，这是一个好的程序员最基本的能力。而且，你可以在应聘者一边描述其经历的时候，你可以和应聘者有一些的良好的来来回回的交谈，这样就可以知道，他的沟通能力和沟通方式，从而了解他的性格，。</li>
@@ -1253,7 +1252,7 @@
 <li>技术技能固然很重要，但比其更重要的是这个人获取知识的能力，学习能力是在计算机这样变化飞快行业中必需具备的。</li>
 <li>是否可以进行培养，比掌握的技能更重要。</li>
 </ul>
-<p><strong>四、实际参与？？</strong>这一步可能是很不好实施的。因为，这需要一些应聘者付出一定的时间，如果是毕业生，那没有问题，先让他来实习一段时间。但如果别人有工作，就不好了。也许你会说，这就是试用期的用处了。不过，我个人觉得，你得要尊重应聘者，人家把那边的工作辞了，来你这边工作，三个月试用期间，如果没有什么原则上的问题，你作为一个招聘方又反悔了，这样做很是相当的不好。如果发现这样的事，只能是招聘者自己的问题。</p>
+<p>**四、实际参与？？**这一步可能是很不好实施的。因为，这需要一些应聘者付出一定的时间，如果是毕业生，那没有问题，先让他来实习一段时间。但如果别人有工作，就不好了。也许你会说，这就是试用期的用处了。不过，我个人觉得，你得要尊重应聘者，人家把那边的工作辞了，来你这边工作，三个月试用期间，如果没有什么原则上的问题，你作为一个招聘方又反悔了，这样做很是相当的不好。如果发现这样的事，只能是招聘者自己的问题。</p>
 <p>在面试过程中，一些招聘者会让应聘者们一起做个游戏，或是搞个辩论比赛，或是现场组个团队干个简单的事情，有的甚至让应聘者请一天假到自己的公司里来和自己的团队一同工作一天，并要完成某个事情（甚至给其设置上deadline），并通过这些来考量应聘者的实际参与能力。</p>
 <p>是的，如果没有一起工作过，没有一些实际的事情发生，单靠几个小时的面试很难了解一个人的。设置上这些面试的环节，在最短的时间内来了解应聘者的一切，对于招聘方来说无可厚非。而且有的时候也能得到不错的效果。在这里，我只提一点，有时候这样的周期拉得很长，让应聘者付出了很多，反尔会让应聘者产生反感和厌烦情绪，从某种意义上来说，这实在是对应聘者的不尊重。</p>
 <p>对于这一点，我一直持疑问的态度，所以，我在其后打了两个问号。老实说，对于实际参与这一环节，我个人的意见是适可而止，因为时间太短了，无论你怎么做你都无法了解完整。即然无法了解完整，那就获取你最需要的吧，就是本文开头的那三个问题，以及上面所述的“第三点”（了解应聘者的以往经历）。</p>
@@ -1694,7 +1693,7 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>/</td>
+<td>&#x2F;</td>
 <td>剩下的空间</td>
 <td>ext4</td>
 </tr>
@@ -1714,17 +1713,17 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>/boot</td>
+<td>&#x2F;boot</td>
 <td>100M</td>
 <td>ext4</td>
 </tr>
 <tr>
-<td>/</td>
+<td>&#x2F;</td>
 <td>相当于系统盘</td>
 <td>ext4</td>
 </tr>
 <tr>
-<td>/home</td>
+<td>&#x2F;home</td>
 <td>剩下的空间</td>
 <td>ext4</td>
 </tr>
@@ -1862,23 +1861,23 @@
 </thead>
 <tbody><tr>
 <td>不变的(static)</td>
-<td>/usr (软件放置处)</td>
-<td>/etc (配置文件)</td>
+<td>&#x2F;usr (软件放置处)</td>
+<td>&#x2F;etc (配置文件)</td>
 </tr>
 <tr>
 <td></td>
-<td>/opt (第三方软件)</td>
-<td>/boot (开机与内核文件)</td>
+<td>&#x2F;opt (第三方软件)</td>
+<td>&#x2F;boot (开机与内核文件)</td>
 </tr>
 <tr>
 <td>可变动的(variable)</td>
-<td>/var/mail(用户邮件信箱)</td>
-<td>/var/run (程序相关)</td>
+<td>&#x2F;var&#x2F;mail(用户邮件信箱)</td>
+<td>&#x2F;var&#x2F;run (程序相关)</td>
 </tr>
 <tr>
 <td></td>
-<td>/var/spool/news(新闻组)</td>
-<td>/var/lock (程序相关)</td>
+<td>&#x2F;var&#x2F;spool&#x2F;news(新闻组)</td>
+<td>&#x2F;var&#x2F;lock (程序相关)</td>
 </tr>
 </tbody></table>
 <h2 id="Linux的文件权限"><a href="#Linux的文件权限" class="headerlink" title="Linux的文件权限"></a>Linux的文件权限</h2><h3 id="用户与用户组"><a href="#用户与用户组" class="headerlink" title="用户与用户组"></a>用户与用户组</h3><blockquote>
@@ -1904,93 +1903,156 @@
 </li>
 <li><p><code>b</code>表示接口设备</p>
 </li>
-<li><pre><code>c
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  表示串口设备</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">- 3组权限</span><br><span class="line"></span><br><span class="line">- 第一组：文件所有者的权限</span><br><span class="line"></span><br><span class="line">- 第二组：同用户组的权限</span><br><span class="line"></span><br><span class="line">- 第三组：其他非本用户组的权限</span><br><span class="line"></span><br><span class="line">&gt; 142-144页例题练习</span><br><span class="line"></span><br><span class="line">### 改变文件属性与权限</span><br><span class="line"></span><br><span class="line">改变所属用户组：chgrp</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-# chgrp root test.txt
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">改变文件所有者：chown</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-# chown root:root dir
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">chown -R 表示递归</span><br><span class="line"></span><br><span class="line">改变文件的权限：chmod</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ chmod 777 test.txt
-$ chmod 755 test.txt
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `r`:4</span><br><span class="line">- `w`:2</span><br><span class="line">- `x`:1</span><br><span class="line"></span><br><span class="line">&gt; 146页例题</span><br><span class="line"></span><br><span class="line">符号类型改变权限</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ chmod u/g/o/a +/-/= r/w/x 文件或目录
-$ chmod u=rwx,go=rx test.txt
-$ chmod a-x test.txt
-$ chmod a+w test.txt
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">不要随便用chmod的递归</span><br><span class="line"></span><br><span class="line">### 目录与文件的权限意义</span><br><span class="line"></span><br><span class="line">权限对文件的重要性</span><br><span class="line"></span><br><span class="line">- `r`: 可读取</span><br><span class="line">- `w`: 可编辑、新增、修改，不包括删除</span><br><span class="line">- `x`: 可执行</span><br><span class="line"></span><br><span class="line">权限对目录的重要性</span><br><span class="line"></span><br><span class="line">- `r`: 可读取（可以列出）</span><br><span class="line">- `w`: 可写入</span><br><span class="line">- 新建新的文件与目录</span><br><span class="line">- 删除已经存在的文件与目录</span><br><span class="line">- 重命名</span><br><span class="line">- 转移该目录内的文件、目录位置</span><br><span class="line">- `x`: 可进入</span><br><span class="line"></span><br><span class="line">&gt; 148-149页例题</span><br><span class="line"></span><br><span class="line">### Linux文件种类</span><br><span class="line"></span><br><span class="line">- 普通文件(regular file): `r`</span><br><span class="line">- 目录(directory): `d`</span><br><span class="line">- 连接(link): `l`</span><br><span class="line">- 设备(device)</span><br><span class="line">- 块(block)设备: `b`</span><br><span class="line">- 字符(character)设备文件: `c`</span><br><span class="line">- 套接字(sockets): `s`</span><br><span class="line">- 管道(FIFO, pipe): `p`</span><br><span class="line"></span><br><span class="line">### 文件的默认权限与隐藏权限</span><br><span class="line"></span><br><span class="line">&gt; 180-181页例题</span><br><span class="line"></span><br><span class="line">默认权限：`umask`，在原权限基础上减去权限</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ umask #查看
-$ umask -S
-$ umask 002 #设置
-$ umask 022
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">隐藏属性：略（自学）</span><br><span class="line"></span><br><span class="line">&gt; 183页7.4.2</span><br><span class="line">&gt; 设置文件的隐藏属性：`chattr`</span><br><span class="line">&gt; 查看文件的隐藏属性：`lsattr`</span><br><span class="line"></span><br><span class="line">### 权限相关习题</span><br><span class="line"></span><br><span class="line">&gt; 194页情景模拟题</span><br><span class="line"></span><br><span class="line">## Linux文件系统</span><br><span class="line"></span><br><span class="line">### 磁盘与目录容量</span><br><span class="line"></span><br><span class="line">&gt; 210页8.2.1</span><br><span class="line"></span><br><span class="line">列出文件系统的整体磁盘使用量：`df`</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ df -h
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">评估文件系统的磁盘使用量：`du`</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ du
-$ du -a # 同时列出文件容量
-$ du -sm # s: 只列出总量 m: MB
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 连接文件：ln</span><br><span class="line"></span><br><span class="line">hard link(硬链接或实际连接)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ ln /etc/crontab .
-$ ll -i
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 无法做“目录”的链接</span><br><span class="line">- 删掉其中一个，另一个可用</span><br><span class="line"></span><br><span class="line">symbolic link(符号连接)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ ln -s /etc/crontab crontab2
-$ ll -i /etc/crontab ./crontab2
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 相当于Windows的快捷方式，删除源文件会不可用</span><br><span class="line"></span><br><span class="line">### 磁盘的分区、格式化、检验与挂载</span><br><span class="line"></span><br><span class="line">略（自学）</span><br><span class="line"></span><br><span class="line">## 压缩与打包</span><br><span class="line"></span><br><span class="line">### 单一文件压缩命令</span><br><span class="line"></span><br><span class="line">gzip, zcat</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ gzip file
-$ zcat file.gz
-$ gzip -d file.gz
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">bzip2, bzcat</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ bzip2 -z file
-$ bzcat file.bz2
-$ bzip2 -d file.bz2
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 打包命令：tar</span><br><span class="line"></span><br><span class="line">打包同时可以压缩，tar的参数：</span><br><span class="line"></span><br><span class="line">`-z`: gzip方式压缩/解压缩</span><br><span class="line">`-j`: bzip2方式压缩/解压缩</span><br><span class="line">`-c`: 新建打包文件</span><br><span class="line">`-x`: 解打包或解压缩</span><br><span class="line">`-v`: 显示过程</span><br><span class="line">`-f`: 跟要被处理的文件名</span><br><span class="line">`-p`: 保留原本权限与属性</span><br><span class="line"></span><br><span class="line">打包</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ tar -zcvf dir.tar.gz dir
-$ tar -jcvf dir.tar.bz2 dir
-$ tar -cvf dir.tar dir
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">解包</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ tar -zxvf dir.tar.gz
-$ tar -jxvf dir.tar.bz2
-$ tar -zxvf dir.tar.gz -C /tmp
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">备份</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-# tar -zpcvf etc.tar.gz /etc
-# tar -jpcvf etc.tar.bz2 /etc
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">查看</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ tar -ztvf dir.tar.gz
-$ tar -jtvf dir.tar.bz2
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## vim编辑器</span><br><span class="line"></span><br><span class="line">### 进入vim</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ vim 文件名
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 新建文档</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-$ vim 新文件名
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">不保存则不生成新文件</span><br><span class="line"></span><br><span class="line">### 进入插入模式</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-i, I, a, A, o, O
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">`i`光标位置插入</span><br><span class="line">`I`行首插入</span><br><span class="line">`o`当前行后插入新行</span><br><span class="line">`O`当前行前插入新行</span><br><span class="line">`a`光标位置后插入</span><br><span class="line">`A`行末尾插入</span><br><span class="line"></span><br><span class="line">### 行号</span><br><span class="line"></span><br><span class="line">显示行号</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-:set nu
-:set number
-:set nonu
-:set nonumber
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">不显示行号</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-:set nu
-:set number
-:set nonu
-:set nonumber
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 跳转</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-:数字
-数字G
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">最后一行`G`</span><br><span class="line"></span><br><span class="line">### 删除行、剪切</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-dd
-数字dd
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 复制行</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-yy
-数字yy
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 粘贴</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-p
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 块选择</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-Ctrl+v
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 预设行号</span><br><span class="line"></span><br><span class="line">编辑`~`下的.vimrc文件，写入</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-set nu
-</code></pre>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c</span><br></pre></td></tr></table></figure>
+
+<p>表示串口设备</p>
+</li>
+<li><p>3组权限</p>
+</li>
+<li><p>第一组：文件所有者的权限</p>
+</li>
+<li><p>第二组：同用户组的权限</p>
+</li>
+<li><p>第三组：其他非本用户组的权限</p>
 </li>
 </ul>
+<blockquote>
+<p>142-144页例题练习</p>
+</blockquote>
+<h3 id="改变文件属性与权限"><a href="#改变文件属性与权限" class="headerlink" title="改变文件属性与权限"></a>改变文件属性与权限</h3><p>改变所属用户组：chgrp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># chgrp root test.txt</span><br></pre></td></tr></table></figure>
 
+<p>改变文件所有者：chown</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># chown root:root dir</span><br></pre></td></tr></table></figure>
+
+<p>chown -R 表示递归</p>
+<p>改变文件的权限：chmod</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 777 test.txt</span><br><span class="line">$ chmod 755 test.txt</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>r</code>:4</li>
+<li><code>w</code>:2</li>
+<li><code>x</code>:1</li>
+</ul>
+<blockquote>
+<p>146页例题</p>
+</blockquote>
+<p>符号类型改变权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ chmod u/g/o/a +/-/= r/w/x 文件或目录</span><br><span class="line">$ chmod u=rwx,go=rx test.txt</span><br><span class="line">$ chmod a-x test.txt</span><br><span class="line">$ chmod a+w test.txt</span><br></pre></td></tr></table></figure>
+
+<p>不要随便用chmod的递归</p>
+<h3 id="目录与文件的权限意义"><a href="#目录与文件的权限意义" class="headerlink" title="目录与文件的权限意义"></a>目录与文件的权限意义</h3><p>权限对文件的重要性</p>
+<ul>
+<li><code>r</code>: 可读取</li>
+<li><code>w</code>: 可编辑、新增、修改，不包括删除</li>
+<li><code>x</code>: 可执行</li>
+</ul>
+<p>权限对目录的重要性</p>
+<ul>
+<li><code>r</code>: 可读取（可以列出）</li>
+<li><code>w</code>: 可写入</li>
+<li>新建新的文件与目录</li>
+<li>删除已经存在的文件与目录</li>
+<li>重命名</li>
+<li>转移该目录内的文件、目录位置</li>
+<li><code>x</code>: 可进入</li>
+</ul>
+<blockquote>
+<p>148-149页例题</p>
+</blockquote>
+<h3 id="Linux文件种类"><a href="#Linux文件种类" class="headerlink" title="Linux文件种类"></a>Linux文件种类</h3><ul>
+<li>普通文件(regular file): <code>r</code></li>
+<li>目录(directory): <code>d</code></li>
+<li>连接(link): <code>l</code></li>
+<li>设备(device)</li>
+<li>块(block)设备: <code>b</code></li>
+<li>字符(character)设备文件: <code>c</code></li>
+<li>套接字(sockets): <code>s</code></li>
+<li>管道(FIFO, pipe): <code>p</code></li>
+</ul>
+<h3 id="文件的默认权限与隐藏权限"><a href="#文件的默认权限与隐藏权限" class="headerlink" title="文件的默认权限与隐藏权限"></a>文件的默认权限与隐藏权限</h3><blockquote>
+<p>180-181页例题</p>
+</blockquote>
+<p>默认权限：<code>umask</code>，在原权限基础上减去权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ umask #查看</span><br><span class="line">$ umask -S</span><br><span class="line">$ umask 002 #设置</span><br><span class="line">$ umask 022</span><br></pre></td></tr></table></figure>
+
+<p>隐藏属性：略（自学）</p>
+<blockquote>
+<p>183页7.4.2<br>设置文件的隐藏属性：<code>chattr</code><br>查看文件的隐藏属性：<code>lsattr</code></p>
+</blockquote>
+<h3 id="权限相关习题"><a href="#权限相关习题" class="headerlink" title="权限相关习题"></a>权限相关习题</h3><blockquote>
+<p>194页情景模拟题</p>
+</blockquote>
+<h2 id="Linux文件系统"><a href="#Linux文件系统" class="headerlink" title="Linux文件系统"></a>Linux文件系统</h2><h3 id="磁盘与目录容量"><a href="#磁盘与目录容量" class="headerlink" title="磁盘与目录容量"></a>磁盘与目录容量</h3><blockquote>
+<p>210页8.2.1</p>
+</blockquote>
+<p>列出文件系统的整体磁盘使用量：<code>df</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ df -h</span><br></pre></td></tr></table></figure>
+
+<p>评估文件系统的磁盘使用量：<code>du</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ du</span><br><span class="line">$ du -a # 同时列出文件容量</span><br><span class="line">$ du -sm # s: 只列出总量 m: MB</span><br></pre></td></tr></table></figure>
+
+<h3 id="连接文件：ln"><a href="#连接文件：ln" class="headerlink" title="连接文件：ln"></a>连接文件：ln</h3><p>hard link(硬链接或实际连接)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ln /etc/crontab .</span><br><span class="line">$ ll -i</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>无法做“目录”的链接</li>
+<li>删掉其中一个，另一个可用</li>
+</ul>
+<p>symbolic link(符号连接)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s /etc/crontab crontab2</span><br><span class="line">$ ll -i /etc/crontab ./crontab2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>相当于Windows的快捷方式，删除源文件会不可用</li>
+</ul>
+<h3 id="磁盘的分区、格式化、检验与挂载"><a href="#磁盘的分区、格式化、检验与挂载" class="headerlink" title="磁盘的分区、格式化、检验与挂载"></a>磁盘的分区、格式化、检验与挂载</h3><p>略（自学）</p>
+<h2 id="压缩与打包"><a href="#压缩与打包" class="headerlink" title="压缩与打包"></a>压缩与打包</h2><h3 id="单一文件压缩命令"><a href="#单一文件压缩命令" class="headerlink" title="单一文件压缩命令"></a>单一文件压缩命令</h3><p>gzip, zcat</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ gzip file</span><br><span class="line">$ zcat file.gz</span><br><span class="line">$ gzip -d file.gz</span><br></pre></td></tr></table></figure>
+
+<p>bzip2, bzcat</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ bzip2 -z file</span><br><span class="line">$ bzcat file.bz2</span><br><span class="line">$ bzip2 -d file.bz2</span><br></pre></td></tr></table></figure>
+
+<h3 id="打包命令：tar"><a href="#打包命令：tar" class="headerlink" title="打包命令：tar"></a>打包命令：tar</h3><p>打包同时可以压缩，tar的参数：</p>
+<p><code>-z</code>: gzip方式压缩&#x2F;解压缩<br><code>-j</code>: bzip2方式压缩&#x2F;解压缩<br><code>-c</code>: 新建打包文件<br><code>-x</code>: 解打包或解压缩<br><code>-v</code>: 显示过程<br><code>-f</code>: 跟要被处理的文件名<br><code>-p</code>: 保留原本权限与属性</p>
+<p>打包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ tar -zcvf dir.tar.gz dir</span><br><span class="line">$ tar -jcvf dir.tar.bz2 dir</span><br><span class="line">$ tar -cvf dir.tar dir</span><br></pre></td></tr></table></figure>
+
+<p>解包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ tar -zxvf dir.tar.gz</span><br><span class="line">$ tar -jxvf dir.tar.bz2</span><br><span class="line">$ tar -zxvf dir.tar.gz -C /tmp</span><br></pre></td></tr></table></figure>
+
+<p>备份</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># tar -zpcvf etc.tar.gz /etc</span><br><span class="line"># tar -jpcvf etc.tar.bz2 /etc</span><br></pre></td></tr></table></figure>
+
+<p>查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ tar -ztvf dir.tar.gz</span><br><span class="line">$ tar -jtvf dir.tar.bz2</span><br></pre></td></tr></table></figure>
+
+<h2 id="vim编辑器"><a href="#vim编辑器" class="headerlink" title="vim编辑器"></a>vim编辑器</h2><h3 id="进入vim"><a href="#进入vim" class="headerlink" title="进入vim"></a>进入vim</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim 文件名</span><br></pre></td></tr></table></figure>
+
+<h3 id="新建文档"><a href="#新建文档" class="headerlink" title="新建文档"></a>新建文档</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim 新文件名</span><br></pre></td></tr></table></figure>
+
+<p>不保存则不生成新文件</p>
+<h3 id="进入插入模式"><a href="#进入插入模式" class="headerlink" title="进入插入模式"></a>进入插入模式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i, I, a, A, o, O</span><br></pre></td></tr></table></figure>
+
+<p><code>i</code>光标位置插入<br><code>I</code>行首插入<br><code>o</code>当前行后插入新行<br><code>O</code>当前行前插入新行<br><code>a</code>光标位置后插入<br><code>A</code>行末尾插入</p>
+<h3 id="行号"><a href="#行号" class="headerlink" title="行号"></a>行号</h3><p>显示行号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:set nu</span><br><span class="line">:set number</span><br><span class="line">:set nonu</span><br><span class="line">:set nonumber</span><br></pre></td></tr></table></figure>
+
+<p>不显示行号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:set nu</span><br><span class="line">:set number</span><br><span class="line">:set nonu</span><br><span class="line">:set nonumber</span><br></pre></td></tr></table></figure>
+
+<h3 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:数字</span><br><span class="line">数字G</span><br></pre></td></tr></table></figure>
+
+<p>最后一行<code>G</code></p>
+<h3 id="删除行、剪切"><a href="#删除行、剪切" class="headerlink" title="删除行、剪切"></a>删除行、剪切</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dd</span><br><span class="line">数字dd</span><br></pre></td></tr></table></figure>
+
+<h3 id="复制行"><a href="#复制行" class="headerlink" title="复制行"></a>复制行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yy</span><br><span class="line">数字yy</span><br></pre></td></tr></table></figure>
+
+<h3 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p</span><br></pre></td></tr></table></figure>
+
+<h3 id="块选择"><a href="#块选择" class="headerlink" title="块选择"></a>块选择</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+v</span><br></pre></td></tr></table></figure>
+
+<h3 id="预设行号"><a href="#预设行号" class="headerlink" title="预设行号"></a>预设行号</h3><p>编辑<code>~</code>下的.vimrc文件，写入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set nu</span><br></pre></td></tr></table></figure>
       
     </div>
 

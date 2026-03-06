@@ -69,6 +69,9 @@
 
 
 
+<!-- Crisp -->
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="40c25842-b687-4733-ba07-02203d88e2f0";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+<!-- Crisp -->
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -287,7 +290,7 @@
 <li>如果它包含在数组中，则返回搜索键的索引；</li>
 <li>否则返回 (-(插入点) - 1) 。</li>
 <li>插入点被定义为将键插入数组的那一点：即第一个大于此键的元素索引，如果数组中的所有元素都小于指定的键，则为<code>a.length</code>。</li>
-<li>注意，这保证了当且仅当此键被找到时，返回的值将 &gt;= 0。</li>
+<li>注意，这保证了当且仅当此键被找到时，返回的值将 &gt;&#x3D; 0。</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class SearchArray</span><br><span class="line">&#123;</span><br><span class="line">public static void main(String[] args)</span><br><span class="line">&#123;</span><br><span class="line">int[] array = &#123;2, 4, 6, 1, 3, 5, 9, 11, -5, 30, 100&#125;;</span><br><span class="line">Arrays.sort(array);</span><br><span class="line">int index = Arrays.binarySearch(array, 11);</span><br><span class="line">System.out.println(Arrays.toString(array));</span><br><span class="line">System.out.println(&quot;The index of 11 is &quot;+index);</span><br><span class="line">index = Arrays.binarySearch(array, 10);</span><br><span class="line">System.out.println(&quot;The index of 10 is &quot;+index);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -301,17 +304,17 @@
 <li>判断字符串是否相等：<code>equal()</code></li>
 </ol>
 <p>有的登陆系统密码忽略大小写。此时java语言中有个方法就是equalsIgnoreCase(String str)，这个方法忽略字符串大小写。</p>
-<h3 id="常见疑难-equals-和-的区别"><a href="#常见疑难-equals-和-的区别" class="headerlink" title="常见疑难: equals 和 == 的区别"></a>常见疑难: equals 和 == 的区别</h3><p>java中的数据类型，可分为两类：</p>
+<h3 id="常见疑难-equals-和-的区别"><a href="#常见疑难-equals-和-的区别" class="headerlink" title="常见疑难: equals 和 &#x3D;&#x3D; 的区别"></a>常见疑难: equals 和 &#x3D;&#x3D; 的区别</h3><p>java中的数据类型，可分为两类：</p>
 <ol>
 <li>基本数据类型，也称原始数据类型。</li>
 </ol>
 <p>byte,short,char,int,long,float,double,boolean</p>
-<p>他们之间的比较，应用双等号（==）,比较的是他们的值。</p>
+<p>他们之间的比较，应用双等号（&#x3D;&#x3D;）,比较的是他们的值。</p>
 <ol>
 <li>复合数据类型(类)</li>
 </ol>
-<p>当他们用（==）进行比较的时候，比较的是他们在内存中的存放地址，所以，除非是同一个new出来的对象，他们的比较后的结果为true，否则比较后结果为false。 JAVA当中所有的类都是继承于Object这个基类的，在Object中的基类中定义了一个equals的方法，这个方法的初始行为是比较对象的内存地址，但在一些类库当中这个方法被覆盖掉了，如String,Integer,Date在这些类当中equals有其自身的实现，而不再是比较类在堆内存中的存放地址了。</p>
-<p>对于复合数据类型之间进行equals比较，在没有覆写equals方法的情况下，他们之间的比较还是基于他们在内存中的存放位置的地址值的，因为Object的equals方法也是用双等号（==）进行比较的，所以比较后的结果跟双等号（==）的结果相同。</p>
+<p>当他们用（&#x3D;&#x3D;）进行比较的时候，比较的是他们在内存中的存放地址，所以，除非是同一个new出来的对象，他们的比较后的结果为true，否则比较后结果为false。 JAVA当中所有的类都是继承于Object这个基类的，在Object中的基类中定义了一个equals的方法，这个方法的初始行为是比较对象的内存地址，但在一些类库当中这个方法被覆盖掉了，如String,Integer,Date在这些类当中equals有其自身的实现，而不再是比较类在堆内存中的存放地址了。</p>
+<p>对于复合数据类型之间进行equals比较，在没有覆写equals方法的情况下，他们之间的比较还是基于他们在内存中的存放位置的地址值的，因为Object的equals方法也是用双等号（&#x3D;&#x3D;）进行比较的，所以比较后的结果跟双等号（&#x3D;&#x3D;）的结果相同。</p>
 <h2 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h2><ol>
 <li>追加：<code>append()</code></li>
 <li>指定位置插入字符串：<code>insert()</code></li>
@@ -478,7 +481,7 @@
 <p>在上面的例子中，如果需要定义一个功能类似于getData()的方法，但对类型实参又有进一步的限制：只能是Number类及其子类。此时，需要用到类型通配符上限。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class GenericTest &#123;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">Box&lt;string&gt; name = new Box&lt;string&gt;(&quot;corn&quot;);</span><br><span class="line">Box&lt;integer&gt; age = new Box&lt;integer&gt;(712);</span><br><span class="line">Box&lt;number&gt; number = new Box&lt;number&gt;(314);&lt;/number&gt;&lt;/number&gt;&lt;/integer&gt;&lt;/integer&gt;&lt;/string&gt;&lt;/string&gt;</span><br><span class="line"></span><br><span class="line">getData(name);</span><br><span class="line">getData(age);</span><br><span class="line">getData(number);</span><br><span class="line"></span><br><span class="line">//getUpperNumberData(name); // 1</span><br><span class="line">getUpperNumberData(age); // 2</span><br><span class="line">getUpperNumberData(number); // 3</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void getData(Box&lt;?&gt; data) &#123;</span><br><span class="line">System.out.println(&quot;data :&quot; + data.getData());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void getUpperNumberData(Box&lt;? extends Number&gt; data)&#123;</span><br><span class="line">System.out.println(&quot;data :&quot; + data.getData());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>此时，显然，在代码//1处调用将出现错误提示，而//2 //3处调用正常。</p>
+<p>此时，显然，在代码&#x2F;&#x2F;1处调用将出现错误提示，而&#x2F;&#x2F;2 &#x2F;&#x2F;3处调用正常。</p>
 <p>类型通配符上限通过形如Box&lt;? extends Number&gt;形式定义，相对应的，类型通配符下限为Box&lt;? super Number&gt;形式，其含义与类型通配符上限正好相反，在此不作过多阐述了。</p>
 <h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>程序是计算机指令集合，它以文件形式存储在磁盘上</p>
 <p>进程就是一个执行中的程序，每一个进程都有一个独立的内存空间和资源系统。</p>
@@ -519,9 +522,9 @@
 <p>public final void setPriority(int newPriority);</p>
 <p>其中，<code>newPriority</code>是一个1~10的正整数，数值越大，优先级别越高。系统定义了一些常用的数值如下：</p>
 <ul>
-<li>public final static int MIN_PRIORITY = 1 ：表示最低优先级</li>
-<li>public final static int MAX_PRIORITY = 10 ：表示最高优先级</li>
-<li>public final static int NORM_PRIORITY = 5 ：表示默认优先级</li>
+<li>public final static int MIN_PRIORITY &#x3D; 1 ：表示最低优先级</li>
+<li>public final static int MAX_PRIORITY &#x3D; 10 ：表示最高优先级</li>
+<li>public final static int NORM_PRIORITY &#x3D; 5 ：表示默认优先级</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package com.threadtest;</span><br><span class="line"></span><br><span class="line">import org.omg.CORBA.PUBLIC_MEMBER;</span><br><span class="line"></span><br><span class="line">class Threadtest_3 extends Thread &#123;</span><br><span class="line">public void run() &#123;</span><br><span class="line">for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">System.out.println(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">class ThreadTest_4 extends Thread&#123;</span><br><span class="line">public void run() &#123;</span><br><span class="line">for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">System.out.println(&quot;hello&quot;+ i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">public class ThreadTest2 &#123;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">Threadtest_3 threadtest_3 =new Threadtest_3();</span><br><span class="line">ThreadTest_4 threadTest_4 = new ThreadTest_4();</span><br><span class="line"></span><br><span class="line">Thread thread3 = new Thread(threadtest_3);</span><br><span class="line">Thread thread4 = new Thread(threadTest_4);</span><br><span class="line"></span><br><span class="line">thread3.setPriority(3);</span><br><span class="line">thread4.setPriority(Thread.MIN_PRIORITY);</span><br><span class="line"></span><br><span class="line">thread3.start();</span><br><span class="line">thread4.start();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -637,8 +640,8 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"># 编程</a>
               <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"># 编程</a>
           </div>
 
         

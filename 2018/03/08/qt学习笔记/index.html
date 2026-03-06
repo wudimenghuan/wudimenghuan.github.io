@@ -70,6 +70,9 @@
 
 
 
+<!-- Crisp -->
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="40c25842-b687-4733-ba07-02203d88e2f0";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+<!-- Crisp -->
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -235,11 +238,11 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="QT学习"><a href="#QT学习" class="headerlink" title="QT学习"></a>QT学习</h1><h2 id="什么是QT"><a href="#什么是QT" class="headerlink" title="什么是QT"></a>什么是QT</h2><p>Qt是一个1991年由奇趣科技开发的跨平台C++图形用户界面应用程序开发框架。它既可以开发GUI程序，也可用于开发非GUI程序，比如控制台工具和服务器。Qt是面向对象的框架，使用特殊的代码生成扩展（称为元对象编译器(Meta Object Compiler, moc)）以及一些宏，易于扩展，允许组件编程。2008年，奇趣科技被诺基亚公司收购，QT也因此成为诺基亚旗下的编程语言工具。2012年，Qt被Digia收购。2014年4月，跨平台集成开发环境Qt Creator 3.1.0正式发布，实现了对于iOS的完全支持，新增WinRT、Beautifier等插件，废弃了无Python接口的GDB调试支持，集成了基于Clang的C/C++代码模块，并对Android支持做出了调整，至此实现了全面支持iOS、Android、WP。</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="QT学习"><a href="#QT学习" class="headerlink" title="QT学习"></a>QT学习</h1><h2 id="什么是QT"><a href="#什么是QT" class="headerlink" title="什么是QT"></a>什么是QT</h2><p>Qt是一个1991年由奇趣科技开发的跨平台C++图形用户界面应用程序开发框架。它既可以开发GUI程序，也可用于开发非GUI程序，比如控制台工具和服务器。Qt是面向对象的框架，使用特殊的代码生成扩展（称为元对象编译器(Meta Object Compiler, moc)）以及一些宏，易于扩展，允许组件编程。2008年，奇趣科技被诺基亚公司收购，QT也因此成为诺基亚旗下的编程语言工具。2012年，Qt被Digia收购。2014年4月，跨平台集成开发环境Qt Creator 3.1.0正式发布，实现了对于iOS的完全支持，新增WinRT、Beautifier等插件，废弃了无Python接口的GDB调试支持，集成了基于Clang的C&#x2F;C++代码模块，并对Android支持做出了调整，至此实现了全面支持iOS、Android、WP。</p>
 <blockquote>
 <p>学习视频教程网站<a target="_blank" rel="noopener" href="http://my.tv.sohu.com/pl/5176735/">http://my.tv.sohu.com/pl/5176735/</a></p>
 </blockquote>
-<h2 id="QT-安装步骤-环境搭建"><a href="#QT-安装步骤-环境搭建" class="headerlink" title="QT/安装步骤/环境搭建"></a>QT/安装步骤/环境搭建</h2><p>下面介绍Windows版QT开发环境Qt Creater + MinGW + Qt libraries配置方法</p>
+<h2 id="QT-安装步骤-环境搭建"><a href="#QT-安装步骤-环境搭建" class="headerlink" title="QT&#x2F;安装步骤&#x2F;环境搭建"></a>QT&#x2F;安装步骤&#x2F;环境搭建</h2><p>下面介绍Windows版QT开发环境Qt Creater + MinGW + Qt libraries配置方法</p>
 <h3 id="下载安装MinGW"><a href="#下载安装MinGW" class="headerlink" title="下载安装MinGW"></a>下载安装MinGW</h3><p>从MinGW网站下载，默认安装到C盘根目录下：C:\MinGW，安装时选择C和C++ compiler，默认只选中了C编译器。</p>
 <h3 id="下载安装配置QT-libraries"><a href="#下载安装配置QT-libraries" class="headerlink" title="下载安装配置QT libraries"></a>下载安装配置QT libraries</h3><p><a target="_blank" rel="noopener" href="http://qt-project.org/downloads">http://qt-project.org/downloads</a></p>
 <p>默认安装路径为C:\Qt\4.8.3，安装时需要指定MinGW的安装路径为C:\MinGW。</p>
@@ -248,7 +251,7 @@
 <p>还要新建系统环境变量QTDIR，值为C:\Qt\4.8.3</p>
 <h3 id="下载安装配置QT-Creater"><a href="#下载安装配置QT-Creater" class="headerlink" title="下载安装配置QT Creater"></a>下载安装配置QT Creater</h3><p>默认安装到C:\Qt\qtcreator-2.6.0目录下。</p>
 <p>需要把C:\Qt\qtcreator-2.6.0\bin目录添加到系统变量的Path路径中。如果不设置系统环境变量，则创建工程时kit不能设置成功，并且可创建的工程类型也会受到限制。</p>
-<p>设置QT Creator构建和运行配置项：打开QT Creator，选择菜单“工具/选项”，选择左边的”构建和运行”，再选择“Qt版本”选项卡，点击“添加”，qmake路径：C:\Qt\4.8.3\bin\qmake.exe。</p>
+<p>设置QT Creator构建和运行配置项：打开QT Creator，选择菜单“工具&#x2F;选项”，选择左边的”构建和运行”，再选择“Qt版本”选项卡，点击“添加”，qmake路径：C:\Qt\4.8.3\bin\qmake.exe。</p>
 <p>还需要设置Compilers选项卡中的“手动设置”项的编译器，Name设置为MinGW，编译器路径设置为C:\MinGW\bin\mingw32-g++.exe。</p>
 <h3 id="hello-word程序"><a href="#hello-word程序" class="headerlink" title="hello word程序"></a>hello word程序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;qcoreapplication&gt;</span><br><span class="line">#include&lt;qdebug&gt;</span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">QCoreApplication a(argc, argv);&lt;/qdebug&gt;&lt;/qcoreapplication&gt;</span><br><span class="line"></span><br><span class="line">qDebug()&lt;&lt;&quot;hello world&quot;;</span><br><span class="line">return a.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
