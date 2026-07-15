@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.stx8.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"vs2015","dark":"vs2015"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="MATLAB 画 3D 图在做仿真和数据分析时，经常需要把二维矩阵可视化为三维曲面图。下面是一段完整的 MATLAB 命令，一行即可把矩阵 misimS1 画成三维曲面并保存为 PNG。 12345surf(misimS1); shading interp;set(gca,&#x27;ydir&#x27;,&#x27;reverse&#x27;);colorbar();set(gcf,&#x27;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MATLAB 画 3D 图">
+<meta property="og:url" content="https://www.stx8.com/2015/08/05/matlab-3d-plot/index.html">
+<meta property="og:site_name" content="时空主站">
+<meta property="og:description" content="MATLAB 画 3D 图在做仿真和数据分析时，经常需要把二维矩阵可视化为三维曲面图。下面是一段完整的 MATLAB 命令，一行即可把矩阵 misimS1 画成三维曲面并保存为 PNG。 12345surf(misimS1); shading interp;set(gca,&#x27;ydir&#x27;,&#x27;reverse&#x27;);colorbar();set(gcf,&#x27;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-08-04T17:55:00.000Z">
+<meta property="article:modified_time" content="2026-07-15T07:37:00.000Z">
+<meta property="article:author" content="时空">
+<meta property="article:tag" content="Matlab">
+<meta property="article:tag" content="编程">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.stx8.com/2015/08/05/matlab-3d-plot/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.stx8.com/2015/08/05/matlab-3d-plot/","path":"2015/08/05/matlab-3d-plot/","title":"MATLAB 画 3D 图"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MATLAB 画 3D 图 | 时空主站</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90761248-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-90761248-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<!-- Crisp -->
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="40c25842-b687-4733-ba07-02203d88e2f0";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+<!-- Crisp -->
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">时空主站</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">嗨，我是时空，一名来自中国的开发者。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-我的软件"><a href="/tags/%E6%88%91%E7%9A%84%E8%BD%AF%E4%BB%B6/" rel="section"><i class="fa fa-desktop fa-fw"></i>我的软件</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-开源博客"><a href="https://my.oschina.net/wudimenghuan" rel="section" target="_blank"><i class="fa fa-code fa-fw"></i>开源博客</a></li><li class="menu-item menu-item-pgp"><a href="/pgp/" rel="section"><i class="fa fa-key fa-fw"></i>PGP</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MATLAB-%E7%94%BB-3D-%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">MATLAB 画 3D 图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%90%E8%A1%8C%E8%AF%B4%E6%98%8E"><span class="nav-number">1.1.</span> <span class="nav-text">逐行说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#surf-misimS1"><span class="nav-number">1.1.1.</span> <span class="nav-text">surf(misimS1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shading-interp"><span class="nav-number">1.1.2.</span> <span class="nav-text">shading interp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set-gca-%E2%80%99ydir%E2%80%99-%E2%80%99reverse%E2%80%99"><span class="nav-number">1.1.3.</span> <span class="nav-text">set(gca,’ydir’,’reverse’)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#colorbar"><span class="nav-number">1.1.4.</span> <span class="nav-text">colorbar()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set-gcf-%E2%80%99Position%E2%80%99-100-300-800-600"><span class="nav-number">1.1.5.</span> <span class="nav-text">set(gcf,’Position’,[100,300,800,600])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#saveas-gcf-%E2%80%99misim-0-1-png%E2%80%99"><span class="nav-number">1.1.6.</span> <span class="nav-text">saveas(gcf,’misim 0.1.png’)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%88%E6%9E%9C%E7%A4%BA%E6%84%8F"><span class="nav-number">1.2.</span> <span class="nav-text">效果示意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8-3D-%E7%BB%98%E5%9B%BE%E5%87%BD%E6%95%B0%E5%AF%B9%E6%AF%94"><span class="nav-number">1.3.</span> <span class="nav-text">常用 3D 绘图函数对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">1.4.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">时空</p>
+  <div class="site-description" itemprop="description">时空主站</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">89</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.stx8.com/2015/08/05/matlab-3d-plot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="时空">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时空主站">
+      <meta itemprop="description" content="时空主站">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MATLAB 画 3D 图 | 时空主站">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MATLAB 画 3D 图
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2015-08-05 01:55:00" itemprop="dateCreated datePublished" datetime="2015-08-05T01:55:00+08:00">2015-08-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-15 15:37:00" itemprop="dateModified" datetime="2026-07-15T15:37:00+08:00">2026-07-15</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2015/08/05/matlab-3d-plot/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/08/05/matlab-3d-plot/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="MATLAB-画-3D-图"><a href="#MATLAB-画-3D-图" class="headerlink" title="MATLAB 画 3D 图"></a>MATLAB 画 3D 图</h1><p>在做仿真和数据分析时，经常需要把二维矩阵可视化为三维曲面图。下面是一段完整的 MATLAB 命令，一行即可把矩阵 <code>misimS1</code> 画成三维曲面并保存为 PNG。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">surf(misimS1); shading interp;</span><br><span class="line">set(gca,<span class="string">&#x27;ydir&#x27;</span>,<span class="string">&#x27;reverse&#x27;</span>);</span><br><span class="line">colorbar();</span><br><span class="line">set(gcf,<span class="string">&#x27;Position&#x27;</span>,[<span class="number">100</span>,<span class="number">300</span>,<span class="number">800</span>,<span class="number">600</span>]);</span><br><span class="line">saveas(gcf,<span class="string">&#x27;misim 0.1.png&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="逐行说明"><a href="#逐行说明" class="headerlink" title="逐行说明"></a>逐行说明</h2><h3 id="surf-misimS1"><a href="#surf-misimS1" class="headerlink" title="surf(misimS1)"></a>surf(misimS1)</h3><p><code>surf</code> 是 MATLAB 绘制三维曲面的核心函数。传入一个二维矩阵，矩阵的每个元素值就是曲面在该位置的高度（Z 轴）。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">surf(X, Y, Z)   <span class="comment">% X、Y 为网格坐标，Z 为高度矩阵</span></span><br><span class="line">surf(Z)          <span class="comment">% 只传 Z 时，X、Y 自动取行号和列号</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="shading-interp"><a href="#shading-interp" class="headerlink" title="shading interp"></a>shading interp</h3><p>设置曲面着色方式：</p>
+<ul>
+<li><code>faceted</code>（默认）：带网格线的平面着色</li>
+<li><code>flat</code>：纯色面片，无插值</li>
+<li><code>interp</code>：颜色平滑插值，曲面看起来最细腻</li>
+</ul>
+<h3 id="set-gca-’ydir’-’reverse’"><a href="#set-gca-’ydir’-’reverse’" class="headerlink" title="set(gca,’ydir’,’reverse’)"></a>set(gca,’ydir’,’reverse’)</h3><p>将 Y 轴方向翻转（从大到小递增）。在图像处理场景中，矩阵的第 1 行通常对应图像顶部，而 MATLAB 默认 Y 轴向上递增，翻转后方向与图像坐标系一致。</p>
+<h3 id="colorbar"><a href="#colorbar" class="headerlink" title="colorbar()"></a>colorbar()</h3><p>在曲面旁边添加颜色条，方便读出每个颜色对应的数值范围。</p>
+<h3 id="set-gcf-’Position’-100-300-800-600"><a href="#set-gcf-’Position’-100-300-800-600" class="headerlink" title="set(gcf,’Position’,[100,300,800,600])"></a>set(gcf,’Position’,[100,300,800,600])</h3><p>设置 Figure 窗口大小和位置：<code>[左, 下, 宽, 高]</code>，单位为像素。这里设为宽 800 × 高 600，导出的图片分辨率也比较合适。</p>
+<h3 id="saveas-gcf-’misim-0-1-png’"><a href="#saveas-gcf-’misim-0-1-png’" class="headerlink" title="saveas(gcf,’misim 0.1.png’)"></a>saveas(gcf,’misim 0.1.png’)</h3><p>把当前 Figure 保存为 PNG 文件。也可以用 <code>print</code> 获得更高分辨率：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(gcf,<span class="string">&#x27;misim 0.1.png&#x27;</span>,<span class="string">&#x27;-dpng&#x27;</span>,<span class="string">&#x27;-r300&#x27;</span>);   <span class="comment">% 300 dpi</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="效果示意"><a href="#效果示意" class="headerlink" title="效果示意"></a>效果示意</h2><p>运行上面的代码，可以得到类似这样的效果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   Z</span><br><span class="line">   ↑</span><br><span class="line">   │    ╭──╮</span><br><span class="line">   │   ╱    ╲</span><br><span class="line">   │  ╱      ╲</span><br><span class="line">   │ ╱        ╲</span><br><span class="line">   └──────────→ X</span><br><span class="line">  ╱</span><br><span class="line"> ╱</span><br><span class="line">Y</span><br></pre></td></tr></table></figure>
+
+<p>矩阵中的数值越高，曲面颜色越暖（红&#x2F;黄），数值越低则越冷（蓝&#x2F;绿），具体取决于当前 colormap。</p>
+<h2 id="常用-3D-绘图函数对比"><a href="#常用-3D-绘图函数对比" class="headerlink" title="常用 3D 绘图函数对比"></a>常用 3D 绘图函数对比</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>surf</code></td>
+<td>彩色曲面，带网格</td>
+</tr>
+<tr>
+<td><code>mesh</code></td>
+<td>线框网格，透明</td>
+</tr>
+<tr>
+<td><code>contourf</code></td>
+<td>等高线填充图（2D 投影）</td>
+</tr>
+<tr>
+<td><code>surfc</code></td>
+<td>曲面 + 底部等高线</td>
+</tr>
+<tr>
+<td><code>surfl</code></td>
+<td>带光照效果的曲面</td>
+</tr>
+<tr>
+<td><code>waterfall</code></td>
+<td>单方向瀑布线框</td>
+</tr>
+</tbody></table>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>MATLAB 画 3D 图的关键步骤：</p>
+<ol>
+<li>准备好矩阵数据（仿真结果、图像矩阵等）</li>
+<li>用 <code>surf</code> &#x2F; <code>mesh</code> 等函数绘图</li>
+<li>用 <code>shading</code>、<code>colormap</code>、<code>colorbar</code> 调整观感</li>
+<li>用 <code>set</code> 调整坐标轴方向和窗口尺寸</li>
+<li>用 <code>saveas</code> 或 <code>print</code> 导出图片</li>
+</ol>
+<p>一行命令全部串起来，既能在命令窗口直接运行，也可以写进脚本批量处理。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="时空 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="时空 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"># 编程</a>
+              <a href="/tags/Matlab/" rel="tag"># Matlab</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2015/07/30/%E4%B8%AD%E5%9B%BD%E5%A5%B3%E5%AD%A9%E4%BA%B2%E5%8E%86%E7%BE%8E%E5%9B%BD%E6%95%99%E8%82%B2%EF%BC%9A%E7%BE%8E%E5%9B%BD%E9%AB%98%E4%B8%AD%E7%9A%84%E8%8B%B1%E8%AF%AD%E8%AF%BE%E6%80%8E%E4%B9%88%E4%B8%8A/" rel="prev" title="中国女孩亲历美国教育：美国高中的英语课怎么上？">
+                  <i class="fa fa-angle-left"></i> 中国女孩亲历美国教育：美国高中的英语课怎么上？
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2015/08/05/mysql-initialize-root-password/" rel="next" title="Mysql初始化root密码和允许远程访问">
+                  Mysql初始化root密码和允许远程访问 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2012 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">时空</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"stx8","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js" defer></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
