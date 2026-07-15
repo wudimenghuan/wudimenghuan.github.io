@@ -208,13 +208,15 @@
 <p>备用 · 直接拉 ASCII armored 公钥（绕过 dirmngr&#x2F;HKPS 协议）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fL https://keys.openpgp.org/vks/v1/by-fingerprint/FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569 | gpg --import</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fL https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0xFFFFA487A0E51D2E6F0C4E685968BC2CEE74E569 | gpg --import</span><br></pre></td></tr></table></figure>
+
 <p>或网页搜索：<a target="_blank" rel="noopener" href="https://keys.openpgp.org/search?q=me@stx8.com">https://keys.openpgp.org/search?q=me%40stx8.com</a></p>
 <h3 id="3-Mailvelope（浏览器插件）"><a href="#3-Mailvelope（浏览器插件）" class="headerlink" title="3. Mailvelope（浏览器插件）"></a>3. Mailvelope（浏览器插件）</h3><p>安装 <a target="_blank" rel="noopener" href="https://www.mailvelope.com/">Mailvelope</a> → 「Key Management」→「Search」→ 填入指纹 <code>FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569</code>。</p>
 <p><strong>无论用哪种来源，导入后必须核对指纹（防 MITM）：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gpg --fingerprint FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569</span><br><span class="line"><span class="comment"># 期望：FFFA A487 A0E5 1D2E 6F0C  4E68 5968 BC2C EE74 E569</span></span><br></pre></td></tr></table></figure>
 
 <p>其他客户端（Kleopatra &#x2F; GPG Suite &#x2F; Thunderbird &#x2F; OpenKeychain 等）同理，导入后做一次指纹核对即可。</p>
-<h3 id="公钥信息-·-me-stx8-com"><a href="#公钥信息-·-me-stx8-com" class="headerlink" title="公钥信息 · me@stx8.com"></a>公钥信息 · <a href="mailto:&#109;&#x65;&#x40;&#115;&#x74;&#120;&#x38;&#x2e;&#x63;&#x6f;&#109;">me@stx8.com</a></h3><ul>
+<h3 id="公钥信息-·-me-stx8-com"><a href="#公钥信息-·-me-stx8-com" class="headerlink" title="公钥信息 · me@stx8.com"></a>公钥信息 · <a href="mailto:&#109;&#101;&#64;&#x73;&#x74;&#120;&#x38;&#x2e;&#x63;&#x6f;&#x6d;">me@stx8.com</a></h3><ul>
 <li><strong>算法 &#x2F; 创建 &#x2F; 到期</strong>：brainpoolP512r1 · 2026-07-09 · 2030-12-31</li>
 <li><strong>主指纹</strong>：<code>FFFA A487 A0E5 1D2E 6F0C  4E68 5968 BC2C EE74 E569</code></li>
 <li><strong>签名子密钥</strong>（ed25519）：<code>8C18 B451 EE94 15F6 F6AA  E7D7 5C93 D746 5B87 2D84</code> · 到期 2030-12-31</li>
