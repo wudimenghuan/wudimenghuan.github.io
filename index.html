@@ -144,13 +144,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">90</span>
+        <span class="site-state-item-count">91</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -167,6 +167,177 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.stx8.com/2023/06/26/go-env-without-install/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="时空">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时空主站">
+      <meta itemprop="description" content="时空主站">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 时空主站">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/06/26/go-env-without-install/" class="post-title-link" itemprop="url">不安装Go语言获取GOOS和GOARCH环境变量</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-06-26 16:26:00" itemprop="dateCreated datePublished" datetime="2023-06-26T16:26:00+08:00">2023-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-15 15:51:00" itemprop="dateModified" datetime="2026-07-15T15:51:00+08:00">2026-07-15</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/06/26/go-env-without-install/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/06/26/go-env-without-install/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="不安装Go语言获取GOOS和GOARCH环境变量"><a href="#不安装Go语言获取GOOS和GOARCH环境变量" class="headerlink" title="不安装Go语言获取GOOS和GOARCH环境变量"></a>不安装Go语言获取GOOS和GOARCH环境变量</h1><p>在做 CI&#x2F;CD、写构建脚本、或者下载 Go 编译产物时，经常需要知道当前系统的 <code>GOOS</code> 和 <code>GOARCH</code> 值。如果机器上没有安装 Go，<code>go env</code> 命令自然无法使用。其实只需要两条 shell 命令，就能从系统信息中推导出这两个值。</p>
+<h2 id="核心命令"><a href="#核心命令" class="headerlink" title="核心命令"></a>核心命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GOOS=$(<span class="built_in">echo</span> $(<span class="built_in">uname</span> -s) | <span class="built_in">tr</span> <span class="string">&#x27;[:upper:]&#x27;</span> <span class="string">&#x27;[:lower:]&#x27;</span>)</span><br><span class="line">GOARCH=$(<span class="built_in">echo</span> $(<span class="built_in">uname</span> -m | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) | <span class="built_in">tr</span> <span class="string">&#x27;[:upper:]&#x27;</span> <span class="string">&#x27;[:lower:]&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="逐行拆解"><a href="#逐行拆解" class="headerlink" title="逐行拆解"></a>逐行拆解</h2><h3 id="GOOS：操作系统标识"><a href="#GOOS：操作系统标识" class="headerlink" title="GOOS：操作系统标识"></a>GOOS：操作系统标识</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GOOS=$(<span class="built_in">echo</span> $(<span class="built_in">uname</span> -s) | <span class="built_in">tr</span> <span class="string">&#x27;[:upper:]&#x27;</span> <span class="string">&#x27;[:lower:]&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>uname -s</code> 输出内核名称，如 <code>Darwin</code>、<code>Linux</code>、<code>FreeBSD</code></li>
+<li><code>tr &#39;[:upper:]&#39; &#39;[:lower:]&#39;</code> 全部转小写</li>
+<li>Go 的 <code>GOOS</code> 值正是小写的内核名：<code>darwin</code>、<code>linux</code>、<code>freebsd</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><code>uname -s</code></th>
+<th><code>GOOS</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Darwin</td>
+<td>darwin</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>linux</td>
+</tr>
+<tr>
+<td>FreeBSD</td>
+<td>freebsd</td>
+</tr>
+<tr>
+<td>MINGW64_NT</td>
+<td>windows</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Windows 比较特殊，Git Bash 下 <code>uname -s</code> 返回 <code>MINGW64_NT-*</code> 或 <code>MSYS_NT-*</code>，转小写后是 <code>mingw64_nt-*</code>，不等于 <code>windows</code>。如果脚本需要兼容 Windows，需要额外处理：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="string">&quot;<span class="subst">$(uname -s)</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">    MINGW*|MSYS*) GOOS=windows ;;</span><br><span class="line">    *)            GOOS=$(<span class="built_in">uname</span> -s | <span class="built_in">tr</span> <span class="string">&#x27;[:upper:]&#x27;</span> <span class="string">&#x27;[:lower:]&#x27;</span>) ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="GOARCH：CPU-架构标识"><a href="#GOARCH：CPU-架构标识" class="headerlink" title="GOARCH：CPU 架构标识"></a>GOARCH：CPU 架构标识</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GOARCH=$(<span class="built_in">echo</span> $(<span class="built_in">uname</span> -m | sed s/aarch64/arm64/ | sed s/x86_64/amd64/) | <span class="built_in">tr</span> <span class="string">&#x27;[:upper:]&#x27;</span> <span class="string">&#x27;[:lower:]&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>uname -m</code> 输出机器硬件名，如 <code>x86_64</code>、<code>aarch64</code>、<code>armv7l</code></li>
+<li><code>sed s/aarch64/arm64/</code> 将 Linux&#x2F;ARM64 的内核名映射为 Go 的 <code>arm64</code></li>
+<li><code>sed s/x86_64/amd64/</code> 将 x86-64 映射为 Go 的 <code>amd64</code></li>
+<li><code>tr &#39;[:upper:]&#39; &#39;[:lower:]&#39;</code> 兜底转小写</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><code>uname -m</code></th>
+<th><code>GOARCH</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x86_64</td>
+<td>amd64</td>
+</tr>
+<tr>
+<td>aarch64</td>
+<td>arm64</td>
+</tr>
+<tr>
+<td>armv7l</td>
+<td>arm</td>
+</tr>
+<tr>
+<td>i386</td>
+<td>386</td>
+</tr>
+<tr>
+<td>i686</td>
+<td>386</td>
+</tr>
+</tbody></table>
+<h2 id="实际用途"><a href="#实际用途" class="headerlink" title="实际用途"></a>实际用途</h2><h3 id="下载-Go-二进制包"><a href="#下载-Go-二进制包" class="headerlink" title="下载 Go 二进制包"></a>下载 Go 二进制包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GOOS=$(<span class="built_in">uname</span> -s | <span class="built_in">tr</span> <span class="string">&#x27;[:upper:]&#x27;</span> <span class="string">&#x27;[:lower:]&#x27;</span>)</span><br><span class="line">GOARCH=$(<span class="built_in">uname</span> -m | sed s/aarch64/arm64/ | sed s/x86_64/amd64/)</span><br><span class="line">curl -fLO <span class="string">&quot;https://go.dev/dl/go1.22.4.<span class="variable">$&#123;GOOS&#125;</span>-<span class="variable">$&#123;GOARCH&#125;</span>.tar.gz&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="CI-CD-中选择构建产物"><a href="#CI-CD-中选择构建产物" class="headerlink" title="CI&#x2F;CD 中选择构建产物"></a>CI&#x2F;CD 中选择构建产物</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GitHub Actions 示例</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Detect</span> <span class="string">platform</span></span><br><span class="line">  <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">    GOOS=$(uname -s | tr &#x27;[:upper:]&#x27; &#x27;[:lower:]&#x27;)</span></span><br><span class="line"><span class="string">    GOARCH=$(uname -m | sed s/aarch64/arm64/ | sed s/x86_64/amd64/)</span></span><br><span class="line"><span class="string">    echo &quot;GOOS=$GOOS&quot; &gt;&gt; $GITHUB_ENV</span></span><br><span class="line"><span class="string">    echo &quot;GOARCH=$GOARCH&quot; &gt;&gt; $GITHUB_ENV</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Download</span> <span class="string">artifact</span></span><br><span class="line">  <span class="attr">run:</span> <span class="string">curl</span> <span class="string">-fLO</span> <span class="string">&quot;https://example.com/myapp-$&#123;GOOS&#125;-$&#123;GOARCH&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="判断当前架构是否为-ARM"><a href="#判断当前架构是否为-ARM" class="headerlink" title="判断当前架构是否为 ARM"></a>判断当前架构是否为 ARM</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GOARCH=$(<span class="built_in">uname</span> -m | sed s/aarch64/arm64/ | sed s/x86_64/amd64/)</span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$GOARCH</span>&quot;</span> = <span class="string">&quot;arm64&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Running on ARM64&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>不需要安装 Go，仅靠 <code>uname</code> + <code>sed</code> + <code>tr</code> 就能准确推导出 <code>GOOS</code> 和 <code>GOARCH</code>。核心就是两条 sed 替换——把操作系统和 CPU 架构的系统名映射到 Go 的命名约定。在 CI 环境、Docker 多架构构建、下载预编译包等场景下非常实用。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1635,93 +1806,6 @@
 <p>并且在软件主界面还有经常更新的公告，讲解一些使用技巧。综上来看，OTP 实在是一款非常实用的小工具。</p>
 <blockquote>
 <p>转自<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/739348a13a09">简书</a></p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.stx8.com/2020/02/10/%E5%93%88%E5%BC%97h2-15-16%E6%AC%BEh2%E5%A4%A7%E5%8D%A1%E6%9C%BA%E5%A4%B4%E5%88%B743-08/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="时空">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="时空主站">
-      <meta itemprop="description" content="时空主站">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 时空主站">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/02/10/%E5%93%88%E5%BC%97h2-15-16%E6%AC%BEh2%E5%A4%A7%E5%8D%A1%E6%9C%BA%E5%A4%B4%E5%88%B743-08/" class="post-title-link" itemprop="url">哈弗H2 15 16款H2大卡机头刷43.08</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-02-10 18:10:25" itemprop="dateCreated datePublished" datetime="2020-02-10T18:10:25+08:00">2020-02-10</time>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2020/02/10/%E5%93%88%E5%BC%97h2-15-16%E6%AC%BEh2%E5%A4%A7%E5%8D%A1%E6%9C%BA%E5%A4%B4%E5%88%B743-08/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/10/哈弗h2-15-16款h2大卡机头刷43-08/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>哈弗H2 15 16款H2大卡机头回刷43.08及破解完美版本</p>
-<p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1teMLWlLEuKTc8QmFma_rTw">https://pan.baidu.com/s/1teMLWlLEuKTc8QmFma_rTw</a> 提取码：mlla</p>
-<blockquote>
-<p>来源：<a target="_blank" rel="noopener" href="https://www.hfcyh.com/havalH2/hafu112462/">https://www.hfcyh.com/havalH2/hafu112462/</a></p>
 </blockquote>
 
       

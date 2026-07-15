@@ -144,13 +144,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">90</span>
+        <span class="site-state-item-count">91</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -167,6 +167,182 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.stx8.com/2018/03/08/qt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="时空">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时空主站">
+      <meta itemprop="description" content="时空主站">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 时空主站">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/03/08/qt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Qt学习笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-08 21:22:49" itemprop="dateCreated datePublished" datetime="2018-03-08T21:22:49+08:00">2018-03-08</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/03/08/qt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/08/qt学习笔记/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="QT学习"><a href="#QT学习" class="headerlink" title="QT学习"></a>QT学习</h1><h2 id="什么是QT"><a href="#什么是QT" class="headerlink" title="什么是QT"></a>什么是QT</h2><p>Qt是一个1991年由奇趣科技开发的跨平台C++图形用户界面应用程序开发框架。它既可以开发GUI程序，也可用于开发非GUI程序，比如控制台工具和服务器。Qt是面向对象的框架，使用特殊的代码生成扩展（称为元对象编译器(Meta Object Compiler, moc)）以及一些宏，易于扩展，允许组件编程。2008年，奇趣科技被诺基亚公司收购，QT也因此成为诺基亚旗下的编程语言工具。2012年，Qt被Digia收购。2014年4月，跨平台集成开发环境Qt Creator 3.1.0正式发布，实现了对于iOS的完全支持，新增WinRT、Beautifier等插件，废弃了无Python接口的GDB调试支持，集成了基于Clang的C&#x2F;C++代码模块，并对Android支持做出了调整，至此实现了全面支持iOS、Android、WP。</p>
+<blockquote>
+<p>学习视频教程网站<a target="_blank" rel="noopener" href="http://my.tv.sohu.com/pl/5176735/">http://my.tv.sohu.com/pl/5176735/</a></p>
+</blockquote>
+<h2 id="QT-安装步骤-环境搭建"><a href="#QT-安装步骤-环境搭建" class="headerlink" title="QT&#x2F;安装步骤&#x2F;环境搭建"></a>QT&#x2F;安装步骤&#x2F;环境搭建</h2><p>下面介绍Windows版QT开发环境Qt Creater + MinGW + Qt libraries配置方法</p>
+<h3 id="下载安装MinGW"><a href="#下载安装MinGW" class="headerlink" title="下载安装MinGW"></a>下载安装MinGW</h3><p>从MinGW网站下载，默认安装到C盘根目录下：C:\MinGW，安装时选择C和C++ compiler，默认只选中了C编译器。</p>
+<h3 id="下载安装配置QT-libraries"><a href="#下载安装配置QT-libraries" class="headerlink" title="下载安装配置QT libraries"></a>下载安装配置QT libraries</h3><p><a target="_blank" rel="noopener" href="http://qt-project.org/downloads">http://qt-project.org/downloads</a></p>
+<p>默认安装路径为C:\Qt\4.8.3，安装时需要指定MinGW的安装路径为C:\MinGW。</p>
+<p>安装完后需要把C:\Qt\4.8.3\bin目录添加到系统变量的Path路径中。</p>
+<p>并新建系统环境变量QMAKESPEC，32位系统把值设置为C:\Qt\4.8.3\mkspecs\win32-g++；如果是64位系统，需要把值设置为C:\Qt\4.8.3\mkspecs\tru64-g++</p>
+<p>还要新建系统环境变量QTDIR，值为C:\Qt\4.8.3</p>
+<h3 id="下载安装配置QT-Creater"><a href="#下载安装配置QT-Creater" class="headerlink" title="下载安装配置QT Creater"></a>下载安装配置QT Creater</h3><p>默认安装到C:\Qt\qtcreator-2.6.0目录下。</p>
+<p>需要把C:\Qt\qtcreator-2.6.0\bin目录添加到系统变量的Path路径中。如果不设置系统环境变量，则创建工程时kit不能设置成功，并且可创建的工程类型也会受到限制。</p>
+<p>设置QT Creator构建和运行配置项：打开QT Creator，选择菜单“工具&#x2F;选项”，选择左边的”构建和运行”，再选择“Qt版本”选项卡，点击“添加”，qmake路径：C:\Qt\4.8.3\bin\qmake.exe。</p>
+<p>还需要设置Compilers选项卡中的“手动设置”项的编译器，Name设置为MinGW，编译器路径设置为C:\MinGW\bin\mingw32-g++.exe。</p>
+<h3 id="hello-word程序"><a href="#hello-word程序" class="headerlink" title="hello word程序"></a>hello word程序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;qcoreapplication&gt;</span><br><span class="line">#include&lt;qdebug&gt;</span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">QCoreApplication a(argc, argv);&lt;/qdebug&gt;&lt;/qcoreapplication&gt;</span><br><span class="line"></span><br><span class="line">qDebug()&lt;&lt;&quot;hello world&quot;;</span><br><span class="line">return a.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="用界面标签显示Hello-World"><a href="#用界面标签显示Hello-World" class="headerlink" title="用界面标签显示Hello World"></a>用界面标签显示Hello World</h3><p>新建—&gt;其他项—&gt;空的QT项目—&gt;c++ source</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">###basic application and HTML WIDEGTS</span><br><span class="line">#include&lt;qapplication&gt;</span><br><span class="line">#include&lt;qlabel&gt;</span><br><span class="line">int main(int argc ,char *argv[])</span><br><span class="line">&#123;&lt;/qlabel&gt;&lt;/qapplication&gt;</span><br><span class="line"></span><br><span class="line">QApplication app(argc, argv);</span><br><span class="line">QLabel *label =new QLabel(&quot;Hello World&quot;);//显示Hello World</span><br><span class="line">label-&gt;show();</span><br><span class="line">return app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="pushButton按钮"><a href="#pushButton按钮" class="headerlink" title="pushButton按钮"></a>pushButton按钮</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;mainwindow.h&quot;</span><br><span class="line">#include &quot;ui_mainwindow.h&quot;</span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent) :</span><br><span class="line">QMainWindow(parent),</span><br><span class="line">ui(new Ui::MainWindow)</span><br><span class="line">&#123;</span><br><span class="line">ui-&amp;gt;setupUi(this);</span><br><span class="line">ui-&amp;gt;pushButton-&amp;gt;setText(&quot;close&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line">delete ui;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>添加事件—&gt;信号槽—&gt;<code>clicked()</code>—&gt;<code>close()</code>, 这是直接在控件操作的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void Dialog::on_pushButton_clicked()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">QMessageBox::information(this,&quot;hello world&quot;,&quot;hello world&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>和MFC中的<code>messagebox()</code>,效果一样。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void Dialog::on_pushButton_clicked()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">//QMessageBox::information(this,&quot;hello world&quot;,&quot;hello world&quot;);</span><br><span class="line">ui-&gt;lineEdit-&gt;setText(&quot;Hello world!&quot;);</span><br><span class="line">ui-&gt;lineEdit_2-&gt;setText(&quot;sssssss&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>按一下按钮就在EDIT上面显示字符串”hello world”.</p>
+<h3 id="Signal和slot程序"><a href="#Signal和slot程序" class="headerlink" title="Signal和slot程序"></a>Signal和slot程序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;mainwindow.h&quot;</span><br><span class="line">#include &quot;ui_mainwindow.h&quot;</span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent) :</span><br><span class="line">QMainWindow(parent),</span><br><span class="line">ui(new Ui::MainWindow)</span><br><span class="line">&#123;</span><br><span class="line">ui-&amp;gt;setupUi(this);</span><br><span class="line">connect(ui-&amp;gt;horizontalSlider,SIGNAL(valueChanged(int)),ui-&amp;gt;progressBar,SLOT(setValue(int)));//添加信号</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line">delete ui;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者直接用信号槽和上面的一样</p>
+<p>如果再加一条工程条，则代码一样</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect(ui-&amp;gt;horizontalSlider,SIGNAL(valueChanged(int)),ui-&amp;gt;progressBar_2,SLOT(setValue(int)));</span><br></pre></td></tr></table></figure>
+
+<p>只是其中的名字发生了改变<code>ui-&gt;progressBar</code>–&gt;<code>ui-&gt;progressBar_2</code></p>
+<p>下面为取消信号槽</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disconnect(ui-&gt;horizontalSlider,SIGNAL(valueChanged(int)),ui-&gt;progressBar_2,SLOT(setValue(int)));</span><br></pre></td></tr></table></figure>
+
+<h3 id="显示对话框"><a href="#显示对话框" class="headerlink" title="显示对话框"></a>显示对话框</h3><p>首先先创立工程文件 DialogTest—-&gt;然后点“在这里输入”—–&gt;”输入File”——&gt;在File下面输入所需要的列表”New Window”——-&gt;在界面上拖入文本框</p>
+<p>然后执行下列程序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setCentralWidget(ui-&gt;plainTextEdit);//是文本框左右充满整个mainwindow</span><br></pre></td></tr></table></figure>
+
+<p>在DialogTest下面添加新的类MyDialog</p>
+<p>然后在”New Window”添加触发事件<code>trigged()</code></p>
+<p>下面往里面添加代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void MainWindow::on_actionNew_Window_triggered()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">MyDialog dialog;</span><br><span class="line"></span><br><span class="line">// dialog.setModal(true);</span><br><span class="line">// dialog.exec();//显示Dialog（第一种显示方法）</span><br><span class="line">dialog.show();这样直接是不好使的，dialog一闪就没</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二种dialog显示是在MainWindow类下直接写<code>#include &quot;mydialog.h&quot;</code></p>
+<p>然后在mainwindow.h里面private中声明<code>MyDialog *mydialog</code></p>
+<p>然后直接在</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void MainWindow::on_actionNew_Window_triggered()</span><br><span class="line">&#123;</span><br><span class="line">mydialog=new MyDialog(this);</span><br><span class="line">mydialog-&gt;show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h3><p>直接创建Qdialog,添加事件。</p>
+<h3 id="Basic-Application-and-HTML-Aware-Widgets"><a href="#Basic-Application-and-HTML-Aware-Widgets" class="headerlink" title="Basic Application and HTML Aware Widgets"></a>Basic Application and HTML Aware Widgets</h3><p>对之前的helloworld进行文件的变化(比如加粗或者上颜色)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;qapplication&gt;</span><br><span class="line">#include&lt;qlabel&gt;</span><br><span class="line">int main(int argc ,char *argv[])</span><br><span class="line">&#123;&lt;/qlabel&gt;&lt;/qapplication&gt;</span><br><span class="line"></span><br><span class="line">QApplication app(argc, argv);</span><br><span class="line">QLabel *label =new QLabel(&quot;&lt;b&gt;Hello&lt;/b&gt; &lt;span color=&quot;red&quot; style=&quot;color: red;&quot;&gt; &lt;i&gt;World&lt;/i&gt;&lt;/font color =red&gt;&quot;);//标签属性</span><br><span class="line">label-&gt;show();</span><br><span class="line">return app.exec();</span><br><span class="line">//QLabel *label =new QLabel(&quot;&lt;/span&gt;</span><br><span class="line">&lt;h2&gt;Hello &lt;span color=&quot;red&quot; style=&quot;color: red;&quot;&gt; &lt;i&gt;World&lt;/i&gt;&lt;/font color =red&gt;&lt;/span&gt;&lt;/h2&gt;</span><br><span class="line">&quot;);标签可以随便加</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Horizontal-and-Vertical-Layouts"><a href="#Horizontal-and-Vertical-Layouts" class="headerlink" title="Horizontal and Vertical Layouts"></a>Horizontal and Vertical Layouts</h3><p>界面的布局</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;qapplication&gt;</span><br><span class="line">#include&lt;qpushbutton&gt;</span><br><span class="line">#include&lt;qhboxlayout&gt;</span><br><span class="line">#include&lt;qvboxlayout&gt;</span><br><span class="line">int main(int argc ,char *argv[])</span><br><span class="line">&#123;&lt;/qvboxlayout&gt;&lt;/qhboxlayout&gt;&lt;/qpushbutton&gt;&lt;/qapplication&gt;</span><br><span class="line"></span><br><span class="line">QApplication app(argc, argv);</span><br><span class="line">QWidget *window =new QWidget;//创建一个新的window</span><br><span class="line">window-&gt;setWindowTitle(&quot;my app&quot;);//把window的title 设置为 my app</span><br><span class="line">QPushButton *button1=new QPushButton(&quot;one&quot;);//button1名字为one</span><br><span class="line">QPushButton *button2=new QPushButton(&quot;two&quot;);</span><br><span class="line">QPushButton *button3=new QPushButton(&quot;three&quot;);</span><br><span class="line">QHBoxLayout *layout=new QHBoxLayout;//创建一个水平布局变量</span><br><span class="line">//QVBoxLayout *layout=new QVBoxLayout;//创建一个垂直布局变量</span><br><span class="line">layout-&gt;addWidget(button1);</span><br><span class="line">layout-&gt;addWidget(button2);</span><br><span class="line">layout-&gt;addWidget(button3);</span><br><span class="line">window-&gt;setLayout(layout);</span><br><span class="line">window-&gt;show();</span><br><span class="line">return app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="QGridLayout"><a href="#QGridLayout" class="headerlink" title="QGridLayout"></a>QGridLayout</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;qapplication&gt;</span><br><span class="line">#include&lt;qtgui&gt;</span><br><span class="line">#include&lt;qtcore&gt;&lt;/qtcore&gt;&lt;/qtgui&gt;&lt;/qapplication&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc ,char *argv[])</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">QApplication app(argc, argv);</span><br><span class="line">QWidget *window =new QWidget;</span><br><span class="line">window-&gt;setWindowTitle(&quot;my app&quot;);</span><br><span class="line">QGridLayout *layout=new QGridLayout;</span><br><span class="line">QLabel *label=new QLabel(&quot;Name:&quot;);</span><br><span class="line">QLineEdit *txtName=new QLineEdit;</span><br><span class="line">layout-&gt;addWidget(label,0,0);</span><br><span class="line">layout-&gt;addWidget(txtName,0,1);</span><br><span class="line">window-&gt;setLayout(layout);</span><br><span class="line">window-&gt;show();</span><br><span class="line">return app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果还要在加一行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">layout-&gt;addWidget(label2,1,0);//把名字改变就行，然后里面的参数也要改变</span><br><span class="line">layout-&gt;addWidget(txtName2,1,1);</span><br></pre></td></tr></table></figure>
+
+<p>往里面添加按钮</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">layout-&gt;addWidget(button,2,0,1,2);//行，列 ，上下宽度，左右长度</span><br></pre></td></tr></table></figure>
+
+<h3 id="Splitters"><a href="#Splitters" class="headerlink" title="Splitters"></a>Splitters</h3><p>Qdialog</p>
+<p>用到spliter键，我们可以用两个按钮进行演示—-&gt;先用水平splider—&gt;水平布局</p>
+<h3 id="QDir"><a href="#QDir" class="headerlink" title="QDir"></a>QDir</h3><p>调用<code>#include&lt;QDir&gt;</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;qcoreapplication&gt;</span><br><span class="line">#include &lt;qdebug&gt;</span><br><span class="line">#include &lt;qdir&gt;</span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">QCoreApplication a(argc, argv);</span><br><span class="line">QDir m_dir(&quot;C:\\TEXT&quot;);</span><br><span class="line">qDebug() &lt;&lt; m_dir.exists();</span><br><span class="line">return a.exec();</span><br><span class="line">&#125;</span><br><span class="line">​```&lt;/qdir&gt;&lt;/qdebug&gt;&lt;/qcoreapplication&gt;</span><br><span class="line"></span><br><span class="line">其作用是判断一个某个路径下的文件是否存在</span><br><span class="line">如果存在返回“true”不存在返回&quot;false&quot;</span><br><span class="line"></span><br><span class="line">​```c</span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">QDir m_dir;</span><br><span class="line">foreach (QFileInfo M_Item,m_dir.drives())</span><br><span class="line">&#123;</span><br><span class="line">qDebug() &lt;&lt; M_Item.absoluteFilePath();//返回硬盘的路径</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面这段程序为判断是否这有没”3.txt”文件，如果没有则创建，然后输出”created”，否则输出”already exists”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">QDir m_dir;</span><br><span class="line">QString m_path=&quot;C:\\3.txt&quot;;</span><br><span class="line">if(!m_dir.exists(m_path))</span><br><span class="line">&#123;</span><br><span class="line">m_dir.mkpath(m_path);</span><br><span class="line">qDebug()&lt;&lt;&quot;Created&quot;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">qDebug()&lt;&lt;&quot;Already Exits&quot;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">QDir m_dir;</span><br><span class="line">QString m_path=&quot;C:/&quot;;</span><br><span class="line">m_dir.setPath(m_path);</span><br><span class="line">foreach (QFileInfo m_Item, m_dir.entryInfoList())</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">qDebug()&lt;&lt;m_Item.absoluteFilePath();//为查看当前下的文件目录</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="QFile文件读写"><a href="#QFile文件读写" class="headerlink" title="QFile文件读写"></a>QFile文件读写</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">void write(QString Filename)//文件写</span><br><span class="line">&#123;</span><br><span class="line">QFile mFile(Filename);</span><br><span class="line">if(!mFile.open(QFile::WriteOnly|QFile::Text))</span><br><span class="line">&#123;</span><br><span class="line">qDebug()&lt;&lt;&quot;could not open the file for writting&quot;;</span><br><span class="line">return;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">QTextStream out(&amp;mFile);</span><br><span class="line">out&lt;&lt;&quot;Hello man!&quot;;</span><br><span class="line">qDebug()&lt;&lt;&quot;Write Correctly&quot;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">mFile.flush();</span><br><span class="line">mFile.close();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void read(QString Filename)//文件读</span><br><span class="line">&#123;</span><br><span class="line">QFile mFile(Filename);</span><br><span class="line">if(!mFile.open(QFile::ReadOnly|QFile::Text))</span><br><span class="line">&#123;</span><br><span class="line">qDebug()&lt;&lt;&quot;could not open the file for writting&quot;;</span><br><span class="line">return;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">QTextStream in(&amp;mFile);</span><br><span class="line">QString s=in.readAll();</span><br><span class="line">qDebug() &lt;&lt; s;</span><br><span class="line">qDebug() &lt;&lt; &quot;Read Correctly&quot;; &#125; mFile.close(); &#125; ``` ### CheckBox和RadioBOX、Commbox, listwidget ```c void Dialog::on_pushButton_clicked() &#123; if(ui-&amp;gt;checkBox-&amp;gt;isChecked()//ui-&amp;gt;radioBox-&amp;gt;isChecked())//判断是否已经选择 &#123; QMessageBox::information(this,&quot;&quot;,&quot;selected&quot;); &#125; else &#123; QMessageBox::information(this,&quot;&quot;,&quot;not selected&quot;); &#125; &#125; ``` ``ui-&amp;gt;comboBox-&amp;gt;addItem(&quot;123&quot;);//commbox加项`` 显示当前comboBox所选择项的文本 ```c QMessageBox::information(this,&quot;&quot;,ui-&amp;gt;comboBox-&amp;gt;currentText());</span><br></pre></td></tr></table></figure>
+
+<p>显示当前listwidget所选择项的文本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">QMessageBox::information(this,&quot;hello world&quot;,ui-&amp;gt;listWidget-&amp;gt;currentItem()-&amp;gt;text());</span><br><span class="line">QListWidgetItem *item=ui-&amp;gt;listWidget-&amp;gt;currentItem();</span><br><span class="line">item-&amp;gt;setText(&quot;123&quot;);//选中当前项然后改变的文本</span><br><span class="line">item-&amp;gt;setTextColor(Qt::red);//把当前文本变成红色</span><br></pre></td></tr></table></figure>
+
+<h3 id="qtreewidget"><a href="#qtreewidget" class="headerlink" title="qtreewidget"></a>qtreewidget</h3><p>首先在Dialog.h里面声明两个函数 （addroot 和 addchild）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void AddRoot(QString name, QString Description);</span><br><span class="line">void AddChild(QTreeWidgetItem *parent, QString name, QString Description);</span><br></pre></td></tr></table></figure>
+
+<p>然后在构造函数里面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">ui-&amp;gt;treeWidget-&amp;gt;setColumnCount(2);</span><br><span class="line">AddRoot(&quot;HELLO&quot;,&quot;WORLD&quot;);</span><br><span class="line">AddRoot(&quot;2&quot;,&quot;3&quot;);</span><br><span class="line">void Dialog::AddRoot(QString name ,QString Description)</span><br><span class="line">&#123;</span><br><span class="line">QTreeWidgetItem *itm=new QTreeWidgetItem(ui-&amp;gt;treeWidget);</span><br><span class="line">itm-&amp;gt;setText(0,name);</span><br><span class="line">itm-&amp;gt;setText(1,Description);</span><br><span class="line">ui-&amp;gt;treeWidget-&amp;gt;addTopLevelItem(itm);//这如果删除会产生什么情况</span><br><span class="line">AddChild(itm,&quot;one&quot;,&quot;hello&quot;);</span><br><span class="line">AddChild(itm,&quot;two&quot;,&quot;world&quot;);</span><br><span class="line">&#125;</span><br><span class="line">void Dialog::AddChild(QTreeWidgetItem *parent,QString name,QString Description)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">QTreeWidgetItem *itm=new QTreeWidgetItem(ui-&amp;gt;treeWidget//这如果删除会产生什么情况);</span><br><span class="line">itm-&amp;gt;setText(0,name);</span><br><span class="line">itm-&amp;gt;setText(1,Description);</span><br><span class="line">parent-&amp;gt;addChild(itm);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在AddRoot()中加入AddChild()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void Dialog::AddRoot(QString name, QString Description)</span><br><span class="line">&#123;</span><br><span class="line">QTreeWidgetItem *itm=new QTreeWidgetItem(ui-&amp;gt;treeWidget);</span><br><span class="line">itm-&amp;gt;setText(0,name);</span><br><span class="line">itm-&amp;gt;setText(1,Description);</span><br><span class="line">ui-&amp;gt;treeWidget-&amp;gt;addTopLevelItem(itm);</span><br><span class="line">AddChild(itm,&quot;one&quot;,&quot;hello&quot;);</span><br><span class="line">AddChild(itm,&quot;two&quot;,&quot;world&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>button里面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void Dialog::on_pushButton_clicked()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">ui-&amp;gt;treeWidget-&amp;gt;currentItem()-&amp;gt;setBackgroundColor(0,Qt::red);//设置第一排颜色为red</span><br><span class="line">ui-&amp;gt;treeWidget-&amp;gt;currentItem()-&amp;gt;setBackgroundColor(1,Qt::yellow);//设置第一排颜色为yellow</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>设置头标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Dialog::Dialog(QWidget *parent) :</span><br><span class="line">QDialog(parent),</span><br><span class="line">ui(new Ui::Dialog)</span><br><span class="line">&#123;</span><br><span class="line">ui-&amp;gt;setupUi(this);</span><br><span class="line"></span><br><span class="line">ui-&amp;gt;treeWidget-&amp;gt;setColumnCount(2);</span><br><span class="line">//ui-&amp;gt;treeWidget-&amp;gt;setHeaderLabel(&quot;123&quot;);</span><br><span class="line">ui-&amp;gt;treeWidget-&amp;gt;setHeaderLabels(QStringList()&amp;lt;&amp;lt;&quot;123&quot;&amp;lt;&amp;lt;&quot;456&quot;); AddRoot(&quot;HELLO&quot;,&quot;WORLD&quot;); AddRoot(&quot;2&quot;,&quot;3&quot;); &#125; ui-&amp;gt;treeWidget-&amp;gt;setHeaderLabel(&quot;123&quot;);</span><br><span class="line">ui-&amp;gt;treeWidget-&amp;gt;setHeaderLabels(QStringList()&amp;lt;&amp;lt;&quot;123&quot;&amp;lt;&amp;lt;&quot;456&quot;);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -933,6 +1109,91 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.stx8.com/2018/02/07/git-gpg/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="时空">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时空主站">
+      <meta itemprop="description" content="时空主站">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 时空主站">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/02/07/git-gpg/" class="post-title-link" itemprop="url">Git添加PGP签名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-07 16:40:19" itemprop="dateCreated datePublished" datetime="2018-02-07T16:40:19+08:00">2018-02-07</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/02/07/git-gpg/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/07/git-gpg/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>环境变量GNUPGHOME：C:\Program Files (x86)\GnuPG\bin\gpg.exe</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git config --global gpg.program <span class="string">&quot;C:\Program Files (x86)\GnuPG\bin\gpg.exe&quot;</span></span><br><span class="line"></span><br><span class="line">git config --global user.signingkey 你的公钥</span><br><span class="line"></span><br><span class="line">git config --global commit.gpgsign <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.stx8.com/2018/02/07/change-git-remote/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -993,91 +1254,6 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">&quot;.git&quot;</span> -<span class="built_in">exec</span> sed -i <span class="string">&#x27;s/旧地址/新地址/g&#x27;</span> &#123;&#125;/config \;</span><br></pre></td></tr></table></figure>
 
 <p>将替换所有子目录的git远端地址</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.stx8.com/2018/02/07/git-gpg/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="时空">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="时空主站">
-      <meta itemprop="description" content="时空主站">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 时空主站">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/02/07/git-gpg/" class="post-title-link" itemprop="url">Git添加PGP签名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-02-07 16:40:19" itemprop="dateCreated datePublished" datetime="2018-02-07T16:40:19+08:00">2018-02-07</time>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2018/02/07/git-gpg/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/07/git-gpg/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>环境变量GNUPGHOME：C:\Program Files (x86)\GnuPG\bin\gpg.exe</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git config --global gpg.program <span class="string">&quot;C:\Program Files (x86)\GnuPG\bin\gpg.exe&quot;</span></span><br><span class="line"></span><br><span class="line">git config --global user.signingkey 你的公钥</span><br><span class="line"></span><br><span class="line">git config --global commit.gpgsign <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -1652,106 +1828,6 @@
 <p><strong>工程师文化</strong> 上述的这些观点，其实，我在我的以住的博客中都讲过很多遍了，你可以参看《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/17497.html">什么是工程师文化？</a>》以及《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/11656.html">开发团队的效率</a>》。其实，说白了就是这么一个事——<strong>如果你是一个技术公司，你就会更多的相信技术而不是管理。相信技术会用技术来解决问题，相信管理，那就只会有制度、流程和价值观来解决问题</strong>。 这个道理很简单，<strong>数据丢失有各种各样的情况，不单单只是人员的误操作，比如，掉电、磁盘损坏、中病毒等等，在这些情况下，你设计的那些流程、规则、人肉检查、权限系统、checklist等等统统都不管用，这个时候，你觉得应该怎么做呢？是的，你会发现，你不得不用更好的技术去设计出一个高可用的系统！别无它法。（重要的事得说三遍）</strong> <strong>事件公开</strong> 很多公司基本上都是这样的套路，首先是极力掩盖，如果掩盖不了了就开始撒谎，撒不了谎了，就“文过饰非”、“避重就轻”、“转移视线”。然而，面对危机的最佳方法就是——“多一些真诚，少一些套路”，<strong>所谓的“多一些真诚”的最佳实践就是——“透明公开所有的信息”</strong>，Gitlab此次的这个事给大家树立了非常好的榜样。AWS也会把自己所有的故障和细节都批露出来。 <strong>事情本来就做错了，而公开所有的细节，会让大众少很多猜测的空间，有利于抵制流言和黑公关，同时，还会赢得大众的理解和支持</strong>。看看Gitlab这次还去YouTube上直播整个修复过程，是件很了不起的事，大家可以到他们的blog上看看，对于这样的透明和公开，一片好评。 （全文完）</p>
 <blockquote>
 <p>来源：<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/17680.html">酷壳</a></p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.stx8.com/2017/01/13/%E9%9B%85%E8%99%8E%E5%87%BA%E5%94%AE%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E5%90%8E%E5%B0%86%E6%9B%B4%E5%90%8D%E4%B8%BAaltaba/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="时空">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="时空主站">
-      <meta itemprop="description" content="时空主站">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 时空主站">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2017/01/13/%E9%9B%85%E8%99%8E%E5%87%BA%E5%94%AE%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E5%90%8E%E5%B0%86%E6%9B%B4%E5%90%8D%E4%B8%BAaltaba/" class="post-title-link" itemprop="url">雅虎出售核心业务后将更名为Altaba</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2017-01-13 18:10:49" itemprop="dateCreated datePublished" datetime="2017-01-13T18:10:49+08:00">2017-01-13</time>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2017/01/13/%E9%9B%85%E8%99%8E%E5%87%BA%E5%94%AE%E6%A0%B8%E5%BF%83%E4%B8%9A%E5%8A%A1%E5%90%8E%E5%B0%86%E6%9B%B4%E5%90%8D%E4%B8%BAaltaba/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/13/雅虎出售核心业务后将更名为altaba/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>阿里他爸？</p>
-</blockquote>
-<p>旧金山——雅虎(Yahoo)或将自己的互联网业务以48亿美元的价格卖给威瑞森通讯公司(Verizon Communications)，这笔交易的命运可能尚不确定。但是如果它成为现实，雅虎亦为公司剩下的业务做好了计划。</p>
-<p>周一，该公司在一份监管备案文件中称，交易完成后，它将更名为Altaba。</p>
-<p>此外，该公司目前半数以上的董事会成员将退出，包括首席执行官玛丽莎·梅耶尔(Marissa Mayer)在内。</p>
-<p>为什么叫Altaba呢？</p>
-<p>如果与威瑞森公司的交易能够完成，雅虎所剩的最大单笔资产就是在中国电子商务巨头阿里巴巴公司(Alibaba)所持的15%股份，Altaba这个名字其实就是在“阿里巴巴”的基础上稍作修改。Altaba还将持有雅虎日本35.5%的股份（雅虎的一名发言人拒绝作出评论）。</p>
-<p>不过，Altaba当然是一个不同寻常的名字。它碰巧还很接近Al-Taba，那是巴基斯坦的一家剪刀制造公司的名字。</p>
-<p>该公司在监管备案文件中称，更名后仍将留下的董事包括帮助推动公司改革的激进投资人杰弗里·史密斯(Jeffrey Smith)；前投资银行家托尔·布雷厄姆(Tor Braham)和凯瑟琳·J·弗里德曼(Catherine J. Friedman)；芯片制造公司博通(Broadcom)的前首席财务官埃里克· 勃兰特(Eric Brandt)；以及媒体公司IAC的前首席财务官托马斯·麦金纳尼(Thomas McInerney)。</p>
-<p>即将退位的董事包括梅耶尔；雅虎董事长梅纳德·韦伯(Maynard Webb)；以及雅虎创始人之一大卫·费罗(David Filo)。韦伯将成为更名后的Altaba的荣退主席。</p>
-<p>当然，所有这些变化取决于雅虎能否真的把自己最重要的互联网业务卖给威瑞森，要知道，雅虎曾两次遭遇黑客袭击，导致信息泄露，第二次袭击影响了10多亿用户的帐户。</p>
-<p>威瑞森的高管曾公开表示，他们在权衡自己的选择，包括支付的金额可能会少于已达成一致的48亿美元。上周，威瑞森的产品创新和新业务主管玛妮·沃尔登(Marni Walden)在谈起这项交易的命运时说，“今天，我不能坐在这里确定地说会发生什么，因为我们还不知道。”</p>
-<p>不过，隶属于威瑞森的美国在线(AOL)的首席执行官蒂姆·阿姆斯特朗(Tim Armstrong)在接受<a target="_blank" rel="noopener" href="http://www.cnbc.com/2017/01/05/aol-chief-tim-armstrong-says-hes-confident-vz-yhoo-deal-will-close.html">CNBC</a>采访时称，他感到乐观。</p>
-<p>“我依然对达成这项交易充满希望，我觉得，与此同时，我们会看看雅虎调查的结果，”他说。</p>
-<blockquote>
-<p>来源：<a target="_blank" rel="noopener" href="http://cn.nytstyle.com/technology/20170111/yahoo-would-become-altaba-after-selling-its-internet-business/">纽时中文</a></p>
 </blockquote>
 
       
