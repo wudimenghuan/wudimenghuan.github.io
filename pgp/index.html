@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.stx8.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"vs2015","dark":"vs2015"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="PGP&#x3D;&#x3D;&#x3D; 我鼓励读者使用 GnuPG 向我发送加密的信息。不要说你的信息不重要根本没必要加密，等你要用加密的时候就已经太晚了 —— 对于互联网。 我的 PGP 标识：me@stx8.com 指纹：FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569 获取我的公钥 1. WKD（推荐，最省事）GnuPG 默认开启 WKD 自动发现，写收件">
+    <meta name="description" content="PGP我鼓励读者使用 GnuPG 向我发送加密的信息。不要说你的信息不重要根本没必要加密，等你要用加密的时候就已经太晚了 —— 对于互联网。 PGP（Pretty Good Privacy）&#x2F; OpenPGP 是一套公开密钥加密标准。它的核心思想是：你用我的公钥加密信息，只有持有对应私钥的我能解开。 这样即使邮件中途被截获、被服务商存储，旁人也读不出明文。下面会一步步说明如何获取并核对公">
 <meta property="og:type" content="website">
 <meta property="og:title" content="PGP">
 <meta property="og:url" content="https://www.stx8.com/pgp/index.html">
 <meta property="og:site_name" content="时空主站">
-<meta property="og:description" content="PGP&#x3D;&#x3D;&#x3D; 我鼓励读者使用 GnuPG 向我发送加密的信息。不要说你的信息不重要根本没必要加密，等你要用加密的时候就已经太晚了 —— 对于互联网。 我的 PGP 标识：me@stx8.com 指纹：FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569 获取我的公钥 1. WKD（推荐，最省事）GnuPG 默认开启 WKD 自动发现，写收件">
+<meta property="og:description" content="PGP我鼓励读者使用 GnuPG 向我发送加密的信息。不要说你的信息不重要根本没必要加密，等你要用加密的时候就已经太晚了 —— 对于互联网。 PGP（Pretty Good Privacy）&#x2F; OpenPGP 是一套公开密钥加密标准。它的核心思想是：你用我的公钥加密信息，只有持有对应私钥的我能解开。 这样即使邮件中途被截获、被服务商存储，旁人也读不出明文。下面会一步步说明如何获取并核对公">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-03-11T05:12:16.000Z">
-<meta property="article:modified_time" content="2026-07-15T07:35:00.000Z">
+<meta property="article:modified_time" content="2026-07-16T02:39:00.000Z">
 <meta property="article:author" content="时空">
 <meta name="twitter:card" content="summary">
 
@@ -135,7 +135,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PGP"><span class="nav-number">1.</span> <span class="nav-text">PGP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%88%91%E7%9A%84%E5%85%AC%E9%92%A5"><span class="nav-number">1.1.</span> <span class="nav-text">获取我的公钥</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-WKD%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%8C%E6%9C%80%E7%9C%81%E4%BA%8B%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. WKD（推荐，最省事）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%85%AC%E9%92%A5%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 公钥服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Mailvelope%EF%BC%88%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%EF%BC%89"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. Mailvelope（浏览器插件）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E9%92%A5%E4%BF%A1%E6%81%AF-%C2%B7-me-stx8-com"><span class="nav-number">1.2.</span> <span class="nav-text">公钥信息 · me@stx8.com</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PGP"><span class="nav-number">1.</span> <span class="nav-text">PGP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%B9%B6%E6%A0%B8%E5%AF%B9%E5%85%AC%E9%92%A5"><span class="nav-number">1.1.</span> <span class="nav-text">获取并核对公钥</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5-%C2%B7-%E5%AE%89%E8%A3%85-GnuPG"><span class="nav-number">1.1.1.</span> <span class="nav-text">第一步 · 安装 GnuPG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%C2%B7-%E5%AF%BC%E5%85%A5%E6%88%91%E7%9A%84%E5%85%AC%E9%92%A5"><span class="nav-number">1.1.2.</span> <span class="nav-text">第二步 · 导入我的公钥</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80%EF%BC%9AWKD-%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">方式一：WKD 自动发现（推荐）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F%E4%BA%8C%EF%BC%9A%E4%BB%8E%E5%85%AC%E9%92%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%8E%B7%E5%8F%96"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">方式二：从公钥服务器获取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%89%EF%BC%9A%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E5%AF%BC%E5%85%A5%EF%BC%88dirmngr-HKPS-%E5%8D%8F%E8%AE%AE%E4%B8%8D%E9%80%9A%E6%97%B6%E7%9A%84%E5%A4%87%E7%94%A8%EF%BC%89"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">方式三：直接下载导入（dirmngr&#x2F;HKPS 协议不通时的备用）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5-%C2%B7-%E6%A0%B8%E5%AF%B9%E6%8C%87%E7%BA%B9%EF%BC%88%E9%98%B2%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%EF%BC%89"><span class="nav-number">1.1.3.</span> <span class="nav-text">第三步 · 核对指纹（防中间人攻击）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85-%C2%B7-Mailvelope%EF%BC%88%E6%B5%8F%E8%A7%88%E5%99%A8%E9%87%8C%E6%94%B6%E5%8F%91%E5%8A%A0%E5%AF%86%E9%82%AE%E4%BB%B6%EF%BC%89"><span class="nav-number">1.1.4.</span> <span class="nav-text">补充 · Mailvelope（浏览器里收发加密邮件）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E5%85%AC%E9%92%A5%E7%BB%99%E6%88%91%E5%86%99%E4%B8%80%E5%B0%81%E5%8A%A0%E5%AF%86%E4%BF%A1"><span class="nav-number">1.2.</span> <span class="nav-text">用公钥给我写一封加密信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E9%92%A5%E4%BF%A1%E6%81%AF-%C2%B7-me-stx8-com"><span class="nav-number">1.3.</span> <span class="nav-text">公钥信息 · me@stx8.com</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -190,35 +190,69 @@
       
       
       <div class="post-body">
-          <h1 id="PGP"><a href="#PGP" class="headerlink" title="PGP"></a>PGP</h1><p>&#x3D;&#x3D;&#x3D;</p>
-<p>我鼓励读者使用 GnuPG 向我发送加密的信息。不要说你的信息不重要根本没必要加密，等你要用加密的时候就已经太晚了 —— 对于互联网。</p>
-<p>我的 PGP 标识：<code>me@stx8.com</code></p>
-<p>指纹：<code>FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569</code></p>
-<h2 id="获取我的公钥"><a href="#获取我的公钥" class="headerlink" title="获取我的公钥"></a>获取我的公钥</h2><hr>
-<h3 id="1-WKD（推荐，最省事）"><a href="#1-WKD（推荐，最省事）" class="headerlink" title="1. WKD（推荐，最省事）"></a>1. WKD（推荐，最省事）</h3><p>GnuPG 默认开启 WKD 自动发现，写收件人 <code>me@stx8.com</code> 时会自动拉到：</p>
+          <h1 id="PGP"><a href="#PGP" class="headerlink" title="PGP"></a>PGP</h1><p>我鼓励读者使用 GnuPG 向我发送加密的信息。不要说你的信息不重要根本没必要加密，等你要用加密的时候就已经太晚了 —— 对于互联网。</p>
+<p>PGP（Pretty Good Privacy）&#x2F; OpenPGP 是一套公开密钥加密标准。它的核心思想是：<strong>你用我的公钥加密信息，只有持有对应私钥的我能解开。</strong> 这样即使邮件中途被截获、被服务商存储，旁人也读不出明文。下面会一步步说明如何获取并核对公钥，以及如何用它给我写一封加密信。</p>
+<ul>
+<li><strong>我的 PGP 标识</strong>：<code>me@stx8.com</code></li>
+<li><strong>指纹</strong>：<code>FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569</code></li>
+</ul>
+<h2 id="获取并核对公钥"><a href="#获取并核对公钥" class="headerlink" title="获取并核对公钥"></a>获取并核对公钥</h2><p>整个过程分三步：<strong>装好 GnuPG → 导入公钥 → 核对指纹</strong>。第三步最关键——只有指纹对得上，才能确定你导入的真的是我的公钥，而不是中间人掉包的假钥匙。</p>
+<h3 id="第一步-·-安装-GnuPG"><a href="#第一步-·-安装-GnuPG" class="headerlink" title="第一步 · 安装 GnuPG"></a>第一步 · 安装 GnuPG</h3><p>验证和加密之前，你需要先装好 GnuPG 命令行工具：</p>
+<ul>
+<li><strong>Windows</strong>：下载并安装 <a target="_blank" rel="noopener" href="https://gpg4win.org/">Gpg4win</a>，然后在命令行（<code>cmd.exe</code> 或 PowerShell）里使用 <code>gpg</code> 命令。</li>
+<li><strong>macOS</strong>：安装 <a target="_blank" rel="noopener" href="https://gpgtools.org/">GPG Suite</a>，或用 Homebrew <code>brew install gnupg</code>，然后在”终端”里使用。</li>
+<li><strong>Linux</strong>：绝大多数发行版已预装 GnuPG，直接在终端用 <code>gpg</code> 即可。</li>
+</ul>
+<p>安装后运行下面这条命令确认可用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --version</span><br></pre></td></tr></table></figure>
+
+<p>如果能打印出 GnuPG 版本号，就说明装好了。</p>
+<h3 id="第二步-·-导入我的公钥"><a href="#第二步-·-导入我的公钥" class="headerlink" title="第二步 · 导入我的公钥"></a>第二步 · 导入我的公钥</h3><p>公钥有几种获取途径，推荐用第一种（WKD），它最省事，也是 GnuPG 默认行为。</p>
+<h4 id="方式一：WKD-自动发现（推荐）"><a href="#方式一：WKD-自动发现（推荐）" class="headerlink" title="方式一：WKD 自动发现（推荐）"></a>方式一：WKD 自动发现（推荐）</h4><p>写收件人邮箱 <code>me@stx8.com</code> 时，GnuPG 会自动通过 WKD（Web Key Directory）从我的服务器拉取公钥：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --locate-keys me@stx8.com</span><br></pre></td></tr></table></figure>
 
-<p>备用 · 直接拉 WKD 二进制（体积更小，<code>gpg --locate-keys</code> 走 dirmngr 不通时用）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fL https://openpgpkey.stx8.com/.well-known/openpgpkey/stx8.com/hu/s8y7oh5xrdpu9psba3i5ntk64ohouhga | gpg --import</span><br></pre></td></tr></table></figure>
+<p>这将显示类似下面的内容（指纹、子密钥等细节可能随我轮换密钥而不同，但应看到公钥被成功导入）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gpg: key 5968BC2CEE74E569: public key &quot;shikong &lt;me@stx8.com&gt;&quot; imported</span><br><span class="line">gpg: Total number processed: 1</span><br><span class="line">gpg:               imported: 1</span><br><span class="line">FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569</span><br><span class="line">uid           [ unknown] shikong &lt;me@stx8.com&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-公钥服务器"><a href="#2-公钥服务器" class="headerlink" title="2. 公钥服务器"></a>2. 公钥服务器</h3><p>从 keys.openpgp.org 获取：</p>
+<p>如果报错（比如 <code>No valid OpenPGP data found</code>），说明 WKD 没拉到，请改用下面的公钥服务器方式。</p>
+<h4 id="方式二：从公钥服务器获取"><a href="#方式二：从公钥服务器获取" class="headerlink" title="方式二：从公钥服务器获取"></a>方式二：从公钥服务器获取</h4><p>从 keys.openpgp.org 拉取：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --keyserver hkps://keys.openpgp.org --recv-keys FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569</span><br></pre></td></tr></table></figure>
 
-<p>或从 keyserver.ubuntu.com 获取：</p>
+<p>或从 keyserver.ubuntu.com 拉取（前者不可达时的备用镜像）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569</span><br></pre></td></tr></table></figure>
 
-<p>备用 · 直接拉 ASCII armored 公钥（绕过 dirmngr&#x2F;HKPS 协议）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fL https://keys.openpgp.org/vks/v1/by-fingerprint/FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569 | gpg --import</span><br></pre></td></tr></table></figure>
+<p>成功时会看到 <code>gpg: key ... imported</code> 之类提示。</p>
+<h4 id="方式三：直接下载导入（dirmngr-HKPS-协议不通时的备用）"><a href="#方式三：直接下载导入（dirmngr-HKPS-协议不通时的备用）" class="headerlink" title="方式三：直接下载导入（dirmngr&#x2F;HKPS 协议不通时的备用）"></a>方式三：直接下载导入（dirmngr&#x2F;HKPS 协议不通时的备用）</h4><p>绕过密钥服务器协议，直接拉公钥文件喂给 gpg。从 WKD 拉二进制（体积更小）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://openpgpkey.stx8.com/.well-known/openpgpkey/stx8.com/hu/s8y7oh5xrdpu9psba3i5ntk64ohouhga | gpg --import -</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fL https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0xFFFFA487A0E51D2E6F0C4E685968BC2CEE74E569 | gpg --import</span><br></pre></td></tr></table></figure>
+<p>或从 keys.openpgp.org 拉 ASCII armored 公钥：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://keys.openpgp.org/vks/v1/by-fingerprint/FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569 | gpg --import -</span><br></pre></td></tr></table></figure>
 
-<p>或网页搜索：<a target="_blank" rel="noopener" href="https://keys.openpgp.org/search?q=me@stx8.com">https://keys.openpgp.org/search?q=me%40stx8.com</a></p>
-<h3 id="3-Mailvelope（浏览器插件）"><a href="#3-Mailvelope（浏览器插件）" class="headerlink" title="3. Mailvelope（浏览器插件）"></a>3. Mailvelope（浏览器插件）</h3><p>安装 <a target="_blank" rel="noopener" href="https://www.mailvelope.com/">Mailvelope</a> → 「Key Management」→「Search」→ 填入指纹 <code>FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569</code>。</p>
-<p><strong>无论用哪种来源，导入后必须核对指纹（防 MITM）：</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gpg --fingerprint FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569</span><br><span class="line"><span class="comment"># 期望：FFFA A487 A0E5 1D2E 6F0C  4E68 5968 BC2C EE74 E569</span></span><br></pre></td></tr></table></figure>
+<p>也可以在网页上搜索：<a target="_blank" rel="noopener" href="https://keys.openpgp.org/search?q=me@stx8.com">https://keys.openpgp.org/search?q=me%40stx8.com</a></p>
+<h3 id="第三步-·-核对指纹（防中间人攻击）"><a href="#第三步-·-核对指纹（防中间人攻击）" class="headerlink" title="第三步 · 核对指纹（防中间人攻击）"></a>第三步 · 核对指纹（防中间人攻击）</h3><p><strong>这一步不能省。</strong> 互联网上传输的公钥可能被掉包——如果攻击者在链路上替换成他自己的公钥，你”加密”给我的信他就能解开。指纹是公钥的密码学指纹，核对它就等于确认”这把钥匙确实是我的”。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --fingerprint FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569</span><br></pre></td></tr></table></figure>
 
-<p>其他客户端（Kleopatra &#x2F; GPG Suite &#x2F; Thunderbird &#x2F; OpenKeychain 等）同理，导入后做一次指纹核对即可。</p>
-<h2 id="公钥信息-·-me-stx8-com"><a href="#公钥信息-·-me-stx8-com" class="headerlink" title="公钥信息 · me@stx8.com"></a>公钥信息 · <a href="mailto:&#x6d;&#101;&#64;&#x73;&#x74;&#x78;&#x38;&#46;&#x63;&#x6f;&#x6d;">me@stx8.com</a></h2><ul>
+<p>输出里应能看到这样一行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FFFA A487 A0E5 1D2E 6F0C  4E68 5968 BC2C EE74 E569</span><br></pre></td></tr></table></figure>
+
+<p>只要这串指纹和本页顶部列出的完全一致，你导入的就是我的真公钥。指纹不对，说明哪里出了问题，<strong>不要</strong>用它加密。</p>
+<blockquote>
+<p>其他客户端（Kleopatra &#x2F; GPG Suite &#x2F; Thunderbird &#x2F; OpenKeychain 等）同理：导入后找到该密钥的”指纹”字段，与本页核对一次即可。</p>
+</blockquote>
+<h3 id="补充-·-Mailvelope（浏览器里收发加密邮件）"><a href="#补充-·-Mailvelope（浏览器里收发加密邮件）" class="headerlink" title="补充 · Mailvelope（浏览器里收发加密邮件）"></a>补充 · Mailvelope（浏览器里收发加密邮件）</h3><p>如果你不想碰命令行，可以装 <a target="_blank" rel="noopener" href="https://www.mailvelope.com/">Mailvelope</a> 浏览器插件，它能在网页邮箱里直接加解密：安装后进入「Key Management」→「Import Keys」，把指纹 <code>FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569</code> 填进去搜索导入，记得同样核对一次指纹。</p>
+<h2 id="用公钥给我写一封加密信"><a href="#用公钥给我写一封加密信" class="headerlink" title="用公钥给我写一封加密信"></a>用公钥给我写一封加密信</h2><p>公钥到手、指纹也核对过之后，就可以加密了。假设你想加密的明文存在 <code>message.txt</code> 里：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --armor --encrypt --recipient me@stx8.com message.txt</span><br></pre></td></tr></table></figure>
+
+<p>这会在同目录生成 <code>message.txt.asc</code>——一份 ASCII 形式的密文。命令说明：</p>
+<ul>
+<li><code>--armor</code>：输出 ASCII 文本（方便粘贴进邮件正文），不加则生成二进制 <code>.gpg</code>。</li>
+<li><code>--encrypt</code>：加密。</li>
+<li><code>--recipient me@stx8.com</code>：用我的公钥作为收件人（gpg 会按邮箱找到刚才导入的钥匙）。</li>
+</ul>
+<p>把 <code>message.txt.asc</code> 的全部内容发给我即可。只有用我这边对应的私钥才能解密，任何中间环节（邮件服务商、网络监听者）看到的都只是一堆乱码。</p>
+<p><strong>小提示</strong>：如果你希望我回信时也能加密给你，请在信里附上你自己的公钥（<code>gpg --armor --export 你的邮箱</code> 的输出），并简要说明那是你的公钥。这样我回复时就会用你的公钥加密。</p>
+<h2 id="公钥信息-·-me-stx8-com"><a href="#公钥信息-·-me-stx8-com" class="headerlink" title="公钥信息 · me@stx8.com"></a>公钥信息 · <a href="mailto:&#109;&#x65;&#x40;&#115;&#116;&#120;&#56;&#46;&#x63;&#111;&#x6d;">me@stx8.com</a></h2><p>下面是这把钥匙的详细参数，供深度核对或记录：</p>
+<ul>
 <li><strong>算法 &#x2F; 创建 &#x2F; 到期</strong>：brainpoolP512r1 · 2026-07-09 · 2030-12-31</li>
 <li><strong>主指纹</strong>：<code>FFFA A487 A0E5 1D2E 6F0C  4E68 5968 BC2C EE74 E569</code></li>
 <li><strong>签名子密钥</strong>（ed25519）：<code>8C18 B451 EE94 15F6 F6AA  E7D7 5C93 D746 5B87 2D84</code> · 到期 2030-12-31</li>

@@ -307,6 +307,13 @@
 
       <time title="创建时间：2015-08-05 01:55:43" itemprop="dateCreated datePublished" datetime="2015-08-05T01:55:43+08:00">2015-08-05</time>
     </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-15 16:37:00" itemprop="dateModified" datetime="2026-07-15T16:37:00+08:00">2026-07-15</time>
+    </span>
 
   
   
@@ -332,28 +339,38 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>mysql默认root用户没有密码，输入mysql –u root 进入mysql</p>
+          <p>mysql默认root用户没有密码，输入mysql -u root 进入mysql</p>
 <h3 id="1、初始化root密码"><a href="#1、初始化root密码" class="headerlink" title="1、初始化root密码"></a>1、初始化root密码</h3><p>进入mysql数据库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;update user set password=PASSWORD(‘123456’) where User=&#x27;root&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;use mysql;</span><br><span class="line">mysql&gt;update user set password=PASSWORD(&#x27;123456&#x27;) where User=&#x27;root&#x27;;</span><br></pre></td></tr></table></figure>
 
-<h3 id="2、允许mysql远程访问-可以使用以下三种方式"><a href="#2、允许mysql远程访问-可以使用以下三种方式" class="headerlink" title="2、允许mysql远程访问,可以使用以下三种方式:"></a>2、允许mysql远程访问,可以使用以下三种方式:</h3><h4 id="a、改表。"><a href="#a、改表。" class="headerlink" title="a、改表。"></a>a、改表。</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root –p</span><br><span class="line">mysql&gt;use mysql;</span><br><span class="line">mysql&gt;update user set host = &#x27;%&#x27; where user = &#x27;root&#x27;;</span><br><span class="line">mysql&gt;select host, user from user;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上述写法适用于 <strong>MySQL 5.6 及更早版本</strong>。从 <strong>MySQL 5.7.6</strong> 起，<code>user</code> 表里的密码列由 <code>password</code> 改名为 <code>authentication_string</code>，<code>PASSWORD()</code> 函数也在 <strong>MySQL 8.0</strong> 中被移除。新版请改用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;use mysql;</span><br><span class="line">mysql&gt;ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;123456&#x27;;</span><br></pre></td></tr></table></figure></blockquote>
+<h3 id="2、允许mysql远程访问-可以使用以下三种方式"><a href="#2、允许mysql远程访问-可以使用以下三种方式" class="headerlink" title="2、允许mysql远程访问,可以使用以下三种方式:"></a>2、允许mysql远程访问,可以使用以下三种方式:</h3><h4 id="a、改表。"><a href="#a、改表。" class="headerlink" title="a、改表。"></a>a、改表。</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line">mysql&gt;use mysql;</span><br><span class="line">mysql&gt;update user set host = &#x27;%&#x27; where user = &#x27;root&#x27;;</span><br><span class="line">mysql&gt;FLUSH PRIVILEGES;</span><br><span class="line">mysql&gt;select host, user from user;</span><br></pre></td></tr></table></figure>
 
 <h4 id="b、授权。"><a href="#b、授权。" class="headerlink" title="b、授权。"></a>b、授权。</h4><p>例如，你想root使用123456从任何主机连接到mysql服务器。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27; WITH GRANT OPTION;</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>上述 <code>GRANT ... IDENTIFIED BY</code> 一句话写法在 <strong>MySQL 8.0</strong> 中已被移除。8.0 要求先创建用户再授权，需分两步：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;CREATE USER &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27;;</span><br><span class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; WITH GRANT OPTION;</span><br></pre></td></tr></table></figure></blockquote>
 <p>如果你想允许用户jack从ip为10.10.50.127的主机连接到mysql服务器，并使用654321作为密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#x27;jack&#x27;@’10.10.50.127’ IDENTIFIED BY &#x27;654321&#x27; WITH GRANT OPTION;</span><br><span class="line">mysql&gt;FLUSH RIVILEGES</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#x27;jack&#x27;@&#x27;10.10.50.127&#x27; IDENTIFIED BY &#x27;654321&#x27; WITH GRANT OPTION;</span><br><span class="line">mysql&gt;FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
 
 <h4 id="c-在安装mysql的机器上运行："><a href="#c-在安装mysql的机器上运行：" class="headerlink" title="c:在安装mysql的机器上运行："></a>c:在安装mysql的机器上运行：</h4><p>进入MySQL服务器</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d:\mysql\bin\&gt;mysql -h localhost -u root</span><br></pre></td></tr></table></figure>
 
 <p>赋予任何主机访问数据的权限</p>
 <p>赋予任何主机访问数据的权限</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; WITH GRANT OPTION</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; WITH GRANT OPTION;</span><br></pre></td></tr></table></figure>
 <p>使修改生效</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;FLUSH PRIVILEGES</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
 <p>退出MySQL服务器</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;EXIT</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>安全提示</strong>：上述示例中的 <code>123456</code>、<code>654321</code> 仅为演示，生产环境请务必使用强密码；允许远程访问时尽量指定具体来源 IP（如 <code>&#39;root&#39;@&#39;10.10.50.127&#39;</code>）而非 <code>&#39;root&#39;@&#39;%&#39;</code>，避免向任意主机开放；业务系统不要直接使用 root 账号，应为每个应用创建权限最小化的独立账号。</p>
+</blockquote>
 <blockquote>
 <p>转自<a target="_blank" rel="noopener" href="http://www.cnblogs.com/cnblogsfans/archive/2009/09/21/1570942.html">博客园</a></p>
 </blockquote>
@@ -419,7 +436,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-15 15:37:00" itemprop="dateModified" datetime="2026-07-15T15:37:00+08:00">2026-07-15</time>
+      <time title="修改时间：2026-07-15 16:35:00" itemprop="dateModified" datetime="2026-07-15T16:35:00+08:00">2026-07-15</time>
     </span>
 
   
@@ -458,7 +475,7 @@
 <li><code>flat</code>：纯色面片，无插值</li>
 <li><code>interp</code>：颜色平滑插值，曲面看起来最细腻</li>
 </ul>
-<h3 id="set-gca-’ydir’-’reverse’"><a href="#set-gca-’ydir’-’reverse’" class="headerlink" title="set(gca,’ydir’,’reverse’)"></a>set(gca,’ydir’,’reverse’)</h3><p>将 Y 轴方向翻转（从大到小递增）。在图像处理场景中，矩阵的第 1 行通常对应图像顶部，而 MATLAB 默认 Y 轴向上递增，翻转后方向与图像坐标系一致。</p>
+<h3 id="set-gca-’ydir’-’reverse’"><a href="#set-gca-’ydir’-’reverse’" class="headerlink" title="set(gca,’ydir’,’reverse’)"></a>set(gca,’ydir’,’reverse’)</h3><p>将 Y 轴方向翻转（让数值从上到下由小变大，与图像坐标系一致）。在图像处理场景中，矩阵的第 1 行通常对应图像顶部，而 MATLAB 默认 Y 轴向上递增，翻转后方向与图像坐标系一致。</p>
 <h3 id="colorbar"><a href="#colorbar" class="headerlink" title="colorbar()"></a>colorbar()</h3><p>在曲面旁边添加颜色条，方便读出每个颜色对应的数值范围。</p>
 <h3 id="set-gcf-’Position’-100-300-800-600"><a href="#set-gcf-’Position’-100-300-800-600" class="headerlink" title="set(gcf,’Position’,[100,300,800,600])"></a>set(gcf,’Position’,[100,300,800,600])</h3><p>设置 Figure 窗口大小和位置：<code>[左, 下, 宽, 高]</code>，单位为像素。这里设为宽 800 × 高 600，导出的图片分辨率也比较合适。</p>
 <h3 id="saveas-gcf-’misim-0-1-png’"><a href="#saveas-gcf-’misim-0-1-png’" class="headerlink" title="saveas(gcf,’misim 0.1.png’)"></a>saveas(gcf,’misim 0.1.png’)</h3><p>把当前 Figure 保存为 PNG 文件。也可以用 <code>print</code> 获得更高分辨率：</p>
