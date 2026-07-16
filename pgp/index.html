@@ -215,13 +215,14 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://openpgpkey.stx8.com/.well-known/openpgpkey/stx8.com/hu/s8y7oh5xrdpu9psba3i5ntk64ohouhga | gpg --import -</span><br></pre></td></tr></table></figure>
 
 <p>我的公钥也可在 <a target="_blank" rel="noopener" href="https://keys.openpgp.org/">keys.openpgp.org</a> 上找到，并可从 <a target="_blank" rel="noopener" href="https://keys.openpgp.org/vks/v1/by-fingerprint/FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569">这个链接</a> 下载。</p>
-<h3 id="图形界面"><a href="#图形界面" class="headerlink" title="图形界面"></a>图形界面</h3><h4 id="Thunderbird（内置-OpenPGP）"><a href="#Thunderbird（内置-OpenPGP）" class="headerlink" title="Thunderbird（内置 OpenPGP）"></a>Thunderbird（内置 OpenPGP）</h4><p>Thunderbird 78 及以上版本内置了 OpenPGP 支持，无需额外安装。导入公钥：</p>
+<h3 id="图形界面"><a href="#图形界面" class="headerlink" title="图形界面"></a>图形界面</h3><h4 id="Thunderbird（内置-OpenPGP）"><a href="#Thunderbird（内置-OpenPGP）" class="headerlink" title="Thunderbird（内置 OpenPGP）"></a>Thunderbird（内置 OpenPGP）</h4><p>Thunderbird 78 及以上版本内置了 OpenPGP 支持，无需额外安装。写信给 <code>me@stx8.com</code> 时，Thunderbird 会自动通过 WKD 发现我的公钥：</p>
 <ol>
-<li>打开 Thunderbird，进入「设置」→「账号设置」→「端对端加密」</li>
-<li>点击「OpenPGP 密钥管理器」</li>
-<li>选择「文件」→「导入公钥文件」，或直接粘贴指纹 <code>FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569</code> 搜索</li>
+<li>新建邮件，收件人填 <code>me@stx8.com</code></li>
+<li>点击底部「加密」按钮</li>
+<li>如果本机还没有我的公钥，Thunderbird 会自动从 <code>openpgpkey.stx8.com</code> 拉取（WKD）</li>
+<li>加密成功即可发送</li>
 </ol>
-<p>导入后就可以在写信时选择「加密」了。</p>
+<p>如果自动发现失败，也可以手动搜索：进入「OpenPGP 密钥管理器」→「查找」→ 输入 <code>me@stx8.com</code> 或指纹 <code>FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569</code>，从 keys.openpgp.org 导入。</p>
 <h4 id="Mailvelope（浏览器插件）"><a href="#Mailvelope（浏览器插件）" class="headerlink" title="Mailvelope（浏览器插件）"></a>Mailvelope（浏览器插件）</h4><p>如果你不想碰命令行，可以装 <a target="_blank" rel="noopener" href="https://www.mailvelope.com/">Mailvelope</a> 浏览器插件，它能在网页邮箱里直接加解密：安装后进入「Key Management」→「Search」，把指纹 <code>FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569</code> 填进去搜索导入。</p>
 <h2 id="用公钥给我写一封加密信"><a href="#用公钥给我写一封加密信" class="headerlink" title="用公钥给我写一封加密信"></a>用公钥给我写一封加密信</h2><p>公钥到手之后，就可以加密了。假设你想加密的明文存在 <code>message.txt</code> 里：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg -aer me@stx8.com message.txt</span><br></pre></td></tr></table></figure>
@@ -234,7 +235,7 @@
 </ul>
 <p>把 <code>message.txt.asc</code> 的全部内容发给我即可。只有用我这边对应的私钥才能解密，任何中间环节（邮件服务商、网络监听者）看到的都只是一堆乱码。</p>
 <p><strong>小提示</strong>：如果你希望我回信时也能加密给你，请在信里附上你自己的公钥（<code>gpg -a --export 你的邮箱</code> 的输出），并简要说明那是你的公钥。这样我回复时就会用你的公钥加密。</p>
-<h2 id="公钥信息-·-me-stx8-com"><a href="#公钥信息-·-me-stx8-com" class="headerlink" title="公钥信息 · me@stx8.com"></a>公钥信息 · <a href="mailto:&#109;&#101;&#64;&#x73;&#116;&#120;&#x38;&#46;&#x63;&#x6f;&#109;">me@stx8.com</a></h2><p>导入后可以用下面的命令核对指纹：</p>
+<h2 id="公钥信息-·-me-stx8-com"><a href="#公钥信息-·-me-stx8-com" class="headerlink" title="公钥信息 · me@stx8.com"></a>公钥信息 · <a href="mailto:&#x6d;&#101;&#x40;&#x73;&#x74;&#120;&#56;&#x2e;&#x63;&#111;&#109;">me@stx8.com</a></h2><p>导入后可以用下面的命令核对指纹：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --fingerprint FFFFA487A0E51D2E6F0C4E685968BC2CEE74E569</span><br></pre></td></tr></table></figure>
 
 <p>输出应与下方的主指纹完全一致。下面是这把钥匙的详细参数，供深度核对或记录：</p>
