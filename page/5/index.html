@@ -144,13 +144,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-count">94</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -167,6 +167,515 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.stx8.com/2016/02/16/linux-learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="时空">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时空主站">
+      <meta itemprop="description" content="时空主站">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 时空主站">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/02/16/linux-learning/" class="post-title-link" itemprop="url">Linux笔记 (Linux Notes)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-02-16 21:54:07" itemprop="dateCreated datePublished" datetime="2016-02-16T21:54:07+08:00">2016-02-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-16 10:11:00" itemprop="dateModified" datetime="2026-07-16T10:11:00+08:00">2026-07-16</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2016/02/16/linux-learning/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/02/16/linux-learning/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Linux笔记"><a href="#Linux笔记" class="headerlink" title="Linux笔记"></a>Linux笔记</h1><p>内容：主要讲解常用命令</p>
+<p>2015年12月</p>
+<p>时空</p>
+<h2 id="Linux概述"><a href="#Linux概述" class="headerlink" title="Linux概述"></a>Linux概述</h2><h3 id="Linux的内核版本"><a href="#Linux的内核版本" class="headerlink" title="Linux的内核版本"></a>Linux的内核版本</h3><blockquote>
+<p>38页1.2.5</p>
+</blockquote>
+<h3 id="Linux发行版"><a href="#Linux发行版" class="headerlink" title="Linux发行版"></a>Linux发行版</h3><p>目前Linux主要分为两大分支：</p>
+<ul>
+<li><p>Debian</p>
+</li>
+<li><p>使用dpkg方式安装软件，包括Debian, Ubuntu(Linux Mint)</p>
+</li>
+<li><p>全球最高份额，deb包非常方便</p>
+</li>
+<li><p>deb包</p>
+</li>
+<li><p>sudo dpkg -i 软件包</p>
+</li>
+<li><p>sudo dpkg -r 软件名</p>
+</li>
+<li><p>Red Hat</p>
+</li>
+<li><p>使用RPM方式安装软件，包括Red Hat(CentOS), Fedora, SuSE</p>
+</li>
+<li><p>只有中国份额较高。因为进入中国比较早，很多人不愿意换</p>
+</li>
+<li><p>rpm包</p>
+</li>
+</ul>
+<h3 id="开源许可证"><a href="#开源许可证" class="headerlink" title="开源许可证"></a>开源许可证</h3><blockquote>
+<p>45页1.3.3</p>
+</blockquote>
+<h2 id="Linux的安装"><a href="#Linux的安装" class="headerlink" title="Linux的安装"></a>Linux的安装</h2><h3 id="开机流程"><a href="#开机流程" class="headerlink" title="开机流程"></a>开机流程</h3><h4 id="两种启动方式：BIOS和UEFI"><a href="#两种启动方式：BIOS和UEFI" class="headerlink" title="两种启动方式：BIOS和UEFI"></a>两种启动方式：BIOS和UEFI</h4><ul>
+<li><p>以前：BIOS启动</p>
+</li>
+<li><p>对应<strong>MBR</strong>磁盘，MBR分区表</p>
+</li>
+<li><p>只有4个主分区</p>
+</li>
+<li><p>现代：UEFI启动</p>
+</li>
+<li><p>对应<strong>GPT</strong>磁盘，GUID分区表</p>
+</li>
+<li><p>无限主分区</p>
+</li>
+<li><p>Mac默认使用GPT</p>
+</li>
+</ul>
+<h4 id="MBR方式开机流程"><a href="#MBR方式开机流程" class="headerlink" title="MBR方式开机流程"></a>MBR方式开机流程</h4><blockquote>
+<p>72页3.2.4</p>
+</blockquote>
+<h3 id="磁盘分区"><a href="#磁盘分区" class="headerlink" title="磁盘分区"></a>磁盘分区</h3><p>初学：在硬盘尾部安装，全部使用逻辑分区</p>
+<table>
+<thead>
+<tr>
+<th>挂载点</th>
+<th>容量</th>
+<th>格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;</td>
+<td>剩下的空间</td>
+<td>ext4</td>
+</tr>
+<tr>
+<td>swap</td>
+<td>与内存大小相同</td>
+<td>swap</td>
+</tr>
+</tbody></table>
+<p>正常：</p>
+<table>
+<thead>
+<tr>
+<th>挂载点</th>
+<th>容量</th>
+<th>格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;boot</td>
+<td>100M</td>
+<td>ext4</td>
+</tr>
+<tr>
+<td>&#x2F;</td>
+<td>相当于系统盘</td>
+<td>ext4</td>
+</tr>
+<tr>
+<td>&#x2F;home</td>
+<td>剩下的空间</td>
+<td>ext4</td>
+</tr>
+<tr>
+<td>swap</td>
+<td>与内存大小相同</td>
+<td>swap</td>
+</tr>
+</tbody></table>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="X-Window热键"><a href="#X-Window热键" class="headerlink" title="X Window热键"></a>X Window热键</h3><p>X Window与文字模式的切换：<code>[Ctrl] + [Alt] + [F1]~[F6]</code></p>
+<p>重启X Window：<code>Ctrl+Alt+Backspace</code></p>
+<h3 id="基础命令和热键"><a href="#基础命令和热键" class="headerlink" title="基础命令和热键"></a>基础命令和热键</h3><p>列出文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ls</span><br><span class="line">$ ls -l</span><br><span class="line">$ ll # Ubuntu可以用</span><br></pre></td></tr></table></figure>
+
+<p>显示日期与时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ date</span><br></pre></td></tr></table></figure>
+
+<p>日历</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cal</span><br><span class="line">$ cal 2015</span><br><span class="line">$ cal 12 2015</span><br></pre></td></tr></table></figure>
+
+<p>计算器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bc</span><br></pre></td></tr></table></figure>
+
+<p>热键</p>
+<ul>
+<li><code>Tab</code> 命令补齐、文件补齐</li>
+<li><code>Ctrl+C</code> 停止程序</li>
+<li><code>Ctrl+D</code> EOF、离开</li>
+</ul>
+<p>在线求助</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ man 要查询的命令</span><br></pre></td></tr></table></figure>
+
+<p>超简单文本编辑器：nano</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nano test.txt</span><br></pre></td></tr></table></figure>
+
+<p>数据同步写入磁盘</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sync</span><br></pre></td></tr></table></figure>
+
+<p>关机</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># shutdown -h now</span><br></pre></td></tr></table></figure>
+
+<p>重启</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># reboot</span><br><span class="line"># shutdown -r now</span><br></pre></td></tr></table></figure>
+
+<p>切断电源（不建议）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># halt</span><br></pre></td></tr></table></figure>
+
+<p>切换执行等级：init</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># init 0 # 关机</span><br><span class="line"># init 6 # 重启</span><br></pre></td></tr></table></figure>
+
+<p>设置当前用户的密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ passwd</span><br></pre></td></tr></table></figure>
+
+<h2 id="Linux文件操作"><a href="#Linux文件操作" class="headerlink" title="Linux文件操作"></a>Linux文件操作</h2><p>Windows中的文件夹在Linux中叫目录。</p>
+<p>特殊的目录<br><code>.</code> 代表此层目录<br><code>..</code>代表上层目录<br><code>-</code> 代表前一个工作目录<br><code>~</code> 代表当前用户主目录<br><code>~account</code> 代表account这个用户主目录</p>
+<h3 id="目录相关操作"><a href="#目录相关操作" class="headerlink" title="目录相关操作"></a>目录相关操作</h3><p>切换目录：cd</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd [相对路径或绝对路径]</span><br></pre></td></tr></table></figure>
+
+<p>显示当前目录：pwd</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pwd</span><br></pre></td></tr></table></figure>
+
+<p>新建目录：mkdir</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir test # 新建一个名为test的目录</span><br></pre></td></tr></table></figure>
+
+<p>删除空目录：rmdir</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rmdir test</span><br></pre></td></tr></table></figure>
+
+<h3 id="环境变量：-PATH"><a href="#环境变量：-PATH" class="headerlink" title="环境变量：$PATH"></a>环境变量：$PATH</h3><p>使用echo显示$PATH</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo $PATH</span><br></pre></td></tr></table></figure>
+
+<h3 id="文件操作命令"><a href="#文件操作命令" class="headerlink" title="文件操作命令"></a>文件操作命令</h3><p>查看文件与目录：ls</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ls</span><br><span class="line">$ ls -l</span><br><span class="line">$ ls -al</span><br></pre></td></tr></table></figure>
+
+<p>复制：cp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp 源文件 目标文件</span><br></pre></td></tr></table></figure>
+
+<p>删除：rm</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rm 文件或目录</span><br><span class="line">$ rm -r 递归删除，删掉目录中所有文件和目录</span><br></pre></td></tr></table></figure>
+
+<p>移动、重命名：mv</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv 源文件 目标文件</span><br></pre></td></tr></table></figure>
+
+<h3 id="文件内容查阅"><a href="#文件内容查阅" class="headerlink" title="文件内容查阅"></a>文件内容查阅</h3><p>直接查看一个文件的内容：cat</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat test.txt</span><br></pre></td></tr></table></figure>
+
+<p>反向查看：tac</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tac test.txt</span><br></pre></td></tr></table></figure>
+
+<p>添加行号打印：nl</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nl test.txt</span><br></pre></td></tr></table></figure>
+
+<p>翻页查看：more</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ more test.txt</span><br></pre></td></tr></table></figure>
+
+<p>上下翻页查看：less</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ less test.txt</span><br></pre></td></tr></table></figure>
+
+<p>只看前面几行：head</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ head test.txt # 默认10行</span><br><span class="line">$ head -n 20 test.txt</span><br></pre></td></tr></table></figure>
+
+<p>只看后面几行：tail</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ tail test.txt</span><br><span class="line">$ tail -n 20 test.txt</span><br></pre></td></tr></table></figure>
+
+<p>查看非纯文本文件：od</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ od test.txt</span><br></pre></td></tr></table></figure>
+
+<p>修改文件时间或创建新文件：touch</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ touch new.txt # 创建一个名为new.txt的文件</span><br><span class="line">$ touch -d &quot;2 days ago&quot; test.txt</span><br><span class="line">$ touch -t 1512251200 test.txt</span><br></pre></td></tr></table></figure>
+
+<p>查看文件类型：file</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ file test.txt # ASCII text</span><br><span class="line">$ file /usr/bin/passwd</span><br><span class="line">$ file /var/lib/mlocate/mlocate.db # data</span><br></pre></td></tr></table></figure>
+
+<h3 id="文件的查找"><a href="#文件的查找" class="headerlink" title="文件的查找"></a>文件的查找</h3><blockquote>
+<p>188页7.5.2</p>
+</blockquote>
+<p>寻找执行文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ which ifconfig</span><br><span class="line">$ which cd</span><br></pre></td></tr></table></figure>
+
+<p>在数据库中寻找特定文件：whereis, locate</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ which test.txt</span><br><span class="line">$ locate test.txt</span><br></pre></td></tr></table></figure>
+
+<p>扫描硬盘查找：find</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ find [PATH] [option] [action]</span><br><span class="line">$ find / -user root</span><br><span class="line">$ find / -name passwd</span><br><span class="line">$ find / -mtime 0</span><br></pre></td></tr></table></figure>
+
+<h2 id="Linux目录配置标准：FHS"><a href="#Linux目录配置标准：FHS" class="headerlink" title="Linux目录配置标准：FHS"></a>Linux目录配置标准：FHS</h2><blockquote>
+<p>152页</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>可分享的(shareable)</th>
+<th>不可分享的(unsharealbe)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>不变的(static)</td>
+<td>&#x2F;usr (软件放置处)</td>
+<td>&#x2F;etc (配置文件)</td>
+</tr>
+<tr>
+<td></td>
+<td>&#x2F;opt (第三方软件)</td>
+<td>&#x2F;boot (开机与内核文件)</td>
+</tr>
+<tr>
+<td>可变动的(variable)</td>
+<td>&#x2F;var&#x2F;mail(用户邮件信箱)</td>
+<td>&#x2F;var&#x2F;run (程序相关)</td>
+</tr>
+<tr>
+<td></td>
+<td>&#x2F;var&#x2F;spool&#x2F;news(新闻组)</td>
+<td>&#x2F;var&#x2F;lock (程序相关)</td>
+</tr>
+</tbody></table>
+<h2 id="Linux的文件权限"><a href="#Linux的文件权限" class="headerlink" title="Linux的文件权限"></a>Linux的文件权限</h2><h3 id="用户与用户组"><a href="#用户与用户组" class="headerlink" title="用户与用户组"></a>用户与用户组</h3><blockquote>
+<p>139页6.1</p>
+</blockquote>
+<p>文件所有者，用户组，其他人</p>
+<p><strong>root是万能的</strong></p>
+<h3 id="查看文件权限"><a href="#查看文件权限" class="headerlink" title="查看文件权限"></a>查看文件权限</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -al</span><br></pre></td></tr></table></figure>
+
+<h3 id="文件类型与权限"><a href="#文件类型与权限" class="headerlink" title="文件类型与权限"></a>文件类型与权限</h3><p>可读、可写、可执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-rwxrwxrwx 4 root root 4096 Sep 8 14:06 test.txt</span><br><span class="line">drwxrwxrwx 9 root root 4096 Jan 6 10:57 hello</span><br></pre></td></tr></table></figure>
+
+<p>文件权限 连接数 文件所有者 文件所属用户组 文件大小 修改时间 文件名</p>
+<p>文件权限分为文件类型和3组权限</p>
+<ul>
+<li><p>文件类型</p>
+</li>
+<li><p><code>d</code>表示目录</p>
+</li>
+<li><p><code>-</code>表示文件</p>
+</li>
+<li><p><code>l</code>表示连接文件</p>
+</li>
+<li><p><code>b</code>表示接口设备</p>
+</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c</span><br></pre></td></tr></table></figure>
+
+<p>表示串口设备</p>
+</li>
+<li><p>3组权限</p>
+</li>
+<li><p>第一组：文件所有者的权限</p>
+</li>
+<li><p>第二组：同用户组的权限</p>
+</li>
+<li><p>第三组：其他非本用户组的权限</p>
+</li>
+</ul>
+<blockquote>
+<p>142-144页例题练习</p>
+</blockquote>
+<h3 id="改变文件属性与权限"><a href="#改变文件属性与权限" class="headerlink" title="改变文件属性与权限"></a>改变文件属性与权限</h3><p>改变所属用户组：chgrp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># chgrp root test.txt</span><br></pre></td></tr></table></figure>
+
+<p>改变文件所有者：chown</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># chown root:root dir</span><br></pre></td></tr></table></figure>
+
+<p>chown -R 表示递归</p>
+<p>改变文件的权限：chmod</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 777 test.txt</span><br><span class="line">$ chmod 755 test.txt</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>r</code>:4</li>
+<li><code>w</code>:2</li>
+<li><code>x</code>:1</li>
+</ul>
+<blockquote>
+<p>146页例题</p>
+</blockquote>
+<p>符号类型改变权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ chmod u/g/o/a +/-/= r/w/x 文件或目录</span><br><span class="line">$ chmod u=rwx,go=rx test.txt</span><br><span class="line">$ chmod a-x test.txt</span><br><span class="line">$ chmod a+w test.txt</span><br></pre></td></tr></table></figure>
+
+<p>不要随便用chmod的递归</p>
+<h3 id="目录与文件的权限意义"><a href="#目录与文件的权限意义" class="headerlink" title="目录与文件的权限意义"></a>目录与文件的权限意义</h3><p>权限对文件的重要性</p>
+<ul>
+<li><code>r</code>: 可读取</li>
+<li><code>w</code>: 可编辑、新增、修改，不包括删除</li>
+<li><code>x</code>: 可执行</li>
+</ul>
+<p>权限对目录的重要性</p>
+<ul>
+<li><code>r</code>: 可读取(可以列出)</li>
+<li><code>w</code>: 可写入</li>
+<li>新建新的文件与目录</li>
+<li>删除已经存在的文件与目录</li>
+<li>重命名</li>
+<li>转移该目录内的文件、目录位置</li>
+<li><code>x</code>: 可进入</li>
+</ul>
+<blockquote>
+<p>148-149页例题</p>
+</blockquote>
+<h3 id="Linux文件种类"><a href="#Linux文件种类" class="headerlink" title="Linux文件种类"></a>Linux文件种类</h3><ul>
+<li>普通文件(regular file): <code>r</code></li>
+<li>目录(directory): <code>d</code></li>
+<li>连接(link): <code>l</code></li>
+<li>设备(device)</li>
+<li>块(block)设备: <code>b</code></li>
+<li>字符(character)设备文件: <code>c</code></li>
+<li>套接字(sockets): <code>s</code></li>
+<li>管道(FIFO, pipe): <code>p</code></li>
+</ul>
+<h3 id="文件的默认权限与隐藏权限"><a href="#文件的默认权限与隐藏权限" class="headerlink" title="文件的默认权限与隐藏权限"></a>文件的默认权限与隐藏权限</h3><blockquote>
+<p>180-181页例题</p>
+</blockquote>
+<p>默认权限：<code>umask</code>，在原权限基础上减去权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ umask #查看</span><br><span class="line">$ umask -S</span><br><span class="line">$ umask 002 #设置</span><br><span class="line">$ umask 022</span><br></pre></td></tr></table></figure>
+
+<p>隐藏属性：略(自学)</p>
+<blockquote>
+<p>183页7.4.2<br>设置文件的隐藏属性：<code>chattr</code><br>查看文件的隐藏属性：<code>lsattr</code></p>
+</blockquote>
+<h3 id="权限相关习题"><a href="#权限相关习题" class="headerlink" title="权限相关习题"></a>权限相关习题</h3><blockquote>
+<p>194页情景模拟题</p>
+</blockquote>
+<h2 id="Linux文件系统"><a href="#Linux文件系统" class="headerlink" title="Linux文件系统"></a>Linux文件系统</h2><h3 id="磁盘与目录容量"><a href="#磁盘与目录容量" class="headerlink" title="磁盘与目录容量"></a>磁盘与目录容量</h3><blockquote>
+<p>210页8.2.1</p>
+</blockquote>
+<p>列出文件系统的整体磁盘使用量：<code>df</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ df -h</span><br></pre></td></tr></table></figure>
+
+<p>评估文件系统的磁盘使用量：<code>du</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ du</span><br><span class="line">$ du -a # 同时列出文件容量</span><br><span class="line">$ du -sm # s: 只列出总量 m: MB</span><br></pre></td></tr></table></figure>
+
+<h3 id="连接文件：ln"><a href="#连接文件：ln" class="headerlink" title="连接文件：ln"></a>连接文件：ln</h3><p>hard link(硬链接或实际连接)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ln /etc/crontab .</span><br><span class="line">$ ll -i</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>无法做”目录”的链接</li>
+<li>删掉其中一个，另一个可用</li>
+</ul>
+<p>symbolic link(符号连接)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s /etc/crontab crontab2</span><br><span class="line">$ ll -i /etc/crontab ./crontab2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>相当于Windows的快捷方式，删除源文件会不可用</li>
+</ul>
+<h3 id="磁盘的分区、格式化、检验与挂载"><a href="#磁盘的分区、格式化、检验与挂载" class="headerlink" title="磁盘的分区、格式化、检验与挂载"></a>磁盘的分区、格式化、检验与挂载</h3><p>略(自学)</p>
+<h2 id="压缩与打包"><a href="#压缩与打包" class="headerlink" title="压缩与打包"></a>压缩与打包</h2><h3 id="单一文件压缩命令"><a href="#单一文件压缩命令" class="headerlink" title="单一文件压缩命令"></a>单一文件压缩命令</h3><p>gzip, zcat</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ gzip file</span><br><span class="line">$ zcat file.gz</span><br><span class="line">$ gzip -d file.gz</span><br></pre></td></tr></table></figure>
+
+<p>bzip2, bzcat</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ bzip2 -z file</span><br><span class="line">$ bzcat file.bz2</span><br><span class="line">$ bzip2 -d file.bz2</span><br></pre></td></tr></table></figure>
+
+<h3 id="打包命令：tar"><a href="#打包命令：tar" class="headerlink" title="打包命令：tar"></a>打包命令：tar</h3><p>打包同时可以压缩，tar的参数：</p>
+<p><code>-z</code>: gzip方式压缩&#x2F;解压缩<br><code>-j</code>: bzip2方式压缩&#x2F;解压缩<br><code>-c</code>: 新建打包文件<br><code>-x</code>: 解打包或解压缩<br><code>-v</code>: 显示过程<br><code>-f</code>: 跟要被处理的文件名<br><code>-p</code>: 保留原本权限与属性</p>
+<p>打包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ tar -zcvf dir.tar.gz dir</span><br><span class="line">$ tar -jcvf dir.tar.bz2 dir</span><br><span class="line">$ tar -cvf dir.tar dir</span><br></pre></td></tr></table></figure>
+
+<p>解包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ tar -zxvf dir.tar.gz</span><br><span class="line">$ tar -jxvf dir.tar.bz2</span><br><span class="line">$ tar -zxvf dir.tar.gz -C /tmp</span><br></pre></td></tr></table></figure>
+
+<p>备份</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># tar -zpcvf etc.tar.gz /etc</span><br><span class="line"># tar -jpcvf etc.tar.bz2 /etc</span><br></pre></td></tr></table></figure>
+
+<p>查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ tar -ztvf dir.tar.gz</span><br><span class="line">$ tar -jtvf dir.tar.bz2</span><br></pre></td></tr></table></figure>
+
+<h2 id="vim编辑器"><a href="#vim编辑器" class="headerlink" title="vim编辑器"></a>vim编辑器</h2><h3 id="进入vim"><a href="#进入vim" class="headerlink" title="进入vim"></a>进入vim</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim 文件名</span><br></pre></td></tr></table></figure>
+
+<h3 id="新建文档"><a href="#新建文档" class="headerlink" title="新建文档"></a>新建文档</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim 新文件名</span><br></pre></td></tr></table></figure>
+
+<p>不保存则不生成新文件</p>
+<h3 id="进入插入模式"><a href="#进入插入模式" class="headerlink" title="进入插入模式"></a>进入插入模式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i, I, a, A, o, O</span><br></pre></td></tr></table></figure>
+
+<p><code>i</code>光标位置插入<br><code>I</code>行首插入<br><code>o</code>当前行后插入新行<br><code>O</code>当前行前插入新行<br><code>a</code>光标位置后插入<br><code>A</code>行末尾插入</p>
+<h3 id="行号"><a href="#行号" class="headerlink" title="行号"></a>行号</h3><p>显示行号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:set nu</span><br><span class="line">:set number</span><br><span class="line">:set nonu</span><br><span class="line">:set nonumber</span><br></pre></td></tr></table></figure>
+
+<p>不显示行号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:set nu</span><br><span class="line">:set number</span><br><span class="line">:set nonu</span><br><span class="line">:set nonumber</span><br></pre></td></tr></table></figure>
+
+<h3 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:数字</span><br><span class="line">数字G</span><br></pre></td></tr></table></figure>
+
+<p>最后一行<code>G</code></p>
+<h3 id="删除行、剪切"><a href="#删除行、剪切" class="headerlink" title="删除行、剪切"></a>删除行、剪切</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dd</span><br><span class="line">数字dd</span><br></pre></td></tr></table></figure>
+
+<h3 id="复制行"><a href="#复制行" class="headerlink" title="复制行"></a>复制行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yy</span><br><span class="line">数字yy</span><br></pre></td></tr></table></figure>
+
+<h3 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p</span><br></pre></td></tr></table></figure>
+
+<h3 id="块选择"><a href="#块选择" class="headerlink" title="块选择"></a>块选择</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+v</span><br></pre></td></tr></table></figure>
+
+<h3 id="预设行号"><a href="#预设行号" class="headerlink" title="预设行号"></a>预设行号</h3><p>编辑<code>~</code>下的.vimrc文件，写入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set nu</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

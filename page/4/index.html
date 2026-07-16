@@ -144,13 +144,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-count">94</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -167,6 +167,147 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.stx8.com/2017/04/10/%E4%BB%8Egitlab%E8%AF%AF%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93%E6%83%B3%E5%88%B0%E7%9A%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="时空">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时空主站">
+      <meta itemprop="description" content="时空主站">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 时空主站">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/04/10/%E4%BB%8Egitlab%E8%AF%AF%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93%E6%83%B3%E5%88%B0%E7%9A%84/" class="post-title-link" itemprop="url">从GITLAB误删除数据库想到的</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-04-10 13:13:00" itemprop="dateCreated datePublished" datetime="2017-04-10T13:13:00+08:00">2017-04-10</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2017/04/10/%E4%BB%8Egitlab%E8%AF%AF%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93%E6%83%B3%E5%88%B0%E7%9A%84/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/10/从gitlab误删除数据库想到的/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>昨天，Gitlab.com发生了一个大事，某同学误删了数据库，这个事看似是个低级错误，不过，因为Gitlab把整个过程的细节都全部暴露出来了，所以，可以看到很多东西，而对于类似这样的事情，我自己以前也干过，而在最近的两公司中我也见过（Amazon中见过一次，阿里中见过至少四次），正好通过这个事来说说一下自己的一些感想和观点吧。<strong>我先放个观点：你觉得有备份系统就不会丢数据了吗？</strong></p>
+<h4 id="事件回顾"><a href="#事件回顾" class="headerlink" title="事件回顾"></a>事件回顾</h4><p>整个事件的回顾Gitlab.com在第一时间就放到了<a target="_blank" rel="noopener" href="https://docs.google.com/document/d/1GCK53YDcBWQveod9kfzW-VCxIABGiryG7_z_6jHdVik/pub">Google Doc上</a>，事后，又发了<a target="_blank" rel="noopener" href="https://about.gitlab.com/2017/02/01/gitlab-dot-com-database-incident/">一篇Blog</a>来说明这个事，在这里，我简单的回顾一下这个事件的过程。 首先，一个叫YP的同学在给gitlab的线上数据库做一些负载均衡的工作，在做这个工作时的时候突发了一个情况，Gitlab被DDoS攻击，数据库的使用飙高，在block完攻击者的IP后，发现有个staging的数据库(db2.staging)已经落后生产库4GB的数据，于是YP同学在Fix这个staging库的同步问题的时候，发现db2.staging有各种问题都和主库无法同步，在这个时候，YP同学已经工作的很晚了，在尝试过多个方法后，发现db2.staging都hang在那里，无法同步，于是他想把db2.staging的数据库删除了，这样全新启动一个新的复制，结果呢，删除数据库的命令错误的敲在了生产环境上（db1.cluster），结果导致整个生产数据库被误删除。（<strong>陈皓注：这个失败基本上就是 “工作时间过长” + “在多数终端窗口中切换中迷失掉了”</strong>） 在恢复的过程中，他们发现只有db1.staging的数据库可以用于恢复，而其它的5种备份机制都不可用，第一个是数据库的同步，没有同步webhook，第二个是对硬盘的快照，没有对数据库做，第三个是用pg_dump的备份，发现版本不对（用9.2的版本去dump 9.6的数据）导致没有dump出数据，第四个S3的备份，完全没有备份上，第五个是相关的备份流程是问题百出的，只有几个粗糙的人肉的脚本和糟糕的文档，也就是说，不但是是人肉的，而且还是完全不可执行的。（<strong>陈皓注：就算是这些备份机制都work，其实也有问题，因为这些备份大多数基本上都是24小时干一次，所以，要从这些备份恢复也一定是是要丢数据的了，只有第一个数据库同步才会实时一些</strong>） 最终，gitlab从db1.staging上把6个小时前的数据copy回来，结果发现速度非常的慢，备份结点只有60Mbits&#x2F;S，拷了很长时间（<strong>陈皓注：为什么不把db1.staging给直接变成生产机？因为那台机器的性能很差</strong>）。数据现在的恢复了，不过，因为恢复的数据是6小时前的，所以，有如下的数据丢失掉了：</p>
+<ul>
+<li>粗略估计，有4613 的项目， 74 forks,  和 350 imports 丢失了；但是，因为Git仓库还在，所以，可以从Git仓库反向推导数据库中的数据，但是，项目中的issues等就完全丢失了。</li>
+<li>大约有±4979 提交记录丢失了（陈皓注：估计也可以用git仓库中反向恢复）。</li>
+<li>可能有 707  用户丢失了，这个数据来自Kibana的日志。</li>
+<li>在1月31日17:20 后的Webhooks 丢失了。</li>
+</ul>
+<p>因为Gitlab把整个事件的细节公开了出来，所以，也得到了很多外部的帮助，2nd Quadrant的CTO – <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/simonat2ndquadrantdotcom">Simon Riggs</a> 在他的blog上也发布文章 <a target="_blank" rel="noopener" href="http://blog.2ndquadrant.com/dataloss-at-gitlab/">Dataloss at Gitlab</a> 给了一些非常不错的建议：</p>
+<ul>
+<li>关于PostgreSQL 9.6的数据同步hang住的问题，可能有一些Bug，正在fix中。</li>
+<li>PostgreSQL有4GB的同步滞后是正常的，这不是什么问题。</li>
+<li>正常的停止从结点，会让主结点自动释放WALSender的链接数，所以，不应该重新配置主结点的 max_wal_senders 参数。但是，停止从结点时，主结点的复数连接数不会很快的被释放，而新启动的从结点又会消耗更多的链接数。他认为，Gitlab配置的32个链接数太高了，通常来说，2到4个就足够了。</li>
+<li>另外，之前gitlab配置的max_connections&#x3D;8000太高了，现在降到2000个是合理的。</li>
+<li>pg_basebackup 会先在主结点上建一个checkpoint，然后再开始同步，这个过程大约需要4分钟。</li>
+<li>手动的删除数据库目录是非常危险的操作，这个事应该交给程序来做。推荐使用刚release 的 <a target="_blank" rel="noopener" href="https://www.2ndquadrant.com/en/resources/repmgr/">repmgr</a></li>
+<li>恢复备份也是非常重要的，所以，也应该用相应的程序来做。推荐使用 <a target="_blank" rel="noopener" href="https://www.2ndquadrant.com/en/resources/barman/">barman</a> （其支持S3）</li>
+<li>测试备份和恢复是一个很重要的过程。</li>
+</ul>
+<p>看这个样子，估计也有一定的原因是——Gitlab的同学对PostgreSQL不是很熟悉。 随后，Gitlab在其网站上也开了一系列的issues，其issues列表在这里 <a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-com/www-gitlab-com/issues/1108">Write post-mortem</a> (这个列表可能还会在不断更新中)</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-com/infrastructure/issues/1094">infrastructure#1094</a> – Update PS1 across all hosts to more clearly differentiate between hosts and environments</li>
+<li><a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-com/infrastructure/issues/1095">infrastructure#1095</a> – Prometheus monitoring for backups</li>
+<li><a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-com/infrastructure/issues/1096">infrastructure#1096</a> – Set PostgreSQL’s max_connections to a sane value</li>
+<li><a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-com/infrastructure/issues/1097">infrastructure#1097</a> – Investigate Point in time recovery &amp; continuous archiving for PostgreSQL</li>
+<li><a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-com/infrastructure/issues/1098">infrastructure#1098</a> – Hourly LVM snapshots of the production databases</li>
+<li><a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-com/infrastructure/issues/1099">infrastructure#1099</a> – Azure disk snapshots of production databases</li>
+<li><a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-com/infrastructure/issues/1100">infrastructure#1100</a> – Move staging to the ARM environment</li>
+<li><a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-com/infrastructure/issues/1101">infrastructure#1101</a> – Recover production replica(s)</li>
+<li><a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-com/infrastructure/issues/1102">infrastructure#1102</a> – Automated testing of recovering PostgreSQL database backups</li>
+<li><a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-com/infrastructure/issues/1103">infrastructure#1103</a> – Improve PostgreSQL replication documentation&#x2F;runbooks</li>
+<li><a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-com/infrastructure/issues/1104">infrastructure#1104</a> – Kick out SSH users inactive for N minutes</li>
+<li><a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-com/infrastructure/issues/1105">infrastructure#1105</a> – Investigate pgbarman for creating PostgreSQL backups</li>
+</ul>
+<p>从上面的这个列表中，我们可以看到一些改进措施了。挺好的，不过我觉得还不是很够。</p>
+<h4 id="相关的思考"><a href="#相关的思考" class="headerlink" title="相关的思考"></a>相关的思考</h4><p>因为类似这样的事，我以前也干过（误删除过数据库，在多个终端窗口中迷失掉了自己所操作的机器……），而且我在amazon里也见过一次，在阿里内至少见过四次以上（在阿里人肉运维的误操作的事故是我见过最多的），但是我无法在这里公开分享，私下可以分享。在这里，我只想从非技术和技术两个方面分享一下我的经验和认识。</p>
+<h5 id="技术方面"><a href="#技术方面" class="headerlink" title="技术方面"></a>技术方面</h5><p><strong>人肉运维</strong> 一直以来，我都觉得直接到生产线上敲命令是一种非常不好的习惯。我认为，<strong>一个公司的运维能力的强弱和你上线上环境敲命令是有关的，你越是喜欢上线敲命令你的运维能力就越弱，越是通过自动化来处理问题，你的运维能力就越强</strong>。理由如下： 其一，如果说对代码的改动都是一次发布的话，那么，对生产环境的任何改动（包括硬件、操作系统、网络、软件配置……），也都算是一次发布。那么这样的发布就应该走发布系统和发布流程，要被很好的测试、上线和回滚计划。关键是，走发布过程是可以被记录、追踪和回溯的，而在线上敲命令是完全无法追踪的。没人知道你敲了什么命令。 其二，真正良性的运维能力是——人管代码，代码管机器，而不是人管机器。你敲了什么命令没人知道，但是你写个工具做变更线上系统，这个工具干了什么事，看看工具的源码就知道了。 另外、有人说，以后不要用rm了，要用mv，还有人说，以后干这样的事时，一个人干，另一个人在旁边看，还有人说，要有一个checklist的强制流程做线上的变更，还有人说要增加一个权限系统。我觉得，这些虽然可以work，但是依然不好，再由如下： 其一、如果要解决一个事情需要加更多的人来做的事，那这事就做成劳动密集型了。今天我们的科技就是在努力消除人力成本，而不是在增加人力成本。而做为一个技术人员，解决问题的最好方式是努力使用技术手段，而不是使用更多的人肉手段。<strong>人类区别于动物的差别就是会发明和使用现代化的工具，而不是使用更多的人力</strong>。另外，<strong>这不仅仅因为是，人都是会有这样或那样的问题（疲惫、情绪化、急燥、冲动……），而机器是单一无脑不知疲惫的，更是因为，机器干活的效率和速度是比人肉高出N多倍的</strong>。 其二、增加一个权限系统或是别的一个watch dog的系统完全是在开倒车，权限系统中的权限谁来维护和审批？不仅仅是因为多出来的系统需要多出来的维护，关键是这个事就没有把问题解决在root上。除了为社会解决就业问题，别无好处，故障依然会发生，有权限的人一样会误操作。对于Gitlab这个问题，正如2nd Quadrant的CTO建议的那样，你需要的是一个自动化的备份和恢复的工具，而不是一个权限系统。 其三、像使用mv而不rm，搞一个checklist和一个更重的流程，更糟糕。这里的逻辑很简单，因为，1）这些规则需要人去学习和记忆，本质上来说，你本来就不相信人，所以你搞出了一些规则和流程，而这些规则和流程的执行，又依赖于人，换汤不换药，2）另外，<strong>写在纸面上的东西都是不可执行的，可以执行的就是只有程序，所以，为什么不把checklist和流程写成代码呢</strong>？（你可能会说程序也会犯错，是的，程序的错误是consistent，而人的错误是inconsistent） 最关键的是，<strong>数据丢失有各种各样的情况，不单单只是人员的误操作，比如，掉电、磁盘损坏、中病毒等等，在这些情况下，你设计的那些想流程、规则、人肉检查、权限系统、checklist等等统统都不管用了，这个时候，你觉得应该怎么做呢？是的，你会发现，你不得不用更好的技术去设计出一个高可用的系统！别无它法。</strong></p>
+<h4 id="关于备份"><a href="#关于备份" class="headerlink" title="关于备份"></a>关于备份</h4><p>一个系统是需要做数据备份的，但是，你会发现，<strong>Gitlab这个事中，就算所有的备份都可用，也不可避免地会有数据的丢失，或是也会有很多问题</strong>。理由如下： 1）备份通常来说都是周期性的，所以，如果你的数据丢失了，从你最近的备份恢复数据里，从备份时间到故障时间的数据都丢失了。 2）备份的数据会有版本不兼容的问题。比如，在你上次备份数据到故障期间，你对数据的scheme做了一次改动，或是你对数据做了一些调整，那么，你备份的数据就会和你线上的程序出现不兼容的情况。 3）有一些公司或是银行有灾备的数据中心，但是灾备的数据中心没有一天live过。等真正灾难来临需要live的时候，你就会发现，各种问题让你live不起来。你可以读一读几年前的这篇报道好好感受一下《<a target="_blank" rel="noopener" href="http://finance.sina.com.cn/money/bank/20140804/091219903553.shtml">以史为鉴 宁夏银行7月系统瘫痪最新解析</a>》 所以，在灾难来临的时候，你会发现你所设计精良的“备份系统”或是“灾备系统”就算是平时可以工作，但也会导致数据丢失，而且可能长期不用的备份系统很难恢复（比如应用、工具、数据的版本不兼容等问题）。 我之前写过一篇《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/10910.html">分布式系统的事务处理</a>》，你还记得下面这张图吗？看看 Data Loss 那一行的，在Backups, Master&#x2F;Slave 和 Master&#x2F;Master的架构下，都是会丢的。 所以说，<strong>如果你要让你的备份系统随时都可以用，那么你就要让它随时都Live着</strong>，而随时都Live着的多结点系统，基本上就是一个分布式的高可用的系统。因为**，数据丢失的原因有很多种，比如掉电、磁盘损坏、中病毒等等，而那些流程、规则、人肉检查、权限系统、checklist等等都只是让人不要误操作，都不管用，这个时候，你不得不用更好的技术去设计出一个高可用的系统！别无它法。（重要的事，得再说一篇）** 另外，你可以参看我的另一篇《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/17459.html">关于高可用系统</a>》，这篇文章中以MySQL为例，数据库的replication也只能达到 两个9。 <strong>AWS 的 S3 的的高可用是4个加11个9的持久性（<strong>所谓11个9的持久性durability，AWS是这样定义的，如果你存了1万个对象，那么丢一个的时间是1000万年</strong>），这意味着，不仅仅只是硬盘坏，机器掉电，整个机房挂了，其保证可以承受有两个设施的数据丢失，数据还是可用的。试想，如果你把数据的可用性通过技术做到了这个份上，那么，你还怕被人误删一个结点上的数据吗？</strong></p>
+<h5 id="非技术方面"><a href="#非技术方面" class="headerlink" title="非技术方面"></a>非技术方面</h5><p><strong>故障反思</strong> 一般说来，故障都需要反思，在Amazon，S2以上的故障都需要写COE（Correction of Errors），其中一节就是需要Ask 5 Whys，我发现在Gitlab的故障回顾的blog中第一段中也有说要在今天写个Ask 5 Whys。关于Ask 5 Whys，其实并不是亚马逊的玩法，这还是算一个业内常用的玩法，也就是说不断的为自己为为什么，直到找到问题的概本原因，这会逼着所有的当事人去学习和深究很多东西。在Wikipedia上有相关的词条 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/5_Whys">5 Whys</a>，其中罗列了14条规则：</p>
+<ol>
+<li>你需要找到正确的团队来完成这个故障反思。</li>
+<li>使用纸或白板而不是电脑。</li>
+<li>写下整个问题的过程，确保每个人都能看懂。</li>
+<li>区别原因和症状。</li>
+<li>特别注意因果关系。</li>
+<li>说明Root Cause以及相关的证据。</li>
+<li>5个为什么的答案需要是精确的。</li>
+<li>寻找问题根源的步骤，而不是直接跳到结论。</li>
+<li>要基础客观的事实、数据和知识。</li>
+<li>评估过程而不是人。</li>
+<li>千万不要把“人为失误”或是“工作不注意”当成问题的根源。</li>
+<li>培养信任和真诚的气氛和文化。</li>
+<li>不断的问“为什么”直到问题的根源被找到。这样可以保证同一个坑不会掉进去两次。</li>
+<li>当你给出“为什么”的答案时，你应该从用户的角度来回答。</li>
+</ol>
+<p><strong>工程师文化</strong> 上述的这些观点，其实，我在我的以住的博客中都讲过很多遍了，你可以参看《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/17497.html">什么是工程师文化？</a>》以及《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/11656.html">开发团队的效率</a>》。其实，说白了就是这么一个事——<strong>如果你是一个技术公司，你就会更多的相信技术而不是管理。相信技术会用技术来解决问题，相信管理，那就只会有制度、流程和价值观来解决问题</strong>。 这个道理很简单，<strong>数据丢失有各种各样的情况，不单单只是人员的误操作，比如，掉电、磁盘损坏、中病毒等等，在这些情况下，你设计的那些流程、规则、人肉检查、权限系统、checklist等等统统都不管用，这个时候，你觉得应该怎么做呢？是的，你会发现，你不得不用更好的技术去设计出一个高可用的系统！别无它法。（重要的事得说三遍）</strong> <strong>事件公开</strong> 很多公司基本上都是这样的套路，首先是极力掩盖，如果掩盖不了了就开始撒谎，撒不了谎了，就“文过饰非”、“避重就轻”、“转移视线”。然而，面对危机的最佳方法就是——“多一些真诚，少一些套路”，<strong>所谓的“多一些真诚”的最佳实践就是——“透明公开所有的信息”</strong>，Gitlab此次的这个事给大家树立了非常好的榜样。AWS也会把自己所有的故障和细节都批露出来。 <strong>事情本来就做错了，而公开所有的细节，会让大众少很多猜测的空间，有利于抵制流言和黑公关，同时，还会赢得大众的理解和支持</strong>。看看Gitlab这次还去YouTube上直播整个修复过程，是件很了不起的事，大家可以到他们的blog上看看，对于这样的透明和公开，一片好评。 （全文完）</p>
+<blockquote>
+<p>来源：<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/17680.html">酷壳</a></p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1651,515 +1792,6 @@
 <li>完成基本功能，可实现无人值守自动挂机</li>
 </ul>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.stx8.com/2016/02/16/linux-learning/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="时空">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="时空主站">
-      <meta itemprop="description" content="时空主站">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 时空主站">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/02/16/linux-learning/" class="post-title-link" itemprop="url">Linux笔记 (Linux Notes)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2016-02-16 21:54:07" itemprop="dateCreated datePublished" datetime="2016-02-16T21:54:07+08:00">2016-02-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-16 10:11:00" itemprop="dateModified" datetime="2026-07-16T10:11:00+08:00">2026-07-16</time>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2016/02/16/linux-learning/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/02/16/linux-learning/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Linux笔记"><a href="#Linux笔记" class="headerlink" title="Linux笔记"></a>Linux笔记</h1><p>内容：主要讲解常用命令</p>
-<p>2015年12月</p>
-<p>时空</p>
-<h2 id="Linux概述"><a href="#Linux概述" class="headerlink" title="Linux概述"></a>Linux概述</h2><h3 id="Linux的内核版本"><a href="#Linux的内核版本" class="headerlink" title="Linux的内核版本"></a>Linux的内核版本</h3><blockquote>
-<p>38页1.2.5</p>
-</blockquote>
-<h3 id="Linux发行版"><a href="#Linux发行版" class="headerlink" title="Linux发行版"></a>Linux发行版</h3><p>目前Linux主要分为两大分支：</p>
-<ul>
-<li><p>Debian</p>
-</li>
-<li><p>使用dpkg方式安装软件，包括Debian, Ubuntu(Linux Mint)</p>
-</li>
-<li><p>全球最高份额，deb包非常方便</p>
-</li>
-<li><p>deb包</p>
-</li>
-<li><p>sudo dpkg -i 软件包</p>
-</li>
-<li><p>sudo dpkg -r 软件名</p>
-</li>
-<li><p>Red Hat</p>
-</li>
-<li><p>使用RPM方式安装软件，包括Red Hat(CentOS), Fedora, SuSE</p>
-</li>
-<li><p>只有中国份额较高。因为进入中国比较早，很多人不愿意换</p>
-</li>
-<li><p>rpm包</p>
-</li>
-</ul>
-<h3 id="开源许可证"><a href="#开源许可证" class="headerlink" title="开源许可证"></a>开源许可证</h3><blockquote>
-<p>45页1.3.3</p>
-</blockquote>
-<h2 id="Linux的安装"><a href="#Linux的安装" class="headerlink" title="Linux的安装"></a>Linux的安装</h2><h3 id="开机流程"><a href="#开机流程" class="headerlink" title="开机流程"></a>开机流程</h3><h4 id="两种启动方式：BIOS和UEFI"><a href="#两种启动方式：BIOS和UEFI" class="headerlink" title="两种启动方式：BIOS和UEFI"></a>两种启动方式：BIOS和UEFI</h4><ul>
-<li><p>以前：BIOS启动</p>
-</li>
-<li><p>对应<strong>MBR</strong>磁盘，MBR分区表</p>
-</li>
-<li><p>只有4个主分区</p>
-</li>
-<li><p>现代：UEFI启动</p>
-</li>
-<li><p>对应<strong>GPT</strong>磁盘，GUID分区表</p>
-</li>
-<li><p>无限主分区</p>
-</li>
-<li><p>Mac默认使用GPT</p>
-</li>
-</ul>
-<h4 id="MBR方式开机流程"><a href="#MBR方式开机流程" class="headerlink" title="MBR方式开机流程"></a>MBR方式开机流程</h4><blockquote>
-<p>72页3.2.4</p>
-</blockquote>
-<h3 id="磁盘分区"><a href="#磁盘分区" class="headerlink" title="磁盘分区"></a>磁盘分区</h3><p>初学：在硬盘尾部安装，全部使用逻辑分区</p>
-<table>
-<thead>
-<tr>
-<th>挂载点</th>
-<th>容量</th>
-<th>格式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&#x2F;</td>
-<td>剩下的空间</td>
-<td>ext4</td>
-</tr>
-<tr>
-<td>swap</td>
-<td>与内存大小相同</td>
-<td>swap</td>
-</tr>
-</tbody></table>
-<p>正常：</p>
-<table>
-<thead>
-<tr>
-<th>挂载点</th>
-<th>容量</th>
-<th>格式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&#x2F;boot</td>
-<td>100M</td>
-<td>ext4</td>
-</tr>
-<tr>
-<td>&#x2F;</td>
-<td>相当于系统盘</td>
-<td>ext4</td>
-</tr>
-<tr>
-<td>&#x2F;home</td>
-<td>剩下的空间</td>
-<td>ext4</td>
-</tr>
-<tr>
-<td>swap</td>
-<td>与内存大小相同</td>
-<td>swap</td>
-</tr>
-</tbody></table>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="X-Window热键"><a href="#X-Window热键" class="headerlink" title="X Window热键"></a>X Window热键</h3><p>X Window与文字模式的切换：<code>[Ctrl] + [Alt] + [F1]~[F6]</code></p>
-<p>重启X Window：<code>Ctrl+Alt+Backspace</code></p>
-<h3 id="基础命令和热键"><a href="#基础命令和热键" class="headerlink" title="基础命令和热键"></a>基础命令和热键</h3><p>列出文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ls</span><br><span class="line">$ ls -l</span><br><span class="line">$ ll # Ubuntu可以用</span><br></pre></td></tr></table></figure>
-
-<p>显示日期与时间</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ date</span><br></pre></td></tr></table></figure>
-
-<p>日历</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cal</span><br><span class="line">$ cal 2015</span><br><span class="line">$ cal 12 2015</span><br></pre></td></tr></table></figure>
-
-<p>计算器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bc</span><br></pre></td></tr></table></figure>
-
-<p>热键</p>
-<ul>
-<li><code>Tab</code> 命令补齐、文件补齐</li>
-<li><code>Ctrl+C</code> 停止程序</li>
-<li><code>Ctrl+D</code> EOF、离开</li>
-</ul>
-<p>在线求助</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ man 要查询的命令</span><br></pre></td></tr></table></figure>
-
-<p>超简单文本编辑器：nano</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nano test.txt</span><br></pre></td></tr></table></figure>
-
-<p>数据同步写入磁盘</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sync</span><br></pre></td></tr></table></figure>
-
-<p>关机</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># shutdown -h now</span><br></pre></td></tr></table></figure>
-
-<p>重启</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># reboot</span><br><span class="line"># shutdown -r now</span><br></pre></td></tr></table></figure>
-
-<p>切断电源（不建议）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># halt</span><br></pre></td></tr></table></figure>
-
-<p>切换执行等级：init</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># init 0 # 关机</span><br><span class="line"># init 6 # 重启</span><br></pre></td></tr></table></figure>
-
-<p>设置当前用户的密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ passwd</span><br></pre></td></tr></table></figure>
-
-<h2 id="Linux文件操作"><a href="#Linux文件操作" class="headerlink" title="Linux文件操作"></a>Linux文件操作</h2><p>Windows中的文件夹在Linux中叫目录。</p>
-<p>特殊的目录<br><code>.</code> 代表此层目录<br><code>..</code>代表上层目录<br><code>-</code> 代表前一个工作目录<br><code>~</code> 代表当前用户主目录<br><code>~account</code> 代表account这个用户主目录</p>
-<h3 id="目录相关操作"><a href="#目录相关操作" class="headerlink" title="目录相关操作"></a>目录相关操作</h3><p>切换目录：cd</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd [相对路径或绝对路径]</span><br></pre></td></tr></table></figure>
-
-<p>显示当前目录：pwd</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pwd</span><br></pre></td></tr></table></figure>
-
-<p>新建目录：mkdir</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir test # 新建一个名为test的目录</span><br></pre></td></tr></table></figure>
-
-<p>删除空目录：rmdir</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rmdir test</span><br></pre></td></tr></table></figure>
-
-<h3 id="环境变量：-PATH"><a href="#环境变量：-PATH" class="headerlink" title="环境变量：$PATH"></a>环境变量：$PATH</h3><p>使用echo显示$PATH</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo $PATH</span><br></pre></td></tr></table></figure>
-
-<h3 id="文件操作命令"><a href="#文件操作命令" class="headerlink" title="文件操作命令"></a>文件操作命令</h3><p>查看文件与目录：ls</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ls</span><br><span class="line">$ ls -l</span><br><span class="line">$ ls -al</span><br></pre></td></tr></table></figure>
-
-<p>复制：cp</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp 源文件 目标文件</span><br></pre></td></tr></table></figure>
-
-<p>删除：rm</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rm 文件或目录</span><br><span class="line">$ rm -r 递归删除，删掉目录中所有文件和目录</span><br></pre></td></tr></table></figure>
-
-<p>移动、重命名：mv</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv 源文件 目标文件</span><br></pre></td></tr></table></figure>
-
-<h3 id="文件内容查阅"><a href="#文件内容查阅" class="headerlink" title="文件内容查阅"></a>文件内容查阅</h3><p>直接查看一个文件的内容：cat</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat test.txt</span><br></pre></td></tr></table></figure>
-
-<p>反向查看：tac</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tac test.txt</span><br></pre></td></tr></table></figure>
-
-<p>添加行号打印：nl</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nl test.txt</span><br></pre></td></tr></table></figure>
-
-<p>翻页查看：more</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ more test.txt</span><br></pre></td></tr></table></figure>
-
-<p>上下翻页查看：less</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ less test.txt</span><br></pre></td></tr></table></figure>
-
-<p>只看前面几行：head</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ head test.txt # 默认10行</span><br><span class="line">$ head -n 20 test.txt</span><br></pre></td></tr></table></figure>
-
-<p>只看后面几行：tail</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ tail test.txt</span><br><span class="line">$ tail -n 20 test.txt</span><br></pre></td></tr></table></figure>
-
-<p>查看非纯文本文件：od</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ od test.txt</span><br></pre></td></tr></table></figure>
-
-<p>修改文件时间或创建新文件：touch</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ touch new.txt # 创建一个名为new.txt的文件</span><br><span class="line">$ touch -d &quot;2 days ago&quot; test.txt</span><br><span class="line">$ touch -t 1512251200 test.txt</span><br></pre></td></tr></table></figure>
-
-<p>查看文件类型：file</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ file test.txt # ASCII text</span><br><span class="line">$ file /usr/bin/passwd</span><br><span class="line">$ file /var/lib/mlocate/mlocate.db # data</span><br></pre></td></tr></table></figure>
-
-<h3 id="文件的查找"><a href="#文件的查找" class="headerlink" title="文件的查找"></a>文件的查找</h3><blockquote>
-<p>188页7.5.2</p>
-</blockquote>
-<p>寻找执行文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ which ifconfig</span><br><span class="line">$ which cd</span><br></pre></td></tr></table></figure>
-
-<p>在数据库中寻找特定文件：whereis, locate</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ which test.txt</span><br><span class="line">$ locate test.txt</span><br></pre></td></tr></table></figure>
-
-<p>扫描硬盘查找：find</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ find [PATH] [option] [action]</span><br><span class="line">$ find / -user root</span><br><span class="line">$ find / -name passwd</span><br><span class="line">$ find / -mtime 0</span><br></pre></td></tr></table></figure>
-
-<h2 id="Linux目录配置标准：FHS"><a href="#Linux目录配置标准：FHS" class="headerlink" title="Linux目录配置标准：FHS"></a>Linux目录配置标准：FHS</h2><blockquote>
-<p>152页</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>可分享的(shareable)</th>
-<th>不可分享的(unsharealbe)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>不变的(static)</td>
-<td>&#x2F;usr (软件放置处)</td>
-<td>&#x2F;etc (配置文件)</td>
-</tr>
-<tr>
-<td></td>
-<td>&#x2F;opt (第三方软件)</td>
-<td>&#x2F;boot (开机与内核文件)</td>
-</tr>
-<tr>
-<td>可变动的(variable)</td>
-<td>&#x2F;var&#x2F;mail(用户邮件信箱)</td>
-<td>&#x2F;var&#x2F;run (程序相关)</td>
-</tr>
-<tr>
-<td></td>
-<td>&#x2F;var&#x2F;spool&#x2F;news(新闻组)</td>
-<td>&#x2F;var&#x2F;lock (程序相关)</td>
-</tr>
-</tbody></table>
-<h2 id="Linux的文件权限"><a href="#Linux的文件权限" class="headerlink" title="Linux的文件权限"></a>Linux的文件权限</h2><h3 id="用户与用户组"><a href="#用户与用户组" class="headerlink" title="用户与用户组"></a>用户与用户组</h3><blockquote>
-<p>139页6.1</p>
-</blockquote>
-<p>文件所有者，用户组，其他人</p>
-<p><strong>root是万能的</strong></p>
-<h3 id="查看文件权限"><a href="#查看文件权限" class="headerlink" title="查看文件权限"></a>查看文件权限</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -al</span><br></pre></td></tr></table></figure>
-
-<h3 id="文件类型与权限"><a href="#文件类型与权限" class="headerlink" title="文件类型与权限"></a>文件类型与权限</h3><p>可读、可写、可执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-rwxrwxrwx 4 root root 4096 Sep 8 14:06 test.txt</span><br><span class="line">drwxrwxrwx 9 root root 4096 Jan 6 10:57 hello</span><br></pre></td></tr></table></figure>
-
-<p>文件权限 连接数 文件所有者 文件所属用户组 文件大小 修改时间 文件名</p>
-<p>文件权限分为文件类型和3组权限</p>
-<ul>
-<li><p>文件类型</p>
-</li>
-<li><p><code>d</code>表示目录</p>
-</li>
-<li><p><code>-</code>表示文件</p>
-</li>
-<li><p><code>l</code>表示连接文件</p>
-</li>
-<li><p><code>b</code>表示接口设备</p>
-</li>
-<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c</span><br></pre></td></tr></table></figure>
-
-<p>表示串口设备</p>
-</li>
-<li><p>3组权限</p>
-</li>
-<li><p>第一组：文件所有者的权限</p>
-</li>
-<li><p>第二组：同用户组的权限</p>
-</li>
-<li><p>第三组：其他非本用户组的权限</p>
-</li>
-</ul>
-<blockquote>
-<p>142-144页例题练习</p>
-</blockquote>
-<h3 id="改变文件属性与权限"><a href="#改变文件属性与权限" class="headerlink" title="改变文件属性与权限"></a>改变文件属性与权限</h3><p>改变所属用户组：chgrp</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># chgrp root test.txt</span><br></pre></td></tr></table></figure>
-
-<p>改变文件所有者：chown</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># chown root:root dir</span><br></pre></td></tr></table></figure>
-
-<p>chown -R 表示递归</p>
-<p>改变文件的权限：chmod</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 777 test.txt</span><br><span class="line">$ chmod 755 test.txt</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>r</code>:4</li>
-<li><code>w</code>:2</li>
-<li><code>x</code>:1</li>
-</ul>
-<blockquote>
-<p>146页例题</p>
-</blockquote>
-<p>符号类型改变权限</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ chmod u/g/o/a +/-/= r/w/x 文件或目录</span><br><span class="line">$ chmod u=rwx,go=rx test.txt</span><br><span class="line">$ chmod a-x test.txt</span><br><span class="line">$ chmod a+w test.txt</span><br></pre></td></tr></table></figure>
-
-<p>不要随便用chmod的递归</p>
-<h3 id="目录与文件的权限意义"><a href="#目录与文件的权限意义" class="headerlink" title="目录与文件的权限意义"></a>目录与文件的权限意义</h3><p>权限对文件的重要性</p>
-<ul>
-<li><code>r</code>: 可读取</li>
-<li><code>w</code>: 可编辑、新增、修改，不包括删除</li>
-<li><code>x</code>: 可执行</li>
-</ul>
-<p>权限对目录的重要性</p>
-<ul>
-<li><code>r</code>: 可读取(可以列出)</li>
-<li><code>w</code>: 可写入</li>
-<li>新建新的文件与目录</li>
-<li>删除已经存在的文件与目录</li>
-<li>重命名</li>
-<li>转移该目录内的文件、目录位置</li>
-<li><code>x</code>: 可进入</li>
-</ul>
-<blockquote>
-<p>148-149页例题</p>
-</blockquote>
-<h3 id="Linux文件种类"><a href="#Linux文件种类" class="headerlink" title="Linux文件种类"></a>Linux文件种类</h3><ul>
-<li>普通文件(regular file): <code>r</code></li>
-<li>目录(directory): <code>d</code></li>
-<li>连接(link): <code>l</code></li>
-<li>设备(device)</li>
-<li>块(block)设备: <code>b</code></li>
-<li>字符(character)设备文件: <code>c</code></li>
-<li>套接字(sockets): <code>s</code></li>
-<li>管道(FIFO, pipe): <code>p</code></li>
-</ul>
-<h3 id="文件的默认权限与隐藏权限"><a href="#文件的默认权限与隐藏权限" class="headerlink" title="文件的默认权限与隐藏权限"></a>文件的默认权限与隐藏权限</h3><blockquote>
-<p>180-181页例题</p>
-</blockquote>
-<p>默认权限：<code>umask</code>，在原权限基础上减去权限</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ umask #查看</span><br><span class="line">$ umask -S</span><br><span class="line">$ umask 002 #设置</span><br><span class="line">$ umask 022</span><br></pre></td></tr></table></figure>
-
-<p>隐藏属性：略(自学)</p>
-<blockquote>
-<p>183页7.4.2<br>设置文件的隐藏属性：<code>chattr</code><br>查看文件的隐藏属性：<code>lsattr</code></p>
-</blockquote>
-<h3 id="权限相关习题"><a href="#权限相关习题" class="headerlink" title="权限相关习题"></a>权限相关习题</h3><blockquote>
-<p>194页情景模拟题</p>
-</blockquote>
-<h2 id="Linux文件系统"><a href="#Linux文件系统" class="headerlink" title="Linux文件系统"></a>Linux文件系统</h2><h3 id="磁盘与目录容量"><a href="#磁盘与目录容量" class="headerlink" title="磁盘与目录容量"></a>磁盘与目录容量</h3><blockquote>
-<p>210页8.2.1</p>
-</blockquote>
-<p>列出文件系统的整体磁盘使用量：<code>df</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ df -h</span><br></pre></td></tr></table></figure>
-
-<p>评估文件系统的磁盘使用量：<code>du</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ du</span><br><span class="line">$ du -a # 同时列出文件容量</span><br><span class="line">$ du -sm # s: 只列出总量 m: MB</span><br></pre></td></tr></table></figure>
-
-<h3 id="连接文件：ln"><a href="#连接文件：ln" class="headerlink" title="连接文件：ln"></a>连接文件：ln</h3><p>hard link(硬链接或实际连接)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ln /etc/crontab .</span><br><span class="line">$ ll -i</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>无法做”目录”的链接</li>
-<li>删掉其中一个，另一个可用</li>
-</ul>
-<p>symbolic link(符号连接)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s /etc/crontab crontab2</span><br><span class="line">$ ll -i /etc/crontab ./crontab2</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>相当于Windows的快捷方式，删除源文件会不可用</li>
-</ul>
-<h3 id="磁盘的分区、格式化、检验与挂载"><a href="#磁盘的分区、格式化、检验与挂载" class="headerlink" title="磁盘的分区、格式化、检验与挂载"></a>磁盘的分区、格式化、检验与挂载</h3><p>略(自学)</p>
-<h2 id="压缩与打包"><a href="#压缩与打包" class="headerlink" title="压缩与打包"></a>压缩与打包</h2><h3 id="单一文件压缩命令"><a href="#单一文件压缩命令" class="headerlink" title="单一文件压缩命令"></a>单一文件压缩命令</h3><p>gzip, zcat</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ gzip file</span><br><span class="line">$ zcat file.gz</span><br><span class="line">$ gzip -d file.gz</span><br></pre></td></tr></table></figure>
-
-<p>bzip2, bzcat</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ bzip2 -z file</span><br><span class="line">$ bzcat file.bz2</span><br><span class="line">$ bzip2 -d file.bz2</span><br></pre></td></tr></table></figure>
-
-<h3 id="打包命令：tar"><a href="#打包命令：tar" class="headerlink" title="打包命令：tar"></a>打包命令：tar</h3><p>打包同时可以压缩，tar的参数：</p>
-<p><code>-z</code>: gzip方式压缩&#x2F;解压缩<br><code>-j</code>: bzip2方式压缩&#x2F;解压缩<br><code>-c</code>: 新建打包文件<br><code>-x</code>: 解打包或解压缩<br><code>-v</code>: 显示过程<br><code>-f</code>: 跟要被处理的文件名<br><code>-p</code>: 保留原本权限与属性</p>
-<p>打包</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ tar -zcvf dir.tar.gz dir</span><br><span class="line">$ tar -jcvf dir.tar.bz2 dir</span><br><span class="line">$ tar -cvf dir.tar dir</span><br></pre></td></tr></table></figure>
-
-<p>解包</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ tar -zxvf dir.tar.gz</span><br><span class="line">$ tar -jxvf dir.tar.bz2</span><br><span class="line">$ tar -zxvf dir.tar.gz -C /tmp</span><br></pre></td></tr></table></figure>
-
-<p>备份</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># tar -zpcvf etc.tar.gz /etc</span><br><span class="line"># tar -jpcvf etc.tar.bz2 /etc</span><br></pre></td></tr></table></figure>
-
-<p>查看</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ tar -ztvf dir.tar.gz</span><br><span class="line">$ tar -jtvf dir.tar.bz2</span><br></pre></td></tr></table></figure>
-
-<h2 id="vim编辑器"><a href="#vim编辑器" class="headerlink" title="vim编辑器"></a>vim编辑器</h2><h3 id="进入vim"><a href="#进入vim" class="headerlink" title="进入vim"></a>进入vim</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim 文件名</span><br></pre></td></tr></table></figure>
-
-<h3 id="新建文档"><a href="#新建文档" class="headerlink" title="新建文档"></a>新建文档</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim 新文件名</span><br></pre></td></tr></table></figure>
-
-<p>不保存则不生成新文件</p>
-<h3 id="进入插入模式"><a href="#进入插入模式" class="headerlink" title="进入插入模式"></a>进入插入模式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i, I, a, A, o, O</span><br></pre></td></tr></table></figure>
-
-<p><code>i</code>光标位置插入<br><code>I</code>行首插入<br><code>o</code>当前行后插入新行<br><code>O</code>当前行前插入新行<br><code>a</code>光标位置后插入<br><code>A</code>行末尾插入</p>
-<h3 id="行号"><a href="#行号" class="headerlink" title="行号"></a>行号</h3><p>显示行号</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:set nu</span><br><span class="line">:set number</span><br><span class="line">:set nonu</span><br><span class="line">:set nonumber</span><br></pre></td></tr></table></figure>
-
-<p>不显示行号</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:set nu</span><br><span class="line">:set number</span><br><span class="line">:set nonu</span><br><span class="line">:set nonumber</span><br></pre></td></tr></table></figure>
-
-<h3 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:数字</span><br><span class="line">数字G</span><br></pre></td></tr></table></figure>
-
-<p>最后一行<code>G</code></p>
-<h3 id="删除行、剪切"><a href="#删除行、剪切" class="headerlink" title="删除行、剪切"></a>删除行、剪切</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dd</span><br><span class="line">数字dd</span><br></pre></td></tr></table></figure>
-
-<h3 id="复制行"><a href="#复制行" class="headerlink" title="复制行"></a>复制行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yy</span><br><span class="line">数字yy</span><br></pre></td></tr></table></figure>
-
-<h3 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p</span><br></pre></td></tr></table></figure>
-
-<h3 id="块选择"><a href="#块选择" class="headerlink" title="块选择"></a>块选择</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+v</span><br></pre></td></tr></table></figure>
-
-<h3 id="预设行号"><a href="#预设行号" class="headerlink" title="预设行号"></a>预设行号</h3><p>编辑<code>~</code>下的.vimrc文件，写入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set nu</span><br></pre></td></tr></table></figure>
       
     </div>
 
