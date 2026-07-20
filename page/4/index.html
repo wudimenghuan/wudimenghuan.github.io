@@ -209,13 +209,6 @@
 
       <time title="创建时间：2017-04-10 13:13:00" itemprop="dateCreated datePublished" datetime="2017-04-10T13:13:00+08:00">2017-04-10</time>
     </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-20 16:39:00" itemprop="dateModified" datetime="2026-07-20T16:39:00+08:00">2026-07-20</time>
-    </span>
 
   
   
@@ -242,6 +235,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>昨天，Gitlab.com发生了一个大事，某同学误删了数据库，这个事看似是个低级错误，不过，因为Gitlab把整个过程的细节都全部暴露出来了，所以，可以看到很多东西，而对于类似这样的事情，我自己以前也干过，而在最近的两公司中我也见过（Amazon中见过一次，阿里中见过至少四次），正好通过这个事来说说一下自己的一些感想和观点吧。<strong>我先放个观点：你觉得有备份系统就不会丢数据了吗？</strong></p>
+<h4 id="事件回顾"><a href="#事件回顾" class="headerlink" title="事件回顾"></a>事件回顾</h4><p>整个事件的回顾Gitlab.com在第一时间就放到了<a target="_blank" rel="noopener" href="https://docs.google.com/document/d/1GCK53YDcBWQveod9kfzW-VCxIABGiryG7_z_6jHdVik/pub">Google Doc上</a>，事后，又发了<a target="_blank" rel="noopener" href="https://about.gitlab.com/2017/02/01/gitlab-dot-com-database-incident/">一篇Blog</a>来说明这个事，在这里，我简单的回顾一下这个事件的过程。 首先，一个叫YP的同学在给gitlab的线上数据库做一些负载均衡的工作，在做这个工作时的时候突发了一个情况，Gitlab被DDoS攻击，数据库的使用飙高，在block完攻击者的IP后，发现有个staging的数据库(db2.staging)已经落后生产库4GB的数据，于是YP同学在Fix这个staging库的同步问题的时候，发现db2.staging有各种问题都和主库无法同步，在这个时候，YP同学已经工作的很晚了，在尝试过多个方法后，发现db2.staging都hang在那里，无法同步，于是他想把db2.staging的数据库删除了，这样全新启动一个新的复制，结果呢，删除数据库的命令错误的敲在了生产环境上（db1.cluster），结果导致整个生产数据库被误删除。（<strong>陈皓注：这个失败基本上就是 “工作时间过长” + “在多数终端窗口中切换中迷失掉了”</strong>） 在恢复的过程中，他们发现只有db1.staging的数据库可以用于恢复，而其它的5种备份机制都不可用，第一个是数据库的同步，没有同步webhook，第二个是对硬盘的快照，没有对数据库做，第三个是用pg_dump的备份，发现版本不对（用9.2的版本去dump 9.6的数据）导致没有dump出数据，第四个S3的备份，完全没有备份上，第五个是相关的备份流程是问题百出的，只有几个粗糙的人肉的脚本和糟糕的文档，也就是说，不但是是人肉的，而且还是完全不可执行的。（<strong>陈皓注：就算是这些备份机制都work，其实也有问题，因为这些备份大多数基本上都是24小时干一次，所以，要从这些备份恢复也一定是是要丢数据的了，只有第一个数据库同步才会实时一些</strong>） 最终，gitlab从db1.staging上把6个小时前的数据copy回来，结果发现速度非常的慢，备份结点只有60Mbits&#x2F;S，拷了很长时间（<strong>陈皓注：为什么不把db1.staging给直接变成生产机？因为那台机器的性能很差</strong>）。数据现在的恢复了，不过，因为恢复的数据是6小时前的，所以，有如下的数据丢失掉了：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/04/10/%E4%BB%8Egitlab%E8%AF%AF%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93%E6%83%B3%E5%88%B0%E7%9A%84/#more" rel="contents">
@@ -305,13 +299,6 @@
       <span class="post-meta-item-text">发表于</span>
 
       <time title="创建时间：2017-01-13 18:10:49" itemprop="dateCreated datePublished" datetime="2017-01-13T18:10:49+08:00">2017-01-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-20 16:39:00" itemprop="dateModified" datetime="2026-07-20T16:39:00+08:00">2026-07-20</time>
     </span>
 
   
@@ -405,13 +392,6 @@
 
       <time title="创建时间：2017-01-12 20:27:25" itemprop="dateCreated datePublished" datetime="2017-01-12T20:27:25+08:00">2017-01-12</time>
     </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-20 16:39:00" itemprop="dateModified" datetime="2026-07-20T16:39:00+08:00">2026-07-20</time>
-    </span>
 
   
   
@@ -438,6 +418,9 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>这篇文章来源于Quroa的一个问答《<a target="_blank" rel="noopener" href="http://www.quora.com/Linux/What-are-some-time-saving-tips-that-every-Linux-user-should-know#">What are some time-saving tips that every Linux user should know?</a>》—— Linux用户有哪些应该知道的提高效率的技巧。我觉得挺好的，总结得比较好，把其转过来，并加了一些自己的理解。 首先，我想告诉大家，<strong>在Unix&#x2F;Linux下，最有效率技巧的不是操作图形界面，而是命令行操作，因为命令行意味着自动化</strong>。如果你看过《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/8619.html">你可能不知道的Shell</a>》以及《<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/7829.html">28个Unix&#x2F;Linux的命令行神器</a>》你就会知道Linux有多强大，这个强大完全来自于命令行，于是，就算你不知道怎么去<a target="_blank" rel="noopener" href="http://coolshell.cn/articles/7186.html">做一个环保主义的程序员</a>，至少他们可以让你少熬点夜，从而有利于你的身体健康和性生活。下面是一个有点长的列表，正如作者所说，你并不需要知道所有的这些东西，但是如果你还在很沉重地在使用Linux的话，这些东西都值得你看一看。 （注：如果你想知道下面涉及到的命令的更多的用法，你一定要man一点。对于一些命令，你可以需要先yum或apt-get来安装一下，如果有什么问题，别忘了Google。如果你要Baidu的话，我仅代表这个地球上所有的生物包括微生物甚至细菌病毒和小强BS你到宇宙毁灭）</p>
+<h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><ul>
+<li><strong>学习 <a target="_blank" rel="noopener" href="http://www.quora.com/Bash-shell">Bash</a></strong> 。你可以man bash来看看bash的东西，并不复杂也并不长。你用别的shell也行，但是bash是很强大的并且也是系统默认的。（学习zsh或tsch只会让你在很多情况下受到限制）</li>
+</ul>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/01/12/%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84linux%E6%8A%80%E5%B7%A7/#more" rel="contents">
@@ -501,13 +484,6 @@
       <span class="post-meta-item-text">发表于</span>
 
       <time title="创建时间：2017-01-12 20:11:36" itemprop="dateCreated datePublished" datetime="2017-01-12T20:11:36+08:00">2017-01-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-20 16:39:00" itemprop="dateModified" datetime="2026-07-20T16:39:00+08:00">2026-07-20</time>
     </span>
 
   
@@ -599,13 +575,6 @@
 
       <time title="创建时间：2017-01-12 19:22:01" itemprop="dateCreated datePublished" datetime="2017-01-12T19:22:01+08:00">2017-01-12</time>
     </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-20 16:39:00" itemprop="dateModified" datetime="2026-07-20T16:39:00+08:00">2026-07-20</time>
-    </span>
 
   
   
@@ -695,13 +664,6 @@
       <span class="post-meta-item-text">发表于</span>
 
       <time title="创建时间：2017-01-12 19:01:18" itemprop="dateCreated datePublished" datetime="2017-01-12T19:01:18+08:00">2017-01-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-20 16:39:00" itemprop="dateModified" datetime="2026-07-20T16:39:00+08:00">2026-07-20</time>
     </span>
 
   
@@ -793,13 +755,6 @@
 
       <time title="创建时间：2016-11-04 23:22:28" itemprop="dateCreated datePublished" datetime="2016-11-04T23:22:28+08:00">2016-11-04</time>
     </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-20 16:39:00" itemprop="dateModified" datetime="2026-07-20T16:39:00+08:00">2026-07-20</time>
-    </span>
 
   
   
@@ -839,6 +794,7 @@
 <li><strong>重要的不是知识，重要的是其查找知识的能力</strong></li>
 <li><strong>重要的不是那个解题的答案，而是解题的思路和方法</strong></li>
 </ul>
+<h2 id="操作，知识，经验，能力"><a href="#操作，知识，经验，能力" class="headerlink" title="操作，知识，经验，能力"></a>操作，知识，经验，能力</h2><p>我们有很多的面试官似乎分不清，什么是操作能力，什么是知识，什么是经验，什么是能力，这导致了我们的面试官经常错误地对面试者下结论，我认为分不清这些事的人是没有资格做面试官的。所以，我有必要在这里把这个问题先讲清楚。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/11/04/%E5%86%8D%E8%B0%88%E6%88%91%E6%98%AF%E6%80%8E%E4%B9%88%E6%8B%9B%E8%81%98%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84/#more" rel="contents">
@@ -902,13 +858,6 @@
       <span class="post-meta-item-text">发表于</span>
 
       <time title="创建时间：2016-11-04 23:10:59" itemprop="dateCreated datePublished" datetime="2016-11-04T23:10:59+08:00">2016-11-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-20 16:39:00" itemprop="dateModified" datetime="2026-07-20T16:39:00+08:00">2026-07-20</time>
     </span>
 
   
@@ -1000,13 +949,6 @@
 
       <time title="创建时间：2016-02-19 15:33:14" itemprop="dateCreated datePublished" datetime="2016-02-19T15:33:14+08:00">2016-02-19</time>
     </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-20 16:39:00" itemprop="dateModified" datetime="2026-07-20T16:39:00+08:00">2026-07-20</time>
-    </span>
 
   
   
@@ -1032,24 +974,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
-
-
-<h2 id="懒人版"><a href="#懒人版" class="headerlink" title="懒人版"></a>懒人版</h2><p>cdr格式</p>
-<h3 id="文件校验信息"><a href="#文件校验信息" class="headerlink" title="文件校验信息"></a>文件校验信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">名称: OS X El Capitan 10.11.3 (15D21) Lazy Installer.cdr</span><br><span class="line">大小: 8000032768 字节 (7629 MB)</span><br><span class="line">CRC32: 879D014C</span><br><span class="line">CRC64: 16AA4DD28C00B896</span><br><span class="line">SHA256: 7E37A068FE39CAACA831513515369E71A7EC1E84161338DF855DF02FB69FEBB4</span><br><span class="line">SHA1: 030BCBF5A2B147B898C0D881517C6F2C99B13E30</span><br><span class="line">BLAKE2sp: DD074E91757C86C2E9152A14BD42D80EB4D78F0D1E5B84308A1361C262DB51D3</span><br></pre></td></tr></table></figure>
-
-<p>以App Store下载的原版安装包Install OS X El Capitan.app 制作，为能安装到MBR硬盘上，仅替换了OSInstall.mpkg和OSInstaller，另外在Extra文件夹加入了变色龙引导和常用的第三方驱动，可根据需要增减.</p>
-<h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p><a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1cHY2nk">百度云（低速）</a> 密码: juk4</p>
-<p>请用硬盘安装助手先恢复到硬盘的一个大于8G的、未格式化的分区用于安装（具体方法自己搜教程）：</p>
-<h2 id="OS-X-El-Capitan-10-11-3-15D21原版安装包镜像"><a href="#OS-X-El-Capitan-10-11-3-15D21原版安装包镜像" class="headerlink" title="OS X El Capitan 10.11.3 15D21原版安装包镜像"></a>OS X El Capitan 10.11.3 15D21原版安装包镜像</h2><p>App Store下载的OS X El Capitan 10.11.3 15D21原版安装包Install OS X El Capitan.app的镜像</p>
-<h3 id="文件校验信息-1"><a href="#文件校验信息-1" class="headerlink" title="文件校验信息"></a>文件校验信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">名称: Install OS X El Capitan 10.11.3 15D21.dmg</span><br><span class="line">大小：5.78GB</span><br><span class="line">CRC32: E8FD2C7B</span><br><span class="line">MD5: 80C5702AF3DEF49DFFEA390C390A0709</span><br><span class="line">SHA-1: FFC8593886DA7CB31F7AB4A4EA1006AE05B80570</span><br><span class="line">名称: Install OS X El Capitan.app/Contents/SharedSupport/InstallESD.dmg</span><br><span class="line">MD5: 24c74acc4779b32a01024348c00892dc</span><br></pre></td></tr></table></figure>
-
-<p>在OS X中双击加载Install OS X El Capitan 10.11.3 15D21.dmg，里面的Install OS X El Capitan.app就是App Store下载的OS X El Capitan 10.11.3 15D21原版安装包，绝对原版！</p>
-<h3 id="下载地址-1"><a href="#下载地址-1" class="headerlink" title="下载地址"></a>下载地址</h3><p><a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1kUgWCuz">百度云（低速）</a> 密码：uswh</p>
-<h2 id="带Clover-3330引导的OS-X-El-10-11-3-15D21原版安装U盘镜像"><a href="#带Clover-3330引导的OS-X-El-10-11-3-15D21原版安装U盘镜像" class="headerlink" title="带Clover 3330引导的OS X El 10.11.3 15D21原版安装U盘镜像"></a>带Clover 3330引导的OS X El 10.11.3 15D21原版安装U盘镜像</h2><blockquote>
-<p>请看<a target="_blank" rel="noopener" href="http://bbs.pcbeta.com/viewthread-1670310-1-1.html">论坛原帖</a></p>
-</blockquote>
-
+          <h2 id="懒人版"><a href="#懒人版" class="headerlink" title="懒人版"></a>懒人版</h2><p>cdr格式</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016/02/19/os-x-10-11/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1106,13 +1039,6 @@
 
       <time title="创建时间：2016-02-18 21:55:49" itemprop="dateCreated datePublished" datetime="2016-02-18T21:55:49+08:00">2016-02-18</time>
     </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-07-20 16:39:00" itemprop="dateModified" datetime="2026-07-20T16:39:00+08:00">2026-07-20</time>
-    </span>
 
   
   
@@ -1138,121 +1064,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
-
-
-<h2 id="开源"><a href="#开源" class="headerlink" title="开源"></a>开源</h2><p>本软件已开源，请自行修改及完善功能。QQ群：198889192<br>本项目由于网站改版以及个人时间原因停止继续开发，不过大家有兴趣可以发pull request，共同继续完善功能。</p>
-<p><strong>项目地址</strong>：<a target="_blank" rel="noopener" href="https://github.com/wudimenghuan/HeidaStudy">https://github.com/wudimenghuan/HeidaStudy</a></p>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>从2012年10月开始，黑龙江大学网络课学习管家（网络课学习助手）已经发布6个版本了，希望大家多多支持STX8.COM！</p>
-<p>如果有课程需要添加，或有什么建议或意见，请加QQ群：198889192</p>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>如果出现一直显示时间更新出错的问题，需要先登录一下平台，再退出平台，然后再用软件</p>
-<p><strong>使用过程中不要登录平台</strong></p>
-<h3 id="文件校验信息"><a href="#文件校验信息" class="headerlink" title="文件校验信息"></a>文件校验信息</h3><p>SHA1、SHA256等文件校验信息在Readme.txt中，可使用PGP检查签名。</p>
-<p><a href="">我的PGP公钥 (PGP Public Key)</a></p>
-<h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p>请到github上获取院代码，自行编译</p>
-<h3 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h3><h4 id="V3-8-4"><a href="#V3-8-4" class="headerlink" title="V3.8.4"></a>V3.8.4</h4><ul>
-<li>支持大学体育</li>
-</ul>
-<h4 id="V3-8-2"><a href="#V3-8-2" class="headerlink" title="V3.8.2"></a>V3.8.2</h4><ul>
-<li>支持2015秋季课程</li>
-</ul>
-<h4 id="V3-7-1"><a href="#V3-7-1" class="headerlink" title="V3.7.1"></a>V3.7.1</h4><ul>
-<li>合并3个版本</li>
-</ul>
-<h4 id="V3-7-0"><a href="#V3-7-0" class="headerlink" title="V3.7.0"></a>V3.7.0</h4><ul>
-<li>重写界面，优化流程</li>
-</ul>
-<h4 id="V3-6-3"><a href="#V3-6-3" class="headerlink" title="V3.6.3"></a>V3.6.3</h4><ul>
-<li>添加几个未添加的安全教育老师</li>
-</ul>
-<h4 id="V3-6-2"><a href="#V3-6-2" class="headerlink" title="V3.6.2"></a>V3.6.2</h4><ul>
-<li>加入2014秋安全教育课程支持</li>
-</ul>
-<h4 id="V3-6-1"><a href="#V3-6-1" class="headerlink" title="V3.6.1"></a>V3.6.1</h4><ul>
-<li>修复绿屏BUG</li>
-</ul>
-<h4 id="V3-6"><a href="#V3-6" class="headerlink" title="V3.6"></a>V3.6</h4><ul>
-<li>修复2014秋形势任务教师未标记问题</li>
-</ul>
-<h4 id="V3-5"><a href="#V3-5" class="headerlink" title="V3.5"></a>V3.5</h4><ul>
-<li>2014秋季学期</li>
-</ul>
-<h4 id="V3-4"><a href="#V3-4" class="headerlink" title="V3.4"></a>V3.4</h4><ul>
-<li>2014春季学期</li>
-</ul>
-<h4 id="V3-3"><a href="#V3-3" class="headerlink" title="V3.3"></a>V3.3</h4><ul>
-<li>修复打不开的问题</li>
-<li>使得程序支持Windows所有系统</li>
-</ul>
-<h4 id="V3-2"><a href="#V3-2" class="headerlink" title="V3.2"></a>V3.2</h4><ul>
-<li>修复界面无法显示的bug</li>
-</ul>
-<h4 id="V3-1"><a href="#V3-1" class="headerlink" title="V3.1"></a>V3.1</h4><ul>
-<li>2014春季学期支持</li>
-</ul>
-<h4 id="V3-0-Beta-公测版"><a href="#V3-0-Beta-公测版" class="headerlink" title="V3.0 Beta 公测版"></a>V3.0 Beta 公测版</h4><ul>
-<li>加入总进度条</li>
-<li>加入用户密码验证功能</li>
-</ul>
-<h4 id="V2-9-正式版"><a href="#V2-9-正式版" class="headerlink" title="V2.9 正式版"></a>V2.9 正式版</h4><ul>
-<li>修复bug</li>
-</ul>
-<h4 id="V2-9-内测版"><a href="#V2-9-内测版" class="headerlink" title="V2.9 内测版"></a>V2.9 内测版</h4><ul>
-<li>加入2013年春季学期课程</li>
-</ul>
-<h4 id="V2-5-正式版"><a href="#V2-5-正式版" class="headerlink" title="V2.5 正式版"></a>V2.5 正式版</h4><ul>
-<li>增加总时间功能</li>
-</ul>
-<h4 id="V2-4-正式版"><a href="#V2-4-正式版" class="headerlink" title="V2.4 正式版"></a>V2.4 正式版</h4><ul>
-<li>更改时间显示一直占用内存导致内存不停增长的问题</li>
-</ul>
-<h4 id="V2-3-正式版"><a href="#V2-3-正式版" class="headerlink" title="V2.3 正式版"></a>V2.3 正式版</h4><ul>
-<li>加入更多网络课，网络课已经完全加入</li>
-</ul>
-<h4 id="V2-2-正式版"><a href="#V2-2-正式版" class="headerlink" title="V2.2 正式版"></a>V2.2 正式版</h4><ul>
-<li>修复S3加速功能为稳定加速</li>
-</ul>
-<h4 id="V2-1-内测版"><a href="#V2-1-内测版" class="headerlink" title="V2.1 内测版"></a>V2.1 内测版</h4><ul>
-<li>时间显示加入进度条</li>
-</ul>
-<h4 id="V2-0-内测版"><a href="#V2-0-内测版" class="headerlink" title="V2.0 内测版"></a>V2.0 内测版</h4><ul>
-<li>增加更多网络课支持</li>
-</ul>
-<h4 id="V1-9-预览版"><a href="#V1-9-预览版" class="headerlink" title="V1.9 预览版"></a>V1.9 预览版</h4><ul>
-<li>更改界面布局</li>
-<li>增加提示</li>
-</ul>
-<h4 id="V1-8-预览版"><a href="#V1-8-预览版" class="headerlink" title="V1.8 预览版"></a>V1.8 预览版</h4><ul>
-<li>使提示更清晰、明确</li>
-<li>修复关闭不完全导致弹出的关闭程序窗口</li>
-</ul>
-<h4 id="V1-7-内测版"><a href="#V1-7-内测版" class="headerlink" title="V1.7 内测版"></a>V1.7 内测版</h4><ul>
-<li>加入网络课支持</li>
-</ul>
-<h4 id="V1-6-内测版"><a href="#V1-6-内测版" class="headerlink" title="V1.6 内测版"></a>V1.6 内测版</h4><ul>
-<li>修复2倍时只有1倍的问题</li>
-<li>修复窗口拖动bug</li>
-</ul>
-<h4 id="V1-5"><a href="#V1-5" class="headerlink" title="V1.5"></a>V1.5</h4><ul>
-<li>时间显示功能</li>
-<li>合并上下两个版本</li>
-<li>S3超级加速功能（不稳定）</li>
-</ul>
-<h4 id="V1-4-内测版"><a href="#V1-4-内测版" class="headerlink" title="V1.4 内测版"></a>V1.4 内测版</h4><ul>
-<li>速度提升，超越4倍</li>
-</ul>
-<h4 id="V1-3-正式版"><a href="#V1-3-正式版" class="headerlink" title="V1.3 正式版"></a>V1.3 正式版</h4><ul>
-<li>去掉课程号，改为选择老师</li>
-<li>课程选择功能实现</li>
-<li>修复速度调整bug</li>
-</ul>
-<h4 id="V1-2-正式版"><a href="#V1-2-正式版" class="headerlink" title="V1.2 正式版"></a>V1.2 正式版</h4><ul>
-<li>速度调整功能完成</li>
-</ul>
-<h4 id="V1-1-体验版"><a href="#V1-1-体验版" class="headerlink" title="V1.1 体验版"></a>V1.1 体验版</h4><ul>
-<li>完成基本功能，可实现无人值守自动挂机</li>
-</ul>
-
+          <h2 id="开源"><a href="#开源" class="headerlink" title="开源"></a>开源</h2><p>本软件已开源，请自行修改及完善功能。QQ群：198889192<br>本项目由于网站改版以及个人时间原因停止继续开发，不过大家有兴趣可以发pull request，共同继续完善功能。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016/02/18/shenqi/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
