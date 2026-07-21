@@ -152,13 +152,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">94</span>
+        <span class="site-state-item-count">98</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -242,8 +242,6 @@
     
     <div class="post-body" itemprop="articleBody"><h1 id="不安装Go语言获取GOOS和GOARCH环境变量"><a href="#不安装Go语言获取GOOS和GOARCH环境变量" class="headerlink" title="不安装Go语言获取GOOS和GOARCH环境变量"></a>不安装Go语言获取GOOS和GOARCH环境变量</h1><p>在做 CI&#x2F;CD、写构建脚本、或者下载 Go 编译产物时，经常需要知道当前系统的 <code>GOOS</code> 和 <code>GOARCH</code> 值。如果机器上没有安装 Go，<code>go env</code> 命令自然无法使用。其实只需要两条 shell 命令，就能从系统信息中推导出这两个值。</p>
 <span id="more"></span>
-
-
 
 
 <h2 id="核心命令"><a href="#核心命令" class="headerlink" title="核心命令"></a>核心命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GOOS=$(<span class="built_in">echo</span> $(<span class="built_in">uname</span> -s) | <span class="built_in">tr</span> <span class="string">&#x27;[:upper:]&#x27;</span> <span class="string">&#x27;[:lower:]&#x27;</span>)</span><br><span class="line">GOARCH=$(<span class="built_in">echo</span> $(<span class="built_in">uname</span> -m | sed s/aarch64/arm64/ | sed s/x86_64/amd64/ | sed s/armv7l/arm/ | sed s/i386/386/ | sed s/i686/386/) | <span class="built_in">tr</span> <span class="string">&#x27;[:upper:]&#x27;</span> <span class="string">&#x27;[:lower:]&#x27;</span>)</span><br></pre></td></tr></table></figure>
@@ -374,8 +372,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/12/23/markdown-mermaid-latex/" rel="next" title="Markdown 进阶：Mermaid 图表与 LaTeX 公式">
-                  Markdown 进阶：Mermaid 图表与 LaTeX 公式 <i class="fa fa-angle-right"></i>
+                <a href="/2024/08/28/phicomm-k2-led-color/" rel="next" title="斐讯 K2 路由器刷机后自定义 LED 灯颜色">
+                  斐讯 K2 路由器刷机后自定义 LED 灯颜色 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

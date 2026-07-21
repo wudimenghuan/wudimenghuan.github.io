@@ -151,13 +151,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">94</span>
+        <span class="site-state-item-count">98</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -241,8 +241,6 @@
     
     <div class="post-body" itemprop="articleBody"><h1 id="MATLAB-画-3D-图"><a href="#MATLAB-画-3D-图" class="headerlink" title="MATLAB 画 3D 图"></a>MATLAB 画 3D 图</h1><p>在做仿真和数据分析时，经常需要把二维矩阵可视化为三维曲面图。下面是一段完整的 MATLAB 命令，一行即可把矩阵 <code>misimS1</code> 画成三维曲面并保存为 PNG。</p>
 <span id="more"></span>
-
-
 
 
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">surf(misimS1); shading interp;</span><br><span class="line">set(gca,<span class="string">&#x27;ydir&#x27;</span>,<span class="string">&#x27;reverse&#x27;</span>);</span><br><span class="line">colorbar();</span><br><span class="line">set(gcf,<span class="string">&#x27;Position&#x27;</span>,[<span class="number">100</span>,<span class="number">300</span>,<span class="number">800</span>,<span class="number">600</span>]);</span><br><span class="line">saveas(gcf,<span class="string">&#x27;misim 0.1.png&#x27;</span>);</span><br></pre></td></tr></table></figure>
