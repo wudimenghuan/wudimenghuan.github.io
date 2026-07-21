@@ -243,6 +243,8 @@
 <span id="more"></span>
 
 
+
+
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">surf(misimS1); shading interp;</span><br><span class="line">set(gca,<span class="string">&#x27;ydir&#x27;</span>,<span class="string">&#x27;reverse&#x27;</span>);</span><br><span class="line">colorbar();</span><br><span class="line">set(gcf,<span class="string">&#x27;Position&#x27;</span>,[<span class="number">100</span>,<span class="number">300</span>,<span class="number">800</span>,<span class="number">600</span>]);</span><br><span class="line">saveas(gcf,<span class="string">&#x27;misim 0.1.png&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <h2 id="逐行说明"><a href="#逐行说明" class="headerlink" title="逐行说明"></a>逐行说明</h2><h3 id="surf-misimS1"><a href="#surf-misimS1" class="headerlink" title="surf(misimS1)"></a>surf(misimS1)</h3><p><code>surf</code> 是 MATLAB 绘制三维曲面的核心函数。传入一个二维矩阵，矩阵的每个元素值就是曲面在该位置的高度（Z 轴）。</p>

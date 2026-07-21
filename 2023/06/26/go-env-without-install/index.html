@@ -244,6 +244,8 @@
 <span id="more"></span>
 
 
+
+
 <h2 id="核心命令"><a href="#核心命令" class="headerlink" title="核心命令"></a>核心命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GOOS=$(<span class="built_in">echo</span> $(<span class="built_in">uname</span> -s) | <span class="built_in">tr</span> <span class="string">&#x27;[:upper:]&#x27;</span> <span class="string">&#x27;[:lower:]&#x27;</span>)</span><br><span class="line">GOARCH=$(<span class="built_in">echo</span> $(<span class="built_in">uname</span> -m | sed s/aarch64/arm64/ | sed s/x86_64/amd64/ | sed s/armv7l/arm/ | sed s/i386/386/ | sed s/i686/386/) | <span class="built_in">tr</span> <span class="string">&#x27;[:upper:]&#x27;</span> <span class="string">&#x27;[:lower:]&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <h2 id="逐行拆解"><a href="#逐行拆解" class="headerlink" title="逐行拆解"></a>逐行拆解</h2><h3 id="GOOS：操作系统标识"><a href="#GOOS：操作系统标识" class="headerlink" title="GOOS：操作系统标识"></a>GOOS：操作系统标识</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GOOS=$(<span class="built_in">echo</span> $(<span class="built_in">uname</span> -s) | <span class="built_in">tr</span> <span class="string">&#x27;[:upper:]&#x27;</span> <span class="string">&#x27;[:lower:]&#x27;</span>)</span><br></pre></td></tr></table></figure>
