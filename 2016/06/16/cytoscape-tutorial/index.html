@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.stx8.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"vs2015","dark":"vs2015"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Cytoscape 基础教程笔记Cytoscape 是一款开源的生物网络可视化和分析软件，广泛应用于蛋白质相互作用网络、基因调控网络等生物信息学数据的展示与分析。以下是根据官方基础教程整理的八课笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cytoscape 基础教程笔记">
+<meta property="og:url" content="https://www.stx8.com/2016/06/16/cytoscape-tutorial/index.html">
+<meta property="og:site_name" content="时空主站">
+<meta property="og:description" content="Cytoscape 基础教程笔记Cytoscape 是一款开源的生物网络可视化和分析软件，广泛应用于蛋白质相互作用网络、基因调控网络等生物信息学数据的展示与分析。以下是根据官方基础教程整理的八课笔记。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-06-16T14:46:00.000Z">
+<meta property="article:modified_time" content="2016-06-16T14:46:00.000Z">
+<meta property="article:author" content="时空">
+<meta property="article:tag" content="Cytoscape">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="生物信息学">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.stx8.com/2016/06/16/cytoscape-tutorial/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.stx8.com/2016/06/16/cytoscape-tutorial/","path":"2016/06/16/cytoscape-tutorial/","title":"Cytoscape 基础教程笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Cytoscape 基础教程笔记 | 时空主站</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90761248-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-90761248-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@11.10.1/dist/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+
+
+  
+
+
+
+
+<!-- Crisp -->
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="40c25842-b687-4733-ba07-02203d88e2f0";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+<!-- Crisp -->
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">时空主站</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">嗨，我是时空，一名来自中国的开发者。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-我的软件"><a href="/tags/%E6%88%91%E7%9A%84%E8%BD%AF%E4%BB%B6/" rel="section"><i class="fa fa-desktop fa-fw"></i>我的软件</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-开源博客"><a href="https://my.oschina.net/wudimenghuan" rel="section" target="_blank"><i class="fa fa-code fa-fw"></i>开源博客</a></li><li class="menu-item menu-item-pgp"><a href="/pgp/" rel="section"><i class="fa fa-key fa-fw"></i>PGP</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cytoscape-%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">Cytoscape 基础教程笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%AF%BE%EF%BC%9A%E6%96%B0%E6%89%8B%E4%B8%8A%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">第一课：新手上路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%AF%BE%EF%BC%9A%E7%AD%9B%E9%80%89%E5%92%8C%E7%BC%96%E8%BE%91"><span class="nav-number">1.2.</span> <span class="nav-text">第二课：筛选和编辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%9B%E9%80%89%EF%BC%88Filter%EF%BC%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">筛选（Filter）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%AD%A4%E7%AB%8B%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.2.</span> <span class="nav-text">查找孤立节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E7%BD%91%E7%BB%9C"><span class="nav-number">1.2.3.</span> <span class="nav-text">编辑网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%AF%BE%EF%BC%9A%E8%8E%B7%E5%8F%96%E5%A4%96%E9%83%A8%E6%95%B0%E6%8D%AE"><span class="nav-number">1.3.</span> <span class="nav-text">第三课：获取外部数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.3.1.</span> <span class="nav-text">常用数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.3.2.</span> <span class="nav-text">数据下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%9E%8D%E5%90%88"><span class="nav-number">1.3.3.</span> <span class="nav-text">数据融合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E8%AF%BE%EF%BC%9A%E8%A1%A8%E8%BE%BE%E5%88%86%E6%9E%90"><span class="nav-number">1.4.</span> <span class="nav-text">第四课：表达分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.4.1.</span> <span class="nav-text">数据格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">1.4.2.</span> <span class="nav-text">导入与可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90"><span class="nav-number">1.4.3.</span> <span class="nav-text">案例分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E8%AF%BE%EF%BC%9AAgilent-Literature-Search-%E6%8F%92%E4%BB%B6"><span class="nav-number">1.5.</span> <span class="nav-text">第五课：Agilent Literature Search 插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="nav-number">1.5.1.</span> <span class="nav-text">安装与使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E9%AA%8C%E8%AF%81"><span class="nav-number">1.5.2.</span> <span class="nav-text">结果验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E4%BC%98%E5%8C%96"><span class="nav-number">1.5.3.</span> <span class="nav-text">搜索优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E8%AF%BE%EF%BC%9AGO-%E5%88%86%E6%9E%90"><span class="nav-number">1.6.</span> <span class="nav-text">第六课：GO 分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5-GO-%E4%BF%A1%E6%81%AF"><span class="nav-number">1.6.1.</span> <span class="nav-text">导入 GO 信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BiNGO-%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.6.2.</span> <span class="nav-text">BiNGO 设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E8%A7%A3%E8%AF%BB"><span class="nav-number">1.6.3.</span> <span class="nav-text">结果解读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E8%AF%BE%EF%BC%9A%E6%A8%A1%E5%9D%97%E5%92%8C%E5%A4%8D%E5%90%88%E7%89%A9"><span class="nav-number">1.7.</span> <span class="nav-text">第七课：模块和复合物</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MCODE-%E6%89%BE%E5%A4%8D%E5%90%88%E7%89%A9"><span class="nav-number">1.7.1.</span> <span class="nav-text">MCODE 找复合物</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jActiveModules"><span class="nav-number">1.7.2.</span> <span class="nav-text">jActiveModules</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AB%E8%AF%BE%EF%BC%9A%E6%95%B4%E5%90%88%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.8.</span> <span class="nav-text">第八课：整合网络服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E5%85%AC%E5%85%B1%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%85%A5"><span class="nav-number">1.8.1.</span> <span class="nav-text">从公共数据库导入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E6%B3%A8%E9%87%8A"><span class="nav-number">1.8.2.</span> <span class="nav-text">导入注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%9E%8D%E5%90%88-1"><span class="nav-number">1.8.3.</span> <span class="nav-text">数据融合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ID-%E6%98%A0%E5%B0%84"><span class="nav-number">1.8.4.</span> <span class="nav-text">ID 映射</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">1.9.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">时空</p>
+  <div class="site-description" itemprop="description">时空主站</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">107</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.stx8.com/2016/06/16/cytoscape-tutorial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="时空">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时空主站">
+      <meta itemprop="description" content="时空主站">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Cytoscape 基础教程笔记 | 时空主站">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Cytoscape 基础教程笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-06-16 22:46:00" itemprop="dateCreated datePublished" datetime="2016-06-16T22:46:00+08:00">2016-06-16</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2016/06/16/cytoscape-tutorial/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/16/cytoscape-tutorial/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Cytoscape-基础教程笔记"><a href="#Cytoscape-基础教程笔记" class="headerlink" title="Cytoscape 基础教程笔记"></a>Cytoscape 基础教程笔记</h1><p>Cytoscape 是一款开源的生物网络可视化和分析软件，广泛应用于蛋白质相互作用网络、基因调控网络等生物信息学数据的展示与分析。以下是根据官方基础教程整理的八课笔记。</p>
+<span id="more"></span>
+
+<h2 id="第一课：新手上路"><a href="#第一课：新手上路" class="headerlink" title="第一课：新手上路"></a>第一课：新手上路</h2><p>Cytoscape 可本地安装，也可通过 Web Start 运行，需要 Java 环境（JRE）。启动后需要下载样例文件：</p>
+<ul>
+<li><code>.sif</code> 文件：蛋白质相互作用网络信息，蛋白以数字 ID 区分</li>
+<li><code>.na</code> 文件：各数字 ID 的注释信息（如基因名）</li>
+</ul>
+<p><strong>导入方式</strong>：</p>
+<ul>
+<li>网络：<code>File → Import → Network</code> 或 <code>Ctrl+L</code></li>
+<li>节点属性：<code>File → Import → Node Attributes</code></li>
+</ul>
+<p>导入后，圆圈代表节点（node），连线代表相互作用（edge）。选中节点后可通过 <code>Select → Nodes → First neighbors of selected nodes</code> 选中直接相互作用蛋白，再用 <code>File → New → Network → From selected nodes, all edges</code> 提取子网络。</p>
+<p><strong>布局与样式</strong>：</p>
+<ul>
+<li><code>Layout</code> 菜单提供多种网络组织方式</li>
+<li><code>VizMapper</code> 可定制节点形状、大小、颜色，连线粗细等</li>
+<li>样式设置后务必点击 <code>Apply</code></li>
+</ul>
+<p>Cytoscape 也支持从网络直接导入相互作用数据：<code>File → Import → Network</code> 选择 <code>remote</code> 并输入 URL。</p>
+<h2 id="第二课：筛选和编辑"><a href="#第二课：筛选和编辑" class="headerlink" title="第二课：筛选和编辑"></a>第二课：筛选和编辑</h2><h3 id="筛选（Filter）"><a href="#筛选（Filter）" class="headerlink" title="筛选（Filter）"></a>筛选（Filter）</h3><ol>
+<li>拖放或 <code>Shift</code> 多选节点和连线</li>
+<li><code>Select → Use Filters</code>，在 Filters 面板中 <code>Options → Create new filter</code></li>
+<li>定义筛选条件，如 <code>edge.interaction</code>，在 Advanced 中输入 <code>non_core</code> 或 <code>core</code> 等类型</li>
+<li>点击 <code>Apply</code></li>
+</ol>
+<p>筛选后可选中特定类型的相互作用，用 <code>Edit → Delete Selected Nodes/Edges</code> 删除。</p>
+<h3 id="查找孤立节点"><a href="#查找孤立节点" class="headerlink" title="查找孤立节点"></a>查找孤立节点</h3><p>将筛选条件设为 <code>*</code>，选中所有有相互作用的节点，用 <code>New → Network → From selected nodes, selected edges</code> 提取。再用 <code>Layout → spring-embedded layout</code> 重新排列。</p>
+<h3 id="编辑网络"><a href="#编辑网络" class="headerlink" title="编辑网络"></a>编辑网络</h3><p>在控制面板的 <code>Editor</code> 标签中：</p>
+<ul>
+<li>点击 “Add a Node” 添加节点，拖到画布中</li>
+<li>点击 “Directed Edge” 添加有向连线</li>
+<li>属性在数据面板的 <code>Node Attribute Browser</code> 和 <code>Edge Attribute Browser</code> 中查看和修改</li>
+<li><code>Del</code> 键删除选中项</li>
+</ul>
+<h2 id="第三课：获取外部数据"><a href="#第三课：获取外部数据" class="headerlink" title="第三课：获取外部数据"></a>第三课：获取外部数据</h2><h3 id="常用数据库"><a href="#常用数据库" class="headerlink" title="常用数据库"></a>常用数据库</h3><table>
+<thead>
+<tr>
+<th>数据库</th>
+<th>说明</th>
+<th>网址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SGD</td>
+<td>酵母基因组数据库</td>
+<td>db.yeastgenome.org</td>
+</tr>
+<tr>
+<td>BIND&#x2F;BOND</td>
+<td>生物分子相互作用网络</td>
+<td>bond.unleashedinformatics.com</td>
+</tr>
+<tr>
+<td>Pathway Commons</td>
+<td>整合多种通路数据库</td>
+<td>pathwaycommons.org</td>
+</tr>
+<tr>
+<td>Pathguide</td>
+<td>生物信息学数据库目录</td>
+<td>pathguide.org</td>
+</tr>
+</tbody></table>
+<h3 id="数据下载"><a href="#数据下载" class="headerlink" title="数据下载"></a>数据下载</h3><ul>
+<li><strong>SGD</strong>：指定要下载的内容，重定向到新页面后另存为</li>
+<li><strong>BIND</strong>：注册免费账号，搜索目标分子，在 <code>interactions</code> 结果右上角导出为 <code>.sif</code> 格式</li>
+<li><strong>Pathway Commons</strong>：直接搜索并导入</li>
+</ul>
+<h3 id="数据融合"><a href="#数据融合" class="headerlink" title="数据融合"></a>数据融合</h3><p>下载多个源的相互作用网络后，可用 <code>Graph Merge</code> 插件（或 <code>Plugins → Advanced Network Merge</code>）融合成一张图。</p>
+<h2 id="第四课：表达分析"><a href="#第四课：表达分析" class="headerlink" title="第四课：表达分析"></a>第四课：表达分析</h2><h3 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h3><p>表达数据文件（如 <code>.mrna</code>）格式：</p>
+<ul>
+<li>第一行：数据标签</li>
+<li>第一栏：节点名称（必须与 <code>.sif</code> 文件中一致）</li>
+<li>第二栏：基因座名</li>
+<li>后续各栏：表达信息</li>
+<li>各栏之间用空白符分隔</li>
+</ul>
+<h3 id="导入与可视化"><a href="#导入与可视化" class="headerlink" title="导入与可视化"></a>导入与可视化</h3><ol>
+<li>导入 <code>.sif</code> 网络文件</li>
+<li><code>Import → Attribute/Expression Matrix</code>（<code>Ctrl+E</code>）导入表达数据</li>
+<li>在 <code>VizMapper</code> 中新建显示风格</li>
+<li>双击 <code>Node color</code>，选择 <code>continuous mapping</code></li>
+<li>设置颜色阈值（如表达量高为红色，低为绿色）</li>
+<li>点击 <code>Apply</code></li>
+</ol>
+<h3 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h3><p>以酵母 Gal 转录因子（Gal1、Gal4、Gal80）为例：</p>
+<ol>
+<li>先用 Filter 去除 <code>pp</code>（protein-protein）相互作用</li>
+<li>用 <code>yFiles Organic layout</code> 查看剩余连线</li>
+<li>选择强烈诱导或抑制的节点及其邻居</li>
+<li>复制到新网络中分析转录因子对不同蛋白表达量的影响</li>
+</ol>
+<h2 id="第五课：Agilent-Literature-Search-插件"><a href="#第五课：Agilent-Literature-Search-插件" class="headerlink" title="第五课：Agilent Literature Search 插件"></a>第五课：Agilent Literature Search 插件</h2><p>ALS 插件可从文献中自动构建相互作用网络。</p>
+<h3 id="安装与使用"><a href="#安装与使用" class="headerlink" title="安装与使用"></a>安装与使用</h3><ol>
+<li>下载 <code>.jar</code> 放到 <code>plugins</code> 文件夹，重启 Cytoscape</li>
+<li><code>Plugins → Agilent Literature Search</code></li>
+<li>设置搜索关键词、种属、每页显示论文数</li>
+<li>点击蓝色三角开始搜索</li>
+</ol>
+<h3 id="结果验证"><a href="#结果验证" class="headerlink" title="结果验证"></a>结果验证</h3><p>选中连线 → 右键 <code>Evidence from Literature</code>：</p>
+<ul>
+<li><code>Show Sentences from the Literature</code>：查看支持该相互作用的文献句子</li>
+<li><code>Gather Evidence from the Literature</code>：收集证据</li>
+<li><code>Extend Network from the Literature</code>：扩展网络</li>
+</ul>
+<p>不靠谱的句子可右键 <code>Delete Sentence</code> 删除，对应的连线会自动消失。</p>
+<h3 id="搜索优化"><a href="#搜索优化" class="headerlink" title="搜索优化"></a>搜索优化</h3><ul>
+<li><code>Interaction Lexicon</code>：<ul>
+<li><code>limited</code>：仅包含激活、甲基化、切割等高置信度动词</li>
+<li><code>relaxed</code>：范围放宽，包含加入、提高、诱导等</li>
+</ul>
+</li>
+<li><code>Use Aliases</code>：使用蛋白别名（如 p53 &#x3D; p53 OR trp53 OR tp53）</li>
+<li><code>Context</code>：指定主题（如 cancer、阿尔茨海默症）</li>
+<li>高级搜索语法：<code>(P53) AND Cancer AND (Science[ta] OR Nature[ta])</code></li>
+</ul>
+<h2 id="第六课：GO-分析"><a href="#第六课：GO-分析" class="headerlink" title="第六课：GO 分析"></a>第六课：GO 分析</h2><p>使用 BiNGO 插件进行 GO term 富集分析。</p>
+<h3 id="导入-GO-信息"><a href="#导入-GO-信息" class="headerlink" title="导入 GO 信息"></a>导入 GO 信息</h3><p><code>File → Import → Ontology and Annotation</code>，设置 annotation 和 ontology 类型后导入。</p>
+<h3 id="BiNGO-设置"><a href="#BiNGO-设置" class="headerlink" title="BiNGO 设置"></a>BiNGO 设置</h3><ol>
+<li>选中目标节点及其邻居（<code>Ctrl+F</code> 搜索 → <code>Ctrl+6</code> 选邻居 → <code>Ctrl+N</code> 新建子网络）</li>
+<li><code>Ctrl+Alt+A</code> 全选子网络节点</li>
+<li><code>Plugins → BiNGO</code></li>
+<li>参数设置：<ul>
+<li>统计检验：<code>Hypergeometric</code>（数据量大时用 <code>Binomial</code>）</li>
+<li>多重检验校正：<code>Benjamini &amp; Hochberg FDR</code></li>
+<li>显著性水平：<code>0.05</code></li>
+<li>可视化类别：<code>Overrepresented categories after correction</code></li>
+<li>参考集：<code>Test cluster versus complete annotation</code></li>
+<li>Ontology：<code>GO_Biological_Process</code></li>
+<li>选择物种</li>
+</ul>
+</li>
+<li>勾选 <code>Save BiNGO Data file</code>，点击 <code>Start BiNGO</code></li>
+</ol>
+<h3 id="结果解读"><a href="#结果解读" class="headerlink" title="结果解读"></a>结果解读</h3><ul>
+<li>节点颜色：富集程度越高越偏橙色，越低越偏黄色，白色表示未显著富集</li>
+<li>属性浏览器中新增：<ul>
+<li><code>description_test</code>：GO term</li>
+<li><code>adjustedPValue_test</code>：校正后的 p 值</li>
+<li><code>n_test</code>：该 GO term 下的节点数</li>
+<li><code>x_test</code>：所选节点中该 GO term 下的节点数</li>
+</ul>
+</li>
+</ul>
+<h2 id="第七课：模块和复合物"><a href="#第七课：模块和复合物" class="headerlink" title="第七课：模块和复合物"></a>第七课：模块和复合物</h2><h3 id="MCODE-找复合物"><a href="#MCODE-找复合物" class="headerlink" title="MCODE 找复合物"></a>MCODE 找复合物</h3><p>原理：内部连线多的节点更可能是复合物成员。</p>
+<ol>
+<li><code>Plugins → MCODE → Start MCODE</code></li>
+<li>点击 <code>Analyze</code>（或 <code>Advanced Options</code> 修改参数）</li>
+<li>结果中分数较高（&gt;1）且节点数合理的复合物可信度较高</li>
+<li>用 BiNGO 考察子网络的 GO 富集情况作为间接证据</li>
+</ol>
+<h3 id="jActiveModules"><a href="#jActiveModules" class="headerlink" title="jActiveModules"></a>jActiveModules</h3><p>利用表达数据鉴定活性模块：</p>
+<ol>
+<li>导入包含 significance 值的表达数据</li>
+<li><code>Plugins → jActiveModules → Active Modules: Set Parameters</code></li>
+<li>选择表达数据，设置返回结果数</li>
+<li><code>Plugins → jActiveModules → Active Modules: Find Modules</code></li>
+</ol>
+<p>结果窗口中：<code>size</code> 表示子网络节点数，<code>score</code> 表示可信度，红色表示显著。</p>
+<h2 id="第八课：整合网络服务"><a href="#第八课：整合网络服务" class="headerlink" title="第八课：整合网络服务"></a>第八课：整合网络服务</h2><h3 id="从公共数据库导入"><a href="#从公共数据库导入" class="headerlink" title="从公共数据库导入"></a>从公共数据库导入</h3><p><code>File → Import → Network from Web Services</code>：</p>
+<ul>
+<li><strong>NCBI Entrez</strong>：关键词如 <code>pparg AND human[ORGN]</code></li>
+<li><strong>Pathway Commons</strong>：输入关键词和物种</li>
+<li><strong>IntAct</strong>：输入 <code>PPARG AND species:human</code>，获取直接相互作用蛋白后可用 <code>Get neighbours by ID(s)</code> 扩展到三跳以内</li>
+<li><strong>WikiPathways</strong>：支持 GPML 格式</li>
+</ul>
+<h3 id="导入注释"><a href="#导入注释" class="headerlink" title="导入注释"></a>导入注释</h3><ul>
+<li><code>File → Import → Import Attributes from NCBI Entrez Gene</code></li>
+<li><code>File → Import → Import Attributes from BioMart</code></li>
+</ul>
+<h3 id="数据融合-1"><a href="#数据融合-1" class="headerlink" title="数据融合"></a>数据融合</h3><p>用 <code>Advanced Network Merge</code> 将多个来源的网络融合，可通过添加属性标记各节点的来源。</p>
+<h3 id="ID-映射"><a href="#ID-映射" class="headerlink" title="ID 映射"></a>ID 映射</h3><p>Cytoscape 大小写敏感，若 ID 格式不一致（如全小写），可用脚本转换后重新映射。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>Cytoscape 的核心流程是：导入网络数据 → 可视化 → 筛选和编辑 → 结合表达数据或文献证据进行分析 → 用插件（BiNGO、MCODE 等）挖掘生物学意义。掌握这八课的基础操作后，可以处理大多数蛋白质相互作用和基因调控网络的分析需求。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="时空 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="时空 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Cytoscape/" rel="tag"># Cytoscape</a>
+              <a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" rel="tag"># 生物信息学</a>
+              <a href="/tags/%E6%95%99%E7%A8%8B/" rel="tag"># 教程</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/06/16/csharp-auto-update/" rel="prev" title="C# WinForm 软件自动升级实现">
+                  <i class="fa fa-angle-left"></i> C# WinForm 软件自动升级实现
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/11/04/%E6%88%91%E6%98%AF%E6%80%8E%E4%B9%88%E6%8B%9B%E8%81%98%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84/" rel="next" title="我是怎么招聘程序员的">
+                  我是怎么招聘程序员的 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2012 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">时空</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"stx8","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js" defer></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
