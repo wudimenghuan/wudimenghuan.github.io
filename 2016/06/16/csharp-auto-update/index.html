@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.stx8.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"vs2015","dark":"vs2015"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="C# WinForm 软件自动升级实现WinForm 程序相对 Web 程序功能更强大，但软件更新却相当麻烦，需要到客户端一台一台升级。本文介绍一种通过登录器自动检测并下载新版本的实现思路。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C# WinForm 软件自动升级实现">
+<meta property="og:url" content="https://www.stx8.com/2016/06/16/csharp-auto-update/index.html">
+<meta property="og:site_name" content="时空主站">
+<meta property="og:description" content="C# WinForm 软件自动升级实现WinForm 程序相对 Web 程序功能更强大，但软件更新却相当麻烦，需要到客户端一台一台升级。本文介绍一种通过登录器自动检测并下载新版本的实现思路。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-06-16T14:43:00.000Z">
+<meta property="article:modified_time" content="2016-06-16T14:43:00.000Z">
+<meta property="article:author" content="时空">
+<meta property="article:tag" content="C#">
+<meta property="article:tag" content="WinForm">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="编程">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.stx8.com/2016/06/16/csharp-auto-update/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.stx8.com/2016/06/16/csharp-auto-update/","path":"2016/06/16/csharp-auto-update/","title":"C# WinForm 软件自动升级实现"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C# WinForm 软件自动升级实现 | 时空主站</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90761248-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-90761248-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@11.10.1/dist/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+
+
+  
+
+
+
+
+<!-- Crisp -->
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="40c25842-b687-4733-ba07-02203d88e2f0";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+<!-- Crisp -->
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">时空主站</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">嗨，我是时空，一名来自中国的开发者。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-我的软件"><a href="/tags/%E6%88%91%E7%9A%84%E8%BD%AF%E4%BB%B6/" rel="section"><i class="fa fa-desktop fa-fw"></i>我的软件</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-开源博客"><a href="https://my.oschina.net/wudimenghuan" rel="section" target="_blank"><i class="fa fa-code fa-fw"></i>开源博客</a></li><li class="menu-item menu-item-pgp"><a href="/pgp/" rel="section"><i class="fa fa-key fa-fw"></i>PGP</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-WinForm-%E8%BD%AF%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%8D%87%E7%BA%A7%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">C# WinForm 软件自动升级实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">核心思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E7%A8%8B%E5%BA%8F%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">主程序接收参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E5%B7%A5%E5%85%B7"><span class="nav-number">1.4.</span> <span class="nav-text">上传工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E5%99%A8%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0"><span class="nav-number">1.5.</span> <span class="nav-text">登录器自动更新</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%9D%E5%AD%98%E6%9C%AC%E5%9C%B0%E7%89%88%E6%9C%AC"><span class="nav-number">1.5.1.</span> <span class="nav-text">1. 注册表保存本地版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%90%8E%E5%8F%B0%E6%A3%80%E6%B5%8B%E6%9B%B4%E6%96%B0"><span class="nav-number">1.5.2.</span> <span class="nav-text">2. 后台检测更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%90%AF%E5%8A%A8%E4%B8%BB%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.5.3.</span> <span class="nav-text">3. 启动主程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8"><span class="nav-number">1.6.</span> <span class="nav-text">公共代码复用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%89%88-%E5%8D%95%E6%9C%BA%E7%89%88%E5%88%87%E6%8D%A2"><span class="nav-number">1.7.</span> <span class="nav-text">网络版&#x2F;单机版切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">1.8.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">时空</p>
+  <div class="site-description" itemprop="description">时空主站</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">104</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.stx8.com/2016/06/16/csharp-auto-update/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="时空">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时空主站">
+      <meta itemprop="description" content="时空主站">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C# WinForm 软件自动升级实现 | 时空主站">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C# WinForm 软件自动升级实现
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-06-16 22:43:00" itemprop="dateCreated datePublished" datetime="2016-06-16T22:43:00+08:00">2016-06-16</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2016/06/16/csharp-auto-update/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/16/csharp-auto-update/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="C-WinForm-软件自动升级实现"><a href="#C-WinForm-软件自动升级实现" class="headerlink" title="C# WinForm 软件自动升级实现"></a>C# WinForm 软件自动升级实现</h1><p>WinForm 程序相对 Web 程序功能更强大，但软件更新却相当麻烦，需要到客户端一台一台升级。本文介绍一种通过登录器自动检测并下载新版本的实现思路。</p>
+<span id="more"></span>
+
+
+
+<h2 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h2><p>程序运行时不能覆盖自身，因此将登录窗口单独做成一个可执行文件（Login.exe）。用户打开登录器后，先从服务器检测是否有新的主程序（MainPro.exe），如果有则后台下载并覆盖旧版本，登录成功后再通过参数将必要信息（用户名、密码等）传递给主程序。</p>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MainPro</td>
+<td>主程序，接收参数启动</td>
+</tr>
+<tr>
+<td>UpLoad</td>
+<td>上传工具，供开发者发布新版本</td>
+</tr>
+<tr>
+<td>Login</td>
+<td>登录器，负责检测更新和启动主程序</td>
+</tr>
+</tbody></table>
+<h2 id="主程序接收参数"><a href="#主程序接收参数" class="headerlink" title="主程序接收参数"></a>主程序接收参数</h2><p>主程序的 <code>Main</code> 方法改为接收字符串数组参数：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">string</span> m_UserName, m_Password;</span><br><span class="line"></span><br><span class="line">[<span class="meta">STAThread</span>]</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] <span class="keyword">args</span></span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">args</span>.Length == <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        m_UserName = <span class="keyword">args</span>[<span class="number">0</span>];</span><br><span class="line">        m_Password = <span class="keyword">args</span>[<span class="number">1</span>];</span><br><span class="line">        Application.Run(<span class="keyword">new</span> Form1());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        MessageBox.Show(<span class="string">&quot;不能从这里启动&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="上传工具"><a href="#上传工具" class="headerlink" title="上传工具"></a>上传工具</h2><p>使用 Access 数据库存放版本信息，表结构：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>序号</td>
+<td>长整型</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>版本号</td>
+<td>长整型</td>
+<td>当前版本</td>
+</tr>
+<tr>
+<td>文件名称</td>
+<td>字符</td>
+<td>对应的文件名</td>
+</tr>
+<tr>
+<td>文件内容</td>
+<td>OLE 对象</td>
+<td>文件二进制数据</td>
+</tr>
+</tbody></table>
+<p>确定按钮的核心逻辑：读取本地文件 → 写入数据库 → 更新版本号。</p>
+<h2 id="登录器自动更新"><a href="#登录器自动更新" class="headerlink" title="登录器自动更新"></a>登录器自动更新</h2><h3 id="1-注册表保存本地版本"><a href="#1-注册表保存本地版本" class="headerlink" title="1. 注册表保存本地版本"></a>1. 注册表保存本地版本</h3><p>用注册表记录当前主程序的版本号，避免每次重复下载：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="built_in">string</span> <span class="title">ReadInfo</span>(<span class="params"><span class="built_in">string</span> keyName</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    RegistryKey software = Registry.LocalMachine.OpenSubKey(<span class="string">&quot;Software&quot;</span>, <span class="literal">true</span>);</span><br><span class="line">    RegistryKey company = software.OpenSubKey(<span class="string">&quot;MyCompany&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (company == <span class="literal">null</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    RegistryKey product = company.OpenSubKey(<span class="string">&quot;MyProduct&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (product == <span class="literal">null</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> product.GetValue(keyName)?.ToString() ?? <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">WriteInfo</span>(<span class="params"><span class="built_in">string</span> keyName, <span class="built_in">string</span> keyValue</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    RegistryKey software = Registry.LocalMachine.OpenSubKey(<span class="string">&quot;Software&quot;</span>, <span class="literal">true</span>);</span><br><span class="line">    RegistryKey company = software.CreateSubKey(<span class="string">&quot;MyCompany&quot;</span>);</span><br><span class="line">    RegistryKey product = company.CreateSubKey(<span class="string">&quot;MyProduct&quot;</span>);</span><br><span class="line">    product.SetValue(keyName, keyValue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-后台检测更新"><a href="#2-后台检测更新" class="headerlink" title="2. 后台检测更新"></a>2. 后台检测更新</h3><p>窗口加载时启动后台线程，不阻塞界面：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Form1_Load</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> ThreadStart(GetInfo));</span><br><span class="line">    thread.Start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>GetInfo</code> 函数负责：查询用户名列表 → 检查服务器版本号 → 与本地注册表版本比较 → 新版本则下载并覆盖 → 启用登录按钮。</p>
+<h3 id="3-启动主程序"><a href="#3-启动主程序" class="headerlink" title="3. 启动主程序"></a>3. 启动主程序</h3><p>登录验证通过后，用 <code>Process.Start</code> 带参数启动主程序，然后关闭登录窗口：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> filename = Application.StartupPath + <span class="string">&quot;\\MainPro.exe&quot;</span>;</span><br><span class="line"><span class="built_in">string</span> arg = username + <span class="string">&quot; &quot;</span> + password;</span><br><span class="line">System.Diagnostics.Process.Start(filename, arg);</span><br><span class="line"><span class="keyword">this</span>.Close();</span><br></pre></td></tr></table></figure>
+
+<h2 id="公共代码复用"><a href="#公共代码复用" class="headerlink" title="公共代码复用"></a>公共代码复用</h2><p>三个项目都用到数据库连接等重复代码，可以提取到 <code>MyTools.cs</code> 中作为链接文件共享：</p>
+<ul>
+<li>在项目里「添加现有项」→ 选择 <code>MyTools.cs</code> → 点「打开」按钮旁的下拉箭头 → 选择「链接文件」</li>
+<li>这样不会生成副本，修改一处即可全局生效</li>
+</ul>
+<h2 id="网络版-单机版切换"><a href="#网络版-单机版切换" class="headerlink" title="网络版&#x2F;单机版切换"></a>网络版&#x2F;单机版切换</h2><p>通过预编译指令兼容 Access 和 SQL Server：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> NETWORKVERSION  // 注释掉则为单机版</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> NETWORKVERSION</span></span><br><span class="line">    <span class="keyword">using</span> System.Data.SqlClient;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="keyword">using</span> System.Data.OleDb;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p>查询时通过 <code>#if</code> 分支使用不同的 Command&#x2F;DataReader 类型，其余业务逻辑完全统一。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这套方案将更新逻辑前置到登录器，既解决了”运行时不能覆盖自身”的问题，又对用户透明。扩展后还可用于更新资源文件、配置文件等。登录器本身的更新可以在主程序关闭时完成。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="时空 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="时空 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C#</a>
+              <a href="/tags/WinForm/" rel="tag"># WinForm</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"># 编程</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/06/16/xampp-mysql-force-recovery/" rel="prev" title="重装系统后 XAMPP MySQL 无法启动的修复">
+                  <i class="fa fa-angle-left"></i> 重装系统后 XAMPP MySQL 无法启动的修复
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/11/04/%E6%88%91%E6%98%AF%E6%80%8E%E4%B9%88%E6%8B%9B%E8%81%98%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84/" rel="next" title="我是怎么招聘程序员的">
+                  我是怎么招聘程序员的 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2012 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">时空</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"stx8","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js" defer></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
