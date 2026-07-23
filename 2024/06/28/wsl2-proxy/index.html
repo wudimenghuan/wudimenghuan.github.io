@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.stx8.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"vs2015","dark":"vs2015"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="WSL2 设置代理WSL2 使用虚拟网络适配器，默认与 Windows 主机不在同一网段。要让 WSL2 内的命令行工具（apt、curl、git 等）走 Windows 上的代理软件，需要正确获取 Windows 主机的 IP 地址并配置环境变量。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WSL2 设置代理">
+<meta property="og:url" content="https://www.stx8.com/2024/06/28/wsl2-proxy/index.html">
+<meta property="og:site_name" content="时空主站">
+<meta property="og:description" content="WSL2 设置代理WSL2 使用虚拟网络适配器，默认与 Windows 主机不在同一网段。要让 WSL2 内的命令行工具（apt、curl、git 等）走 Windows 上的代理软件，需要正确获取 Windows 主机的 IP 地址并配置环境变量。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-28T06:21:00.000Z">
+<meta property="article:modified_time" content="2024-06-28T06:21:00.000Z">
+<meta property="article:author" content="时空">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Shell">
+<meta property="article:tag" content="WSL">
+<meta property="article:tag" content="代理">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.stx8.com/2024/06/28/wsl2-proxy/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.stx8.com/2024/06/28/wsl2-proxy/","path":"2024/06/28/wsl2-proxy/","title":"WSL2 设置代理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>WSL2 设置代理 | 时空主站</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90761248-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-90761248-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@11.10.1/dist/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+
+
+
+
+  
+
+
+
+
+<!-- Crisp -->
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="40c25842-b687-4733-ba07-02203d88e2f0";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+<!-- Crisp -->
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">时空主站</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">嗨，我是时空，一名来自中国的开发者。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-我的软件"><a href="/tags/%E6%88%91%E7%9A%84%E8%BD%AF%E4%BB%B6/" rel="section"><i class="fa fa-desktop fa-fw"></i>我的软件</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-开源博客"><a href="https://my.oschina.net/wudimenghuan" rel="section" target="_blank"><i class="fa fa-code fa-fw"></i>开源博客</a></li><li class="menu-item menu-item-pgp"><a href="/pgp/" rel="section"><i class="fa fa-key fa-fw"></i>PGP</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WSL2-%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">WSL2 设置代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">核心思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%88%AB%E5%90%8D"><span class="nav-number">1.2.</span> <span class="nav-text">配置别名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%90%E6%AE%B5%E8%AF%B4%E6%98%8E"><span class="nav-number">1.3.</span> <span class="nav-text">逐段说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.4.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E4%BB%A3%E7%90%86"><span class="nav-number">1.5.</span> <span class="nav-text">验证代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.6.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">1.7.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">时空</p>
+  <div class="site-description" itemprop="description">时空主站</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">125</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.stx8.com/2024/06/28/wsl2-proxy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="时空">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="时空主站">
+      <meta itemprop="description" content="时空主站">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="WSL2 设置代理 | 时空主站">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          WSL2 设置代理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-28 14:21:00" itemprop="dateCreated datePublished" datetime="2024-06-28T14:21:00+08:00">2024-06-28</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2024/06/28/wsl2-proxy/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2024/06/28/wsl2-proxy/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="WSL2-设置代理"><a href="#WSL2-设置代理" class="headerlink" title="WSL2 设置代理"></a>WSL2 设置代理</h1><p>WSL2 使用虚拟网络适配器，默认与 Windows 主机不在同一网段。要让 WSL2 内的命令行工具（apt、curl、git 等）走 Windows 上的代理软件，需要正确获取 Windows 主机的 IP 地址并配置环境变量。</p>
+<span id="more"></span>
+
+<h2 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h2><p>WSL2 中 Windows 主机的 IP 可以通过 <code>ip route</code> 获取（default 网关即为 Windows 主机）。代理软件（如 Clash、v2rayN）通常在 Windows 上监听 <code>0.0.0.0:7890</code>，WSL2 内通过该 IP + 端口即可访问。</p>
+<h2 id="配置别名"><a href="#配置别名" class="headerlink" title="配置别名"></a>配置别名</h2><p>在 <code>~/.bashrc</code> 或 <code>~/.zshrc</code> 中添加：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> hostip=$(ip route show | grep -i default | awk <span class="string">&#x27;&#123; print $3&#125;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span> proxy=<span class="string">&#x27;</span></span><br><span class="line"><span class="string">    export https_proxy=&quot;http://$&#123;hostip&#125;:7890&quot;;</span></span><br><span class="line"><span class="string">    export http_proxy=&quot;http://$&#123;hostip&#125;:7890&quot;;</span></span><br><span class="line"><span class="string">    export all_proxy=&quot;socks5://$&#123;hostip&#125;:7890&quot;;</span></span><br><span class="line"><span class="string">    echo -e &quot;Acquire::http::Proxy \&quot;http://$&#123;hostip&#125;:7890\&quot;;&quot; | sudo tee -a /etc/apt/apt.conf.d/proxy.conf &gt; /dev/null;</span></span><br><span class="line"><span class="string">    echo -e &quot;Acquire::https::Proxy \&quot;http://$&#123;hostip&#125;:7890\&quot;;&quot; | sudo tee -a /etc/apt/apt.conf.d/proxy.conf &gt; /dev/null;</span></span><br><span class="line"><span class="string">&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span> unproxy=<span class="string">&#x27;</span></span><br><span class="line"><span class="string">    unset https_proxy;</span></span><br><span class="line"><span class="string">    unset http_proxy;</span></span><br><span class="line"><span class="string">    unset all_proxy;</span></span><br><span class="line"><span class="string">    sudo sed -i -e &quot;/Acquire::http::Proxy/d&quot; /etc/apt/apt.conf.d/proxy.conf;</span></span><br><span class="line"><span class="string">    sudo sed -i -e &quot;/Acquire::https::Proxy/d&quot; /etc/apt/apt.conf.d/proxy.conf;</span></span><br><span class="line"><span class="string">&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="逐段说明"><a href="#逐段说明" class="headerlink" title="逐段说明"></a>逐段说明</h2><table>
+<thead>
+<tr>
+<th>部分</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hostip=$(ip route show | grep default | awk &#39;{print $3}&#39;)</code></td>
+<td>获取 Windows 主机在 WSL2 虚拟网中的 IP</td>
+</tr>
+<tr>
+<td><code>http_proxy</code> &#x2F; <code>https_proxy</code></td>
+<td>设置 HTTP&#x2F;HTTPS 代理，curl、wget、git 等工具会读取</td>
+</tr>
+<tr>
+<td><code>all_proxy</code></td>
+<td>设置 SOCKS5 代理，部分工具（如 ssh）会读取</td>
+</tr>
+<tr>
+<td><code>/etc/apt/apt.conf.d/proxy.conf</code></td>
+<td>apt 的代理配置文件，单独设置</td>
+</tr>
+</tbody></table>
+<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc   <span class="comment"># 重新加载配置</span></span><br><span class="line"></span><br><span class="line">proxy              <span class="comment"># 开启代理</span></span><br><span class="line">apt update         <span class="comment"># 走代理下载</span></span><br><span class="line">curl https://api.github.com</span><br><span class="line"></span><br><span class="line">unproxy            <span class="comment"># 关闭代理</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="验证代理"><a href="#验证代理" class="headerlink" title="验证代理"></a>验证代理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -v https://www.google.com 2&gt;&amp;1 | grep -i proxy</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$http_proxy</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li><strong>代理软件监听地址</strong>：确保 Windows 代理软件允许 LAN 连接（监听 <code>0.0.0.0</code> 而非 <code>127.0.0.1</code>）</li>
+<li><strong>端口一致</strong>：上面示例用 <code>7890</code>，如果你的代理软件用其他端口（如 <code>1080</code>、<code>8080</code>），请修改别名中的端口号</li>
+<li><strong>防火墙</strong>：Windows 防火墙可能会阻止 WSL2 访问 Windows 端口，需要在防火墙中放行</li>
+<li><strong>WSL1 用户</strong>：WSL1 与 Windows 共享网络栈，直接用 <code>127.0.0.1:7890</code> 即可，不需要获取 hostip</li>
+</ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>通过 <code>ip route</code> 动态获取 Windows 主机 IP，配合 alias 快速切换代理状态，是 WSL2 下最省心的代理配置方案。不需要手动查 IP，也不受 WSL 重启后 IP 变化的影响。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="时空 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="时空 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/Shell/" rel="tag"># Shell</a>
+              <a href="/tags/WSL/" rel="tag"># WSL</a>
+              <a href="/tags/%E4%BB%A3%E7%90%86/" rel="tag"># 代理</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/06/26/go-env-without-install/" rel="prev" title="不安装Go语言获取GOOS和GOARCH环境变量">
+                  <i class="fa fa-angle-left"></i> 不安装Go语言获取GOOS和GOARCH环境变量
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/08/28/phicomm-k2-led-color/" rel="next" title="斐讯 K2 路由器刷机后自定义 LED 灯颜色">
+                  斐讯 K2 路由器刷机后自定义 LED 灯颜色 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2012 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">时空</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"stx8","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js" defer></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
